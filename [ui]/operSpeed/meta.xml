@@ -14,7 +14,8 @@
 	<file src="assets/lock.png" />
 	<file src="assets/light.png" />
 	<file src="assets/bg_shadow.png" />
-
+	<file src="assets/check.png" />
+	
 	<script type="client" src="main.lua" cache="false" />
 
 </meta>
