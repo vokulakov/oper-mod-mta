@@ -20,23 +20,24 @@ local function drawRadar()
     end
 	if not PLAYER_UI['radar'] then return end
 
-   -- if localPlayer:getData('operCamHack:isVisible') then
-       -- return
-   -- end
-
 	if Camera.interior ~= 0 then
 		return
 	end
 
+	local px, py, pz = getElementPosition(localPlayer)
+	local p_dimension = getElementDimension(localPlayer)
+	local p_interior = getElementInterior(localPlayer)
+
+	local camera_rotation = Camera.rotation
+	
 	-- DRAW MAP --
 	dxSetRenderTarget(mapRenderTarget, true)
-		local pos = Vector2(localPlayer.position)
-		local X, Y = rtW/2 - (pos.x/mapZoomScale), rtH*(3/5) + (pos.y/mapZoomScale)
+		local X, Y = rtW/2 - (px/mapZoomScale), rtH*(3/5) + (py/mapZoomScale)
 		local zmW, zmH = mW, mH
 
 		dxDrawRectangle(0, 0, rtW, rtH, tocolor(124, 167, 209))
 
-		dxDrawImage(X - (zmW)/2, Y - (zmH)/2, zmW, zmH, WORLD_TXT, Camera.rotation.z, pos.x/mapZoomScale, -(pos.y/mapZoomScale), 0xFFFFFFFF)
+		dxDrawImage(X - (zmW)/2, Y - (zmH)/2, zmW, zmH, WORLD_TXT, camera_rotation.z, px/mapZoomScale, -(py/mapZoomScale), 0xFFFFFFFF)
 	dxSetRenderTarget()
 	--------------
 
@@ -53,7 +54,7 @@ local function drawRadar()
 	local mapLeft, mapTop = posX, posY-rtH
 
 	-- DRAW NORTH BLIP --
-	local direction = math.rad(-Camera.rotation.z + 180)
+	local direction = math.rad(-camera_rotation.z + 180)
 	local radius = math.sqrt((mapWidth/2)^2 + (mapHeight*(3/5))^2)
 	local blipX, blipY = centerX + math.sin(direction) * radius, centerY + math.cos(direction) * radius
 	local blipX = math.max(0, math.min(blipX, mapWidth)) -- clamp position between 0 and mapWidth
@@ -62,57 +63,18 @@ local function drawRadar()
 
     dxDrawImage(mapLeft + blipX - blipSize/2, mapTop + blipY - blipSize/2, blipSize, blipSize, 'assets/blips/4.png', 0, 0, 0, tocolor(255, 255, 255, 255))
 
-    -- BLIPS -- 
-    --[[
-    for _, blip in ipairs(getElementsByType("blip")) do
-    	local blipPos = blip.position
-    	local dist = (localPlayer.position - blip.position).length
-    	local maxdist = blip.visibleDistance
-
-    	if dist <= maxdist and blip.icon ~= 0 then
-    		local radius = dist/mapZoomScale
-
-            local direction = math.atan2(blip.position.x - localPlayer.position.x, blip.position.y - localPlayer.position.y) + math.rad(Camera.rotation.z)
-
-            local blipX, blipY = centerX + math.sin(direction) * radius, centerY - math.cos(direction) * radius
-    		local blipX = math.max(0, math.min(blipX, mapWidth)) -- clamp position between 0 and mapWidth
-    		local blipY = math.max(0, math.min(blipY, mapHeight)) -- clamp position between 0 and mapHeight
-
-    		local blippath = "assets/blips/"..blip.icon..".png"
-
-    		local blipSize = 1.3
-    		local blipColor = tocolor(getBlipColor(blip))
-
-    		local visible = true
-
-    		if blipX == rtW or blipX == 0 or blipY == rtH or blipY == 0 then
-    			if blip.icon ~= 41 then
-    				visible = false
-    			end
-
-    			local r, g, b = getBlipColor(blip)
-    			blipColor = tocolor(r, g, b, 125)
-    		end
-
-    		if blip.icon >= 1 and blip.icon <= 63 and visible then
-    			dxDrawImage(mapLeft + blipX - (16*blipSize)/2, mapTop + blipY - (16*blipSize)/2, 16*blipSize, 16*blipSize, blippath, 0, 0, 0, blipColor)
-    		end
-    	end
-    end
-    ]]
     -- PLAYERS --
     for player in pairs(players) do
     	if player ~= localPlayer and player.streamedIn then
 
     		local blipz = Vector3(player.position)
-    		local poszP = Vector3(localPlayer.position)
     		local dist = (poszP - blipz).length
 
     		if dist < 80 then 
     			local resutl = blipz.z - poszP.z
     			local radius = dist/mapZoomScale
 
-            	local direction = math.atan2(blipz.x - poszP.x, blipz.y - poszP.y) + math.rad(Camera.rotation.z)
+            	local direction = math.atan2(blipz.x - px, blipz.y - py) + math.rad(camera_rotation.z)
 
           	  	local blipX, blipY = centerX + math.sin(direction) * radius, centerY - math.cos(direction) * radius
     			local blipX = math.max(0, math.min(blipX, mapWidth)) -- clamp position between 0 and mapWidth
@@ -127,14 +89,14 @@ local function drawRadar()
 
 
     			local blipSize = 1.3
-    			dxDrawImage(mapLeft + blipX - (16*blipSize)/2, mapTop + blipY - (16*blipSize)/2, (16*blipSize), (16*blipSize), blippath, Camera.rotation.z*-1, 0, 0, tocolor(255, 255, 255, 255))
+    			dxDrawImage(mapLeft + blipX - (16*blipSize)/2, mapTop + blipY - (16*blipSize)/2, (16*blipSize), (16*blipSize), blippath, camera_rotation.z*-1, 0, 0, tocolor(255, 255, 255, 255))
     		end
     	end
     end
 	
     -- LOCAL PLAYER --
     local blipSize = 20
-    dxDrawImage(mapLeft + centerX - blipSize/2, mapTop + centerY - blipSize/2, blipSize, blipSize, "assets/blips/2.png", Camera.rotation.z-localPlayer.rotation.z, 0, 0)
+    dxDrawImage(mapLeft + centerX - blipSize/2, mapTop + centerY - blipSize/2, blipSize, blipSize, "assets/blips/2.png", camera_rotation.z-localPlayer.rotation.z, 0, 0)
 end
 addEventHandler('onClientRender', root, drawRadar, false)
 
