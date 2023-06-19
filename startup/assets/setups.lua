@@ -104,6 +104,7 @@ startupResources = { -- загружаемые ресурсы
 	"operDashboard",
 	"operShaderPanel",
 	"operNotify",
+	"operVehicleOnlineRadio",
 
 	-- [OTHER] --
 	"anti",
