@@ -1,0 +1,50 @@
+<meta>
+	<min_mta_version server="1.5.5-0.00000" client="1.5.5-0.00000" />
+	<oop>true</oop>
+
+	<!-- ASSETS -->
+	<file src="assets/texreplace.fx" />
+	<file src="assets/RoadNumbers.ttf" />
+
+	<!-- TEXTURE NOMER -->
+	<file src="assets/texture/nomer/nomer_0.png" />
+	<file src="assets/texture/nomer/nomer_1.png" />
+	<file src="assets/texture/nomer/nomer_2.png" />
+	<file src="assets/texture/nomer/nomer_3.png" />
+	<file src="assets/texture/nomer/nomer_4.png" />
+	<file src="assets/texture/nomer/nomer_5.png" />
+	<file src="assets/texture/nomer/nomer_6.png" />
+	<file src="assets/texture/nomer/nomer_7.png" />
+	<file src="assets/texture/nomer/nomer_8.png" />
+	<file src="assets/texture/nomer/nomer_9.png" />
+	<file src="assets/texture/nomer/nomer_10.png" />
+	<file src="assets/texture/nomer/nomer_11.png" />
+	<file src="assets/texture/nomer/nomer_12.png" />
+	<file src="assets/texture/nomer/nomer_13.png" />
+	<file src="assets/texture/nomer/nomer_14.png" />
+
+
+	<!-- TEXTURE RAM -->
+	<file src="assets/texture/ram/ram_0.png" />
+	<file src="assets/texture/ram/ram_1.png" />
+	<file src="assets/texture/ram/ram_2.png" />
+	<file src="assets/texture/ram/ram_3.png" />
+	<file src="assets/texture/ram/ram_4.png" />
+	
+	<!-- CLIENT -->
+	<script type="client" src="client/main.lua" cache="false" />
+	<script type="client" src="client/ramka_c.lua" cache="false" />
+	<script type="client" src="client/nomer_c.lua" cache="false" />
+
+	<script type="client" src="client/gui.lua" cache="false" />
+
+	<!-- EXPORTS -->
+	<export type="client" function="createStaticImagePlate" />
+	<export type="client" function="loadStaticImagePlate" />
+	<export type="client" function="getPlateTable" />
+
+	<export type="client" function="addOnVehicle" />
+	<export type="client" function="deleteFromVehicle" />
+
+	<export type="client" function="applyVehicleNumberPlate" />
+</meta>

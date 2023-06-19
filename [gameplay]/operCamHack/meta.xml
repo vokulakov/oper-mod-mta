@@ -1,0 +1,16 @@
+<meta>
+	<oop>true</oop>
+	<script src="client/client.lua" type="client" cache="false" />
+	<script src="client/mainmenu.lua" type="client" cache="false" />
+	<script src="client/editboxC.lua" type="client" cache="false" />
+	<script src="client/util.lua" type="client" cache="false" />
+	<export function="getCamHackState" type="client" />
+	<file src="images/info.png" />
+	<file src="fonts/Exo2.otf" />
+
+
+	<file src="sound.wav" />
+
+	<export function="startCamHack" type="client" />
+	<export function="stopCamHack" type="client" />
+</meta>

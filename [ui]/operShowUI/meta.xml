@@ -1,0 +1,10 @@
+<meta>
+	<download_priority_group>99</download_priority_group>
+	
+	<file src="assets/font.ttf"/>
+	<file src="assets/blur.fx"/>
+
+	<script src="main_c.lua" type="client" cache="false" />
+	<script src="blurScreen.lua" type="client" cache="false" />
+	<script src="cleanScreen.lua" type="client" cache="false" />
+</meta>

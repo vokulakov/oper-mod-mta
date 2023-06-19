@@ -1,0 +1,13 @@
+  <meta>
+  	<min_mta_version client="1.3.3" server="1.3.3" /> 
+    <oop>true</oop>
+
+    <script src="c_dof.lua" type="client" cache="false"/>
+    <file src="fx/dBlurH.fx" />
+    <file src="fx/dBlurV.fx" />
+    <file src="fx/getDepth.fx" />
+    <file src="fx/mta-helper.fx" />
+
+    <export type="client" function="enableDoF" />
+    <export type="client" function="disableDoF" />
+</meta>

@@ -1,0 +1,19 @@
+<meta>
+	<min_mta_version server="1.5.5-0.00000" client="1.5.5-0.00000" />
+	<oop>true</oop>
+
+	<file src="assets/fso.fx" />
+
+	<script type="shared" src="shared/fso_sh.lua" cache="false" />
+
+	<script type="client" src="client/fso_mode_c.lua" cache="false" />
+  <script type="client" src="client/fso_c.lua" cache="false" />
+
+
+  <export type="client" function="deleteFromVehicle" />
+  <export type="client" function="addOnVehicle" />
+  <export type="client" function="lights" />
+  <export type="client" function="updateLightsMode" />
+  <export type="client" function="updateVisible" />
+
+</meta>

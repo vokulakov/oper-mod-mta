@@ -1,0 +1,128 @@
+<meta>
+    <min_mta_version server="1.5.5-0.00000" client="1.5.5-0.00000" />
+    <download_priority_group>-100</download_priority_group>
+    <oop>true</oop>
+
+    <!-- ASSETS -->
+    <file src="assets/fonts/Roboto-Regular.ttf" />
+
+    <file src="assets/object/tun_garage.col" />
+    <file src="assets/object/tun_garage.dff" />
+    <file src="assets/object/tun_garage.txd" />
+    <script src="assets/object/replace.lua" type="client" cache="false" />
+
+    <file src="assets/colorpicker/cursor.png" />
+    <file src="assets/colorpicker/h.png" />
+    <file src="assets/colorpicker/sv.png" />
+    <file src="assets/colorpicker/blank.png" />
+    <file src="assets/colorpicker/alpha.png" />
+
+    <file src="assets/fx/texreplace.fx" />
+
+    <file src="assets/fx/chrome/mta-helper.fx" />
+    <file src="assets/fx/chrome/car_paint.fx" />
+    <file src="assets/fx/chrome/color.png" />
+    <file src="assets/fx/chrome/reflx.dds" />
+
+    <file src="assets/fx/gloss/mta-helper.fx" />
+    <file src="assets/fx/gloss/car_paint.fx" />
+
+    <file src="assets/fx/matte/mta-helper.fx" />
+    <file src="assets/fx/matte/matte.fx" />
+
+    <file src="assets/fx/tempBody.png" />
+    <file src="assets/fx/cube_env256.dds" />
+    <file src="assets/fx/smallnoise3d.dds" />
+
+    <file src="assets/fx/chameleon/mta-helper.fx" />
+    <file src="assets/fx/chameleon/chameleo.fx" />
+
+    <file src="assets/sound/background.wav" />
+    <file src="assets/sound/sound.mp3" />
+
+    <file src="assets/img/bg_plate.png" />
+
+<!--
+    <file src="assets/img/buttons/b_enter.png" />
+    <file src="assets/img/buttons/b_esc.png" />
+    <file src="assets/img/buttons/b_f10.png" />
+    <file src="assets/img/buttons/b_f11.png" />
+    <file src="assets/img/buttons/b_f12.png" />
+
+    <file src="assets/img/buttons/b_num0.png" /> 
+    <file src="assets/img/buttons/b_num1.png" /> 
+
+    <file src="assets/img/buttons/b_num3.png" /> 
+    <file src="assets/img/buttons/b_num5.png" /> 
+
+    <file src="assets/img/buttons/b_num7.png" />
+    <file src="assets/img/buttons/b_num9.png" />
+    <file src="assets/img/buttons/b_space.png" />
+    <file src="assets/img/buttons/b_tab.png" />
+    <file src="assets/img/buttons/b_e.png" />
+
+    <file src="assets/img/buttons/mouse_down.png" />
+    <file src="assets/img/buttons/mouse_left.png" />
+    <file src="assets/img/buttons/mouse_up.png" />
+-->
+    <file src="assets/img/buttons/mouse_right.png" />
+    <file src="assets/img/buttons/mouse_wheel.png" />
+    <file src="assets/img/buttons/mouse.png" />
+    
+    <file src="assets/img/buttons/b_num6.png" /> 
+    <file src="assets/img/buttons/b_num2.png" /> 
+    <file src="assets/img/buttons/b_num4.png" /> 
+    <file src="assets/img/buttons/b_num8.png" /> 
+    <file src="assets/img/buttons/b_num+.png" /> 
+    <file src="assets/img/buttons/b_num-.png" /> 
+    <file src="assets/img/buttons/b_lalt.png" />
+    <file src="assets/img/buttons/b_ralt.png" />
+    <file src="assets/img/buttons/b_lctrl.png" />
+    <file src="assets/img/buttons/b_rctrl.png" />
+    <file src="assets/img/buttons/b_lshift.png" />
+    <file src="assets/img/buttons/b_rshift.png" />
+    
+    <file src="assets/img/panel/pane.png" />
+    <file src="assets/img/panel/round_1.png" />
+    <file src="assets/img/panel/round_2.png" />
+    <file src="assets/img/panel/round_3.png" />
+    <file src="assets/img/panel/round_4.png" />
+
+    <!-- SHARED -->
+    <script type="shared" cache="false" src="shared/garage_sh.lua" />
+
+    <!-- CLIENT -->
+    <script type="client" cache="false" src="client/camera.lua" />
+    <script type="client" cache="false" src="client/garage_c.lua" />
+    <script type="client" cache="false" src="client/gui_colorpicker.lua" />
+     <script type="client" cache="false" src="client/gui_help.lua" />
+    <script type="client" cache="false" src="client/gui_main.lua" />
+
+    <script type="client" cache="false" src="client/paint/gui_paint.lua" />
+    <script type="client" cache="false" src="client/paint/color_fx.lua" />
+
+    <script type="client" cache="false" src="client/xenon/gui_xenon.lua" />
+
+    <script type="client" cache="false" src="client/horn/gui_horn.lua" />
+    <script type="client" cache="false" src="client/horn/horn_c.lua" />
+
+    <script type="client" cache="false" src="client/fso/gui_fso.lua" />
+
+    <script type="client" cache="false" src="client/plate/gui_plate.lua" />
+
+    <!-- SERVER -->
+    <script type="server" src="server/garage_s.lua" />
+
+    <script type="server" src="server/paint_s.lua" />
+    <script type="server" src="server/xenon_s.lua" />
+    <script type="server" src="server/horn_s.lua" />
+
+    <!-- EXPORTS -->
+    <export type="client" function="playerEnterGarage" />
+    <export type="client" function="playerExitGarage" />
+      
+    <export type="client" function="setVehicleHorn" />
+    
+
+    <export type="server" function="isPlayerInTuning" />
+</meta>

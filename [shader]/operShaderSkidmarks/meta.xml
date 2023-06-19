@@ -1,0 +1,12 @@
+<meta>
+	<min_mta_version client="1.1.0" server="1.1.0" />
+
+	<script src="c_skidmarks.lua" type="client" />
+
+	<file src="skidmarks.fx" type="client" />
+	<file src="mta-helper.fx" type="client" />
+
+	<export type="client" function="startShader" />
+	<export type="client" function="stopShader" />
+	<export type="client" function="setShaderSetting" />
+</meta>

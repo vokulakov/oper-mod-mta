@@ -1,0 +1,16 @@
+<meta>
+	<info description="Waded" version="1.0" type="script" />
+    [Скрипт]
+	<script src="shader.lua" type="client" cache="false"/> 
+	<script src="client.lua" type="client" cache="false"/> 
+	[Шeйдeра]
+	<file src="file/car_paint.fx" type="client" cache="false"/> 
+	<file src="file/carbon.fx" type="client" cache="false"/> 
+	<file src="file/fara.fx" type="client" cache="false"/> 
+	<file src="file/windows.fx" type="client" cache="false"/> 
+	<file src="file/mta-helper.fx" type="client" />
+	[Картинки]
+	<file src="file/images/reflx.dds" type="client" />
+	<file src="file/images/ColorRamp01.png" type="client" />
+	<file src="file/images/carbon.dds" type="client" />
+</meta>

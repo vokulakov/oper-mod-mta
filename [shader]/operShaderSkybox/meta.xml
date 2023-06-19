@@ -1,0 +1,15 @@
+<meta>
+	<info name="Shader Skybox Alternative" author="Ren712" version="0.54" type="script" />
+	<min_mta_version client="1.4.0" server="1.4.0" />
+	<script src="c_main.lua" type="client" />
+	<script src="c_switch.lua" type="client" />
+	<file src="fx/skydome.fx" type="client" />
+	<file src="fx/transform.fx" type="client" />
+	<file src="fx/shader_clear.fx" type="client" />
+	<file src="images/skydome.jpg" type="client" />
+	<file src="images/skydome_evening.jpg" type="client" />
+	<file src="images/skydome_morning.jpg" type="client" />
+	<file src="models/skydome_object.dff" type="client" />
+	<file src="models/skydome_object.txd" type="client" />
+	<oop>true</oop>
+</meta>

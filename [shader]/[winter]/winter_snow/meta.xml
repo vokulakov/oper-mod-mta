@@ -1,0 +1,6 @@
+<meta>
+	<file src="flakes/real_tile.png"/>
+
+	<script src="snow.lua" type="client"/>
+
+</meta>

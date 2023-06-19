@@ -1,0 +1,20 @@
+<meta>
+	<download_priority_group>-100</download_priority_group>
+	<oop>true</oop>
+	<file src="assets/AEROMATICS_BOLD.ttf" />
+	<file src="assets/AEROMATICS_ITALIC.ttf" />
+
+	<file src="assets/speedo.png" />
+	<file src="assets/strelkaspedo.png" />
+	<file src="assets/fuel.png" />
+	<file src="assets/fuel2.png" />
+	<file src="assets/strelkabenz.png" />
+	<file src="assets/engine.png" />
+	<file src="assets/cruise.png" />
+	<file src="assets/lock.png" />
+	<file src="assets/light.png" />
+	<file src="assets/bg_shadow.png" />
+
+	<script type="client" src="main.lua" cache="false" />
+
+</meta>

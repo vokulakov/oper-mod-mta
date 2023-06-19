@@ -1,0 +1,47 @@
+<meta>
+	<oop>true</oop>
+	<download_priority_group>-999</download_priority_group>
+	<min_mta_version server="1.5.6-0.00000" client="1.5.6-0.00000" />
+	
+	<include resource="operVehicleSystem" />
+	<include resource="operCameraViews" />
+	<include resource="operTuningGarage" />
+
+	<file src="assets/map.png" />
+	<file src="assets/localplayerblip.png" />
+	<file src="assets/playerblip.png" />
+
+	<!-- SHARED -->
+	<script type="shared" cache="false" src="shared/fightStyleShared.lua" />
+	<script type="shared" cache="false" src="shared/walkingStyleShared.lua" />
+	<script type="shared" cache="false" src="shared/weaponShared.lua" />
+	<script type="shared" cache="false" src="shared/skinShared.lua" />
+	<script type="shared" cache="false" src="shared/animShared.lua" />
+
+	<!-- CLIENT -->
+	<script type="client" cache="false" src="client/ui_main.lua" />
+	<script type="client" cache="false" src="client/ui_player.lua" />
+	<script type="client" cache="false" src="client/ui_vehicle.lua" />
+	<script type="client" cache="false" src="client/ui_map.lua" /> 
+	<script type="client" cache="false" src="client/ui_help.lua" /> 
+	<script type="client" cache="false" src="client/ui_setting.lua" />
+
+	<script type="client" cache="false" src="client/vehicle/ui_vehicle_main.lua" />
+	<script type="client" cache="false" src="client/vehicle/ui_vehicle_tuning.lua" />
+	<script type="client" cache="false" src="client/vehicle/ui_vehicle_setting.lua" />
+
+	<script type="client" cache="false" src="client/functions/playerFunctions.lua" />
+	<script type="client" cache="false" src="client/functions/settingFunctions.lua" />
+
+	<script type="client" cache="false" src="client/account/ui_account_main.lua" />
+	<script type="client" cache="false" src="client/account/ui_account_vehicles.lua" />
+	<script type="client" cache="false" src="client/account/ui_account_messages.lua" />
+	<script type="client" cache="false" src="client/account/ui_account_shop.lua" />
+
+	<!-- SERVER -->
+	<script type="server" src="server/playerFunctions.lua" />
+	<script type="server" src="server/mapFunctions.lua" />
+
+	<export function="getDashoboardVisible" type="client" />
+	<export function="warpMe" type="client" />
+</meta>

@@ -1,0 +1,9 @@
+<meta>
+	<oop>true</oop>
+    <file src="font.ttf"/>
+
+    <file src="assets/Roboto-Bold.ttf"/>
+    <file src="assets/hud-bg.png" />
+
+	<script src="client.lua" type="client" cache="false"/>
+</meta>

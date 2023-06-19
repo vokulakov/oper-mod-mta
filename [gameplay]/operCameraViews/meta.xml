@@ -1,0 +1,15 @@
+<meta>
+	<oop>true</oop>
+
+	<script type="client" src="camera_drift/cockpit_offsets.txt" cache="false" />
+	<script type="client" src="camera_drift/CockpitView.lua" cache="false" />
+	<script type="client" src="camera_drift/DriftView.lua" cache="false" />
+	<script type="client" src="camera_drift/main.lua" cache="false" />
+	
+	<script type="client" src="camera_fpv/selfie.lua" cache="false" />
+	<script type="client" src="camera_fpv/cockpit.lua" cache="false" />
+	<script type="client" src="camera_fpv/fps_cam.lua" cache="false" />
+
+    <export type="client" function="resetCameraView"/>
+    <export type="client" function="getCockpitViewState"/>
+</meta>

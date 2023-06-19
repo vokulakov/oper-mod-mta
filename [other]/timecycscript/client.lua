@@ -1,0 +1,86 @@
+setTimer(function() 
+    local hours, minutes = getTime() 
+  
+  
+    if hours >= 1 and hours <= 5 then 
+        setFarClipDistance( 2000 )     
+        setSkyGradient(0,0,0,0,0,0) 
+        setWeather ( 22 ) 
+        setCloudsEnabled ( false ) 
+        setSunSize ( 0 ) 
+    elseif hours > 5 and hours <= 7 then 
+        setFarClipDistance( 2000 )   
+        setSkyGradient( 0, 14, 12, 14, 13.5, 10 ) 
+        setWeather ( 3 ) 
+        setCloudsEnabled ( false ) 
+        setSunSize ( 2 ) 
+    elseif hours > 7 and hours <= 11 then 
+        setFarClipDistance( 2000 )   
+        setSkyGradient( 0, 89, 196, 136, 170, 180 ) 
+        setWeather ( 4 ) 
+        setCloudsEnabled ( true ) 
+        setSunSize ( 2 ) 
+    elseif hours == 20 then 
+        setFarClipDistance( 2000 )   
+        setFogDistance ( 500 ) 
+        setSkyGradient( 25, 25, 25, 25, 25, 25 ) 
+        setWeather ( 7 ) 
+        setRainLevel ( 0 ) 
+        setWindVelocity ( 0.3, 0.1, 0 ) 
+        setCloudsEnabled ( true ) 
+        setSunSize ( 2 )   
+    else 
+        setFarClipDistance( 2040 )   
+        setFogDistance ( 150 ) 
+        resetSkyGradient() 
+        setWeather ( 4 ) 
+        setCloudsEnabled ( true ) 
+        setWindVelocity ( 0, 0, 0 ) 
+        setSunSize ( 3 ) 
+    end 
+    setWaveHeight ( 0 ) 
+end,1000,0) setTimer(function() 
+    local hours, minutes = getTime() 
+  
+  
+    if hours >= 1 and hours <= 5 then 
+        setFarClipDistance( 2000 )     
+        setFogDistance ( 30 ) 
+        setSkyGradient(0,0,0,0,0,0) 
+        setWeather ( 22 ) 
+        setCloudsEnabled ( false ) 
+        setSunSize ( 0 ) 
+    elseif hours > 5 and hours <= 7 then 
+        setFarClipDistance( 2000 )   
+        setFogDistance ( 70 ) 
+        setSkyGradient( 0, 14, 12, 14, 13.5, 10 ) 
+        setWeather ( 3 ) 
+        setCloudsEnabled ( false ) 
+        setSunSize ( 2 ) 
+    elseif hours > 7 and hours <= 11 then 
+        setFarClipDistance( 2200 )   
+        setFogDistance ( 170 ) 
+        setSkyGradient( 0, 89, 196, 136, 170, 180 ) 
+        setWeather ( 4 ) 
+        setCloudsEnabled ( true ) 
+        setSunSize ( 2 ) 
+    elseif hours == 20 then 
+        setFarClipDistance( 1800 )   
+        setFogDistance ( 100 ) 
+        setSkyGradient( 25, 25, 25, 25, 25, 25 ) 
+        setWeather ( 7 ) 
+        setRainLevel ( 0 ) 
+        setWindVelocity ( 0.3, 0.1, 0 ) 
+        setCloudsEnabled ( true ) 
+        setSunSize ( 2 )   
+    else 
+        setFarClipDistance( 2400 )   
+        setFogDistance ( 150 ) 
+        resetSkyGradient() 
+        setWeather ( 4 ) 
+        setCloudsEnabled ( true ) 
+        setWindVelocity ( 0, 0, 0 ) 
+        setSunSize ( 3 ) 
+    end 
+    setWaveHeight ( 0 ) 
+end,1000,0) 

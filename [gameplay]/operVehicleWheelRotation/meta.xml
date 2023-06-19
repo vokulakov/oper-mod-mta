@@ -1,0 +1,4 @@
+<meta>
+	<oop>true</oop>
+	<script type="client" cache="false" src="main.lua" />
+</meta>

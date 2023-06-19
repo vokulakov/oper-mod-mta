@@ -1,0 +1,11 @@
+<meta>
+	<min_mta_version client="1.3.3" server="1.3.3" /> 
+    <oop>true</oop>   
+
+   	<script src="client.lua" type="client" cache="false"/>
+    <file src="vignette.fx" />
+
+    
+	<export function="startVignette" type="client" /> 
+	<export function="stopVignette" type="client" /> 
+</meta>

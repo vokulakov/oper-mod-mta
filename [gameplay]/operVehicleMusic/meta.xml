@@ -1,0 +1,51 @@
+<meta>
+    <oop>true</oop>
+    <info author="Rendet" type="script" name="Music" />
+
+     <script src="server/main.lua" type="server"/>
+
+    <script src="client/assets.lua" type="client" cache="false"/>
+    <script src="client/utils.lua" type="client" cache="false"/>
+    <script src="client/main.lua" type="client" cache="false"/>
+
+    <file src="assets/fonts/bold.ttf" />
+    <file src="assets/fonts/medium.ttf" />
+
+    <file src="assets/images/all_vehs_label.png" />
+    <file src="assets/images/checkbox.png" />
+    <file src="assets/images/checkbox_active.png" />
+    <file src="assets/images/close.png" />
+    <file src="assets/images/copy.png" />
+    <file src="assets/images/cover.png" />
+    <file src="assets/images/cover_bg.png" />
+    <file src="assets/images/edit.png" />
+    <file src="assets/images/main_bg.png" />
+    <file src="assets/images/my_music_label.png" />
+    <file src="assets/images/next.png" />
+    <file src="assets/images/no_saved.png" />
+    <file src="assets/images/pause.png" />
+    <file src="assets/images/play.png" />
+    <file src="assets/images/player_label.png" />
+    <file src="assets/images/prev.png" />
+    <file src="assets/images/round.png" />
+    <file src="assets/images/saved.png" />
+    <file src="assets/images/saved_btn.png" />
+    <file src="assets/images/search.png" />
+    <file src="assets/images/search_btn.png" />
+    <file src="assets/images/search_label.png" />
+    <file src="assets/images/settings.png" />
+    <file src="assets/images/settings_bg.png" />
+    <file src="assets/images/settings_btn.png" />
+    <file src="assets/images/sound.png" />
+    <file src="assets/images/string_bg.png" />
+    <file src="assets/images/volume-low.png" />
+    <file src="assets/images/volume-up.png" />
+    <file src="assets/images/volume-low-small.png" />
+    <file src="assets/images/volume-up-small.png" />
+    <file src="assets/images/loading.png" />
+
+    <file src="assets/images/repeate.png" />
+    <file src="assets/images/reverse.png" />
+    <file src="assets/images/like.png" />
+    <file src="assets/images/like_active.png" />
+</meta>

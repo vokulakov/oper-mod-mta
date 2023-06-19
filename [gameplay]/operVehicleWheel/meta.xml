@@ -1,0 +1,28 @@
+<meta>
+
+    <oop>true</oop>
+	<min_mta_version client="1.5.6-9.16404" server="1.5.5-9.11915.0" />
+
+    <script src="config.lua" type="shared"/>
+    
+<!--
+    <script src="colorpicker/colorpicker.lua" type="client" />	
+	<file src="colorpicker/palette.png" />
+	<file src="colorpicker/alpha.png" />
+-->
+
+	<file src="colorpicker/cursor.png" />
+	<file src="colorpicker/h.png" />
+	<file src="colorpicker/sv.png" />
+	<file src="colorpicker/blank.png" />
+	<file src="colorpicker/alpha.png" />
+
+	<script src="colorpicker/gui_colorpicker.lua" type="client" />	
+
+	<script src="client.lua" type="client" compile="1"/>
+	<script src="server.lua" type="server"/>
+
+	<file src="mta-helper.fx" />
+	<file src="pack.pc" />
+	
+</meta>

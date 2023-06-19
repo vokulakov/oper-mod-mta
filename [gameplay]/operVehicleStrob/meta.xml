@@ -1,0 +1,17 @@
+<meta>
+	<oop>true</oop>
+
+	<script src="assets/Config.lua" type="shared" cache="false" />
+
+	<script src="client/gui.lua" type="client" cache="false" />
+
+	<script src="server/policeLights.lua" type="server" />
+	<script src="client/policeLights.lua" type="client" cache="false" />
+
+	<script src="server/server.lua" type="server" />
+	<script src="client/client.lua" type="client" cache="false" />
+
+	<export function="isStroboLightsOn" type="client"/>
+	<export function="setStroboLightsOn" type="client"/>
+
+</meta>

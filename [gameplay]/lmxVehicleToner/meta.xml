@@ -1,0 +1,30 @@
+<meta>
+	<oop>true</oop>
+	<min_mta_version client="1.5.6-9.16404" server="1.5.5-9.11915.0" />
+
+	<!-- Assets -->
+	<file src="assets/colorpicker/cursor.png" />
+    <file src="assets/colorpicker/h.png" />
+    <file src="assets/colorpicker/sv.png" />
+    <file src="assets/colorpicker/blank.png" />
+    <file src="assets/colorpicker/alpha.png" />
+
+	<file src="assets/shader/mta-helper.fx" />
+	<file src="assets/shader/windows.fx" />
+	<file src="assets/shader/texreplace.fx" />
+
+	<file src="assets/texture/reflx.dds" />
+
+
+	<!-- Client -->
+	<script src="client/gui_colorpicker.lua" type="client" cache="false" />
+
+	<script src="client/client.lua" type="client" cache="false" />
+	<script src="client/gui.lua" type="client" cache="false" />
+
+	<!-- Server -->
+	<script src="server/server.lua" type="server" />
+
+	<!-- Exports -->
+	<export type="server" function="setVehicleDefaultToner" />
+</meta>

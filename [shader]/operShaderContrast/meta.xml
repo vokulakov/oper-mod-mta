@@ -1,0 +1,18 @@
+<meta>
+	<script src="c_contrast.lua" type="client" cache="false"/>
+	<script src="c_rtpool.lua" type="client" cache="false"/>
+	
+	<file src="shaders/bloom_combine.fx" type="client" />
+	<file src="shaders/bloom_extract.fx" type="client" />
+	<file src="shaders/blurH.fx" type="client" />
+	<file src="shaders/blurV.fx" type="client" />
+	<file src="shaders/contrast.fx" type="client" />
+	<file src="shaders/modulation.fx" type="client" />
+	<file src="shaders/addBlend.fx" type="client" />
+	<file src="shaders/mta-helper.fx" type="client" />
+	
+	<file src="shaders/images/vignette1.dds" type="client"/>
+
+	<export type="client" function="enableContrast" />
+	<export type="client" function="disableContrast" />
+</meta>

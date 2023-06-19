@@ -1,0 +1,10 @@
+<meta>
+	<script type="client" src="client.lua" cache="false" />
+	<script type="server" src="server.lua" />
+
+	<file src="assets/sound_airhorn.wav" />
+	<file src="assets/sound_siren.wav" />
+	<file src="assets/sound_siren2.wav" />
+	<file src="assets/sound_manual.wav" />
+
+</meta>

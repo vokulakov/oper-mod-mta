@@ -1,0 +1,13 @@
+<meta>
+	<oop>true</oop>
+
+	<script type="shared" src="client/AntiFlood.lua" cache="false" />
+	<script type="shared" src="client/WordsFilter.lua" cache="false" />
+	<script type="client" src="client/client.lua" cache="false" />
+
+	<script type="server" src="server/tag.lua" />
+	<script type="server" src="server/server.lua" />
+	<script type="server" src="server/reklama.lua" />
+
+	<!-- Exports -->
+</meta>

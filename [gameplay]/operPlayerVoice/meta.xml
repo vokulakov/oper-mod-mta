@@ -1,0 +1,122 @@
+<meta>
+	<oop>true</oop>
+
+	<file src='assets/reactions/phrase_ru/voice_1.wav' />
+	<file src='assets/reactions/phrase_ru/voice_2.wav' />
+	<file src='assets/reactions/phrase_ru/voice_3.wav' />
+	<file src='assets/reactions/phrase_ru/voice_4.mp3' />
+	<file src='assets/reactions/phrase_ru/voice_5.mp3' />
+	<file src='assets/reactions/phrase_ru/voice_6.mp3' />
+	<file src='assets/reactions/phrase_ru/voice_7.mp3' />
+	<file src='assets/reactions/phrase_ru/voice_8.mp3' />
+	<file src='assets/reactions/phrase_ru/voice_9.mp3' />
+	<file src='assets/reactions/phrase_ru/voice_11.wav' />
+	<file src='assets/reactions/phrase_ru/voice_12.wav' />
+	<file src='assets/reactions/phrase_ru/voice_13.mp3' />
+	<file src='assets/reactions/phrase_ru/voice_14.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_15.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_16.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_17.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_18.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_19.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_20.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_21.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_22.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_23.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_24.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_25.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_26.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_27.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_28.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_29.ogg' />
+	<file src='assets/reactions/phrase_ru/voice_30.ogg' />
+
+	<file src='assets/reactions/yes_no/voice_1.ogg' />
+	<file src='assets/reactions/yes_no/voice_2.ogg' />
+	<file src='assets/reactions/yes_no/voice_3.ogg' />
+	<file src='assets/reactions/yes_no/voice_4.ogg' />
+	<file src='assets/reactions/yes_no/voice_5.ogg' />
+
+	<file src='assets/reactions/hallo/voice_hallo_1.mp3' />
+	<file src='assets/reactions/hallo/voice_hallo_2.ogg' />
+	<file src='assets/reactions/hallo/voice_hallo_3.wav' />
+
+	<file src='assets/reactions/emotion/voice_emotion_1.ogg' />
+	<file src='assets/reactions/emotion/voice_emotion_2.ogg' />
+	<file src='assets/reactions/emotion/voice_emotion_3.ogg' />
+	<file src='assets/reactions/emotion/voice_emotion_4.ogg' />
+	<file src='assets/reactions/emotion/voice_emotion_5.ogg' />
+	<file src='assets/reactions/emotion/voice_emotion_6.mp3' />
+	<file src='assets/reactions/emotion/voice_emotion_7.ogg' />
+	<file src='assets/reactions/emotion/voice_emotion_8.ogg' />
+	<file src='assets/reactions/emotion/voice_emotion_9.ogg' />
+		
+	<file src='assets/reactions/phrase_en/voice_en_1.ogg' />
+	<file src='assets/reactions/phrase_en/voice_en_2.wav' />
+	<file src='assets/reactions/phrase_en/voice_en_3.ogg' />
+	<file src='assets/reactions/phrase_en/voice_en_4.mp3' />
+	<file src='assets/reactions/phrase_en/voice_en_5.ogg' />
+	<file src='assets/reactions/phrase_en/voice_en_6.mp3' />
+	<file src='assets/reactions/phrase_en/voice_en_7.ogg' />
+	<file src='assets/reactions/phrase_en/voice_en_8.wav' />
+
+	<file src='assets/reactions/laugh/voice_laugh_1.mp3' />
+	<file src='assets/reactions/laugh/voice_laugh_2.mp3' />
+	<file src='assets/reactions/laugh/voice_laugh_3.mp3' />
+	<file src='assets/reactions/laugh/voice_laugh_4.mp3' />
+	<file src='assets/reactions/laugh/voice_laugh_5.mp3' />
+	<file src='assets/reactions/laugh/voice_laugh_6.mp3' />
+	<file src='assets/reactions/laugh/voice_laugh_7.mp3' />
+	<file src='assets/reactions/laugh/voice_laugh_8.mp3' />
+	<file src='assets/reactions/laugh/voice_laugh_9.mp3' />
+	<file src='assets/reactions/laugh/voice_laugh_10.ogg' />
+	<file src='assets/reactions/laugh/voice_laugh_11.ogg' />
+	<file src='assets/reactions/laugh/voice_laugh_12.ogg' />
+	<file src='assets/reactions/laugh/voice_laugh_13.wav' />
+	<file src='assets/reactions/laugh/voice_laugh_14.wav' />
+	<file src='assets/reactions/laugh/voice_laugh_15.wav' />
+	<file src='assets/reactions/laugh/voice_laugh_16.wav' />
+	<file src='assets/reactions/laugh/voice_laugh_17.wav' />
+	<file src='assets/reactions/laugh/voice_laugh_18.wav' />
+
+	<file src='assets/reactions/potsyk/voice_1.wav' />
+	<file src='assets/reactions/potsyk/voice_2.wav' />
+	<file src='assets/reactions/potsyk/voice_3.wav' />
+	<file src='assets/reactions/potsyk/voice_4.wav' />
+	<file src='assets/reactions/potsyk/voice_5.wav' />
+	<file src='assets/reactions/potsyk/voice_6.wav' />
+	<file src='assets/reactions/potsyk/voice_7.wav' />
+	<file src='assets/reactions/potsyk/voice_8.wav' />
+	<file src='assets/reactions/potsyk/voice_9.wav' />
+	<file src='assets/reactions/potsyk/voice_10.wav' />
+	<file src='assets/reactions/potsyk/voice_11.wav' />
+	<file src='assets/reactions/potsyk/voice_12.wav' />
+	<file src='assets/reactions/potsyk/voice_13.wav' />
+	<file src='assets/reactions/potsyk/voice_14.wav' />
+
+	<file src='assets/reactions/other/voice_other_1.ogg' />
+	<file src='assets/reactions/other/voice_other_2.ogg' />
+	<file src='assets/reactions/other/voice_other_3.ogg' />
+	<file src='assets/reactions/other/voice_other_4.ogg' />
+	<file src='assets/reactions/other/voice_other_5.ogg' />
+	<file src='assets/reactions/other/voice_other_6.ogg' />
+	<file src='assets/reactions/other/voice_other_7.ogg' />
+	<file src='assets/reactions/other/voice_other_8.ogg' />
+	<file src='assets/reactions/other/voice_other_9.ogg' />
+	<file src='assets/reactions/other/voice_other_10.ogg' />
+	<file src='assets/reactions/other/voice_other_11.ogg' />
+	<file src='assets/reactions/other/voice_other_12.ogg' />
+
+	<!-- Script -->
+	<script type="shared" src="assets/shared.lua" cache="false" />
+	
+	<script type="client" src="main.lua" cache="false" />
+	<script type="client" src="gui.lua" cache="false" />
+	
+	<export type="client" function="isWndVisible" />
+	<export type="client" function="setWndVisible" />
+</meta>
+
+
+
+

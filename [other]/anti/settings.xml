@@ -1,0 +1,8 @@
+<disallowed_weapons>
+	<weapon id="35" name="Rocket Launcher" />
+	<weapon id="36" name="Heat-Seeking Rocket Launcher" />
+	<weapon id="37" name="Flamethrower" />
+	<weapon id="38" name="Minigun" />
+	<!--<weapon id="weapon ID that you want blocked/illegal" name="name of the weapon goes here" />-->
+	<admin_only>true</admin_only><!--If set to true, admins can use the illegal weapons. If set to false, admins cannot use the illegal weapons-->
+</disallowed_weapons>

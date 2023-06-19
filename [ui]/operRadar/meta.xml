@@ -1,0 +1,15 @@
+<meta>
+	<min_mta_version server="1.5.5-0.00000" client="1.5.5-0.00000" />
+	<oop>true</oop>
+	
+	<file src="assets/world.jpg" />
+
+	<file src="assets/blips/0.png"/>
+	<file src="assets/blips/+1.png"/>
+	<file src="assets/blips/-1.png"/>
+	<file src="assets/blips/2.png"/>
+	<file src="assets/blips/4.png"/>
+
+
+	<script type="client" src="main.lua" cache="false" />
+</meta>

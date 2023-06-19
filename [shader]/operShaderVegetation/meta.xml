@@ -1,0 +1,19 @@
+<meta>
+	<script src="client.lua" type="client" cache="false"/>
+	
+	<file src="gta_potplantsaa.txd"/>
+	<file src="gta_proc_bush.txd"/>
+	<file src="gta_proc_ferns.txd"/>
+	<file src="gta_proc_grassland.txd"/>
+	<file src="gta_procdesert.txd"/>
+	<file src="gta_tree_bevhills.txd"/>
+	<file src="gta_tree_boak.txd"/>
+	<file src="gta_tree_palm.txd"/>
+	<file src="gtatreesh04.txd"/>
+	<file src="tree1.txd"/>
+	<file src="tree2.txd"/>
+	<file src="tree3.txd"/>
+
+	<export type="client" function="startShader" />
+	<export type="client" function="stopShader" />
+</meta>

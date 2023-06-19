@@ -1,0 +1,1 @@
+--Dashboard.accountWindow.tabMessages = guiCreateTab("Личные сообщения", Dashboard.accountWindow.tabPanel)

@@ -1,0 +1,10 @@
+*.log
+
+# [admin]
+*admin]/
+
+# [models]
+*models]/
+
+# [stunt]
+*stunt]/

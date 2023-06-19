@@ -1,0 +1,12 @@
+<meta>
+	<oop>true</oop>
+	
+	<script src="client/PointsDrawing.lua" type="client" />
+	<script src="client/dpDriftPoints.lua" type="client" />
+
+
+    <export type="client" function="finishCurrentDrift"/> 
+    <export type="client" function="giveBonusPoints"/> 
+
+    <file src="Roboto-Regular.ttf"/>
+</meta>

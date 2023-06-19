@@ -1,0 +1,9 @@
+<meta>
+	<oop>true</oop>
+
+	<file src="assets/door_open.mp3" />
+	<file src="assets/door_close.mp3" />
+	
+	<script type="client" src="client.lua" cache="false" />
+	<script type="server" src="server.lua" />
+</meta>

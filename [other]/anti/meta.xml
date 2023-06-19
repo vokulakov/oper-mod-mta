@@ -1,0 +1,6 @@
+<meta>
+	<info author="Dr.PhillyBlunt" version="3.0" type="script" name="Anti Cheat Weapons" description="This script warns server and possibly punishes when a player pulls an illegal weapon" />
+	<script src="server.lua" type="server" />
+	<script src="client.lua" type="client" />
+	<config src="settings.xml" type="client" />
+</meta>

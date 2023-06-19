@@ -1,0 +1,9 @@
+<meta>
+	<oop>true</oop>
+	<download_priority_group>-100</download_priority_group>
+	
+	<file src="assets/RB.ttf" />
+	<file src="assets/RR.ttf" />
+	
+	<script type="client" src="main.lua"/>
+</meta>

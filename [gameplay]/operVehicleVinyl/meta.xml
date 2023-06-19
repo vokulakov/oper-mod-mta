@@ -1,0 +1,101 @@
+<meta>
+	<oop>true</oop>
+	<min_mta_version client="1.5.6-9.16404" server="1.5.5-9.11915.0" />
+
+	<file src="assets/texreplace.fx" />
+
+	<script type="client" src="client/main.lua" cache="false" />
+	<script type="client" src="client/gui.lua" cache="false" />
+
+	<script type="server" src="server/server.lua" />
+
+	<!-- Textures -->
+	<file src="assets/textures/1.png" />
+	<file src="assets/textures/2.png" />
+	<file src="assets/textures/3.png" />
+	<file src="assets/textures/4.png" />
+	<file src="assets/textures/5.png" />
+	<file src="assets/textures/6.png" />
+	<file src="assets/textures/7.png" />
+	<file src="assets/textures/8.png" />
+	<file src="assets/textures/9.png" />
+	<file src="assets/textures/10.png" />
+	<file src="assets/textures/11.png" />
+	<file src="assets/textures/12.png" />
+	<file src="assets/textures/13.png" />
+	<file src="assets/textures/14.png" />
+	<file src="assets/textures/15.png" />
+	<file src="assets/textures/16.png" />
+	<file src="assets/textures/17.png" />
+	<file src="assets/textures/18.png" />
+	<file src="assets/textures/19.png" />
+	<file src="assets/textures/20.png" />
+	<file src="assets/textures/21.png" />
+	<file src="assets/textures/22.png" />
+	<file src="assets/textures/23.png" />
+	<file src="assets/textures/24.png" />
+	<file src="assets/textures/25.png" />
+	<file src="assets/textures/26.png" />
+	<file src="assets/textures/27.png" />
+	<file src="assets/textures/28.png" />
+	<file src="assets/textures/29.png" />
+	<file src="assets/textures/30.png" />
+	<file src="assets/textures/31.png" />
+	<file src="assets/textures/32.png" />
+	<file src="assets/textures/33.png" />
+	<file src="assets/textures/34.png" />
+	<file src="assets/textures/35.png" />
+	<file src="assets/textures/36.png" />
+	<file src="assets/textures/37.png" />
+	<file src="assets/textures/38.png" />
+	<file src="assets/textures/39.png" />
+	<file src="assets/textures/40.png" />
+	<file src="assets/textures/41.png" />
+	<file src="assets/textures/42.png" />
+	<file src="assets/textures/43.png" />
+	<file src="assets/textures/44.png" />
+	<file src="assets/textures/45.png" />
+	<file src="assets/textures/46.png" />
+	<file src="assets/textures/47.png" />
+	<file src="assets/textures/48.png" />
+	<file src="assets/textures/49.png" />
+	<file src="assets/textures/50.png" />
+	<file src="assets/textures/51.png" />
+	<file src="assets/textures/52.png" />
+	<file src="assets/textures/53.png" />
+	<file src="assets/textures/54.png" />
+	<file src="assets/textures/55.png" />
+	<file src="assets/textures/56.png" />
+	<file src="assets/textures/57.png" />
+	<file src="assets/textures/58.png" />
+	<file src="assets/textures/59.png" />
+	<file src="assets/textures/60.png" />
+	<file src="assets/textures/61.png" />
+	<file src="assets/textures/62.png" />
+	<file src="assets/textures/63.png" />
+	<file src="assets/textures/64.png" />
+	<file src="assets/textures/65.png" />
+	<file src="assets/textures/66.png" />
+	<file src="assets/textures/67.png" />
+	<file src="assets/textures/68.png" />
+	<file src="assets/textures/69.png" />
+	<file src="assets/textures/70.png" />
+	<file src="assets/textures/71.png" />
+	<file src="assets/textures/72.png" />
+	<file src="assets/textures/73.png" />
+	<file src="assets/textures/74.png" />
+	<file src="assets/textures/75.png" />
+	<file src="assets/textures/76.png" />
+	<file src="assets/textures/77.png" />
+	<file src="assets/textures/78.png" />
+	<file src="assets/textures/79.png" />
+	<file src="assets/textures/80.png" />
+	<file src="assets/textures/81.png" />
+	<file src="assets/textures/82.png" />
+	<file src="assets/textures/83.png" />
+	<file src="assets/textures/84.png" />
+	<file src="assets/textures/85.png" />
+	<file src="assets/textures/86.png" />
+	<file src="assets/textures/87.png" />
+
+</meta>

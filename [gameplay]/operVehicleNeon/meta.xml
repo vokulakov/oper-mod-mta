@@ -1,0 +1,26 @@
+<meta>
+	<oop>true</oop>
+	<min_mta_version client="1.5.6-9.16404" server="1.5.5-9.11915.0" />
+
+
+	<file src='assets/1.dff' />
+	<file src='assets/2.dff' />
+	<file src='assets/3.dff' />
+	<file src='assets/4.dff' />
+	<file src='assets/5.dff' />
+	<file src='assets/6.dff' />
+	<file src='assets/7.dff' />
+	<file src='assets/8.dff' />
+	<file src='assets/9.dff' />
+	<file src='assets/10.dff' />
+
+	<!-- Shared -->
+	<script src="shared/Config.lua" type="shared" cache="false" />
+
+	<!-- Client -->
+	<script src="client/client.lua" type="client" cache="false" />
+	<script src="client/replace.lua" type="client" cache="false" />
+
+	<!-- Server -->
+	<script src="server/server.lua" type="server" />
+</meta>
