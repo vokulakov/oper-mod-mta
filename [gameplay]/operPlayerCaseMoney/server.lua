@@ -1,3 +1,5 @@
+local Cases = {}
+
 local function addPlayerCaseOfMoney(player)
 	if isElement(getElementData(player, 'operPlayerCaseMoney.playerCase')) then return end
 
@@ -9,6 +11,9 @@ local function addPlayerCaseOfMoney(player)
 	setElementInterior(case, i)
 	exports.operBoneAttach:attachElementToBone(case, player, 11, 0, -0.02, 0.3, 180, 0, 0)
 	setElementData(player, 'operPlayerCaseMoney.playerCase', case)
+
+	case:setData('operPlayerCaseMoney.isPlayer', player)
+	table.insert(Cases, case)
 end
 
 local function destroyPlayerCaseOfMoney(player)
@@ -20,7 +25,18 @@ local function destroyPlayerCaseOfMoney(player)
 
 	destroyElement(case)
 	removeElementData(player, 'operPlayerCaseMoney.playerCase')
+	removeElementData(case, 'operPlayerCaseMoney.isPlayer')
 end
+
+setTimer(
+	function()
+		for _, case in ipairs(Cases) do 
+			if isElement(case) and not isElement(case:getData('operPlayerCaseMoney.isPlayer')) then 
+				destroyElement(case)
+				Cases[case] = nil
+			end
+		end 
+	end, 5000, 0)
 
 addEventHandler('onElementDataChange', getRootElement(), function(dataName)
 	if getElementType(source) ~= 'player' or dataName ~= 'player.isPlayerAttachedCase' then return end
