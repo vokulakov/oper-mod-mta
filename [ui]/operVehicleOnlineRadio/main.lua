@@ -313,11 +313,12 @@ local function onRadioNext()
         return
     end
 
-	local nextIndex = CURRENT_RADIO_IND + 1 < #RADIO_STATIONS and CURRENT_RADIO_IND + 1 or 1 --((CURRENT_RADIO_IND)%(#RADIO_STATIONS))+1
+	local nextIndex = ((CURRENT_RADIO_IND)%(#RADIO_STATIONS))+1
 	CURRENT_RADIO_IND = nextIndex
 	vehicle:setData("vehicle:radio_station", tonumber(CURRENT_RADIO_IND))
 	onPlayerRadioSwitch()
 end
+bindKey("5", "down", onRadioNext)
 
 local function onRadioPrevios()
 	local vehicle = localPlayer.vehicle
@@ -325,11 +326,12 @@ local function onRadioPrevios()
         return
     end
 
-	local nextIndex = CURRENT_RADIO_IND - 1 > 0 and CURRENT_RADIO_IND - 1 or #RADIO_STATIONS --((CURRENT_RADIO_IND-2)%(#RADIO_STATIONS))+1
+	local nextIndex = ((CURRENT_RADIO_IND-2)%(#RADIO_STATIONS))+1
     CURRENT_RADIO_IND = nextIndex
 	vehicle:setData("vehicle:radio_station", tonumber(CURRENT_RADIO_IND))
     onPlayerRadioSwitch()
 end
+bindKey("4", "down", onRadioPrevios)
 
 addEventHandler("onClientElementDataChange", root, function(dataName, _, value)
 	local vehicle = source
@@ -341,8 +343,6 @@ end)
 
 addEventHandler('onClientPlayerVehicleEnter', root, function(veh, seat)
 	if source ~= localPlayer then return end
-	bindKey("5", "down", onRadioNext)
-	bindKey("4", "down", onRadioPrevios)
 	setRadioChannel(0)
 	CURRENT_RADIO_IND = veh:getData('vehicle:radio_station') or 1
 	onPlayerRadioSwitch()
@@ -351,15 +351,11 @@ end)
 addEventHandler('onClientVehicleExit', root, function(player, seat)
 	if player ~= localPlayer then return end
 	stopRadio()
-	unbindKey("5", "down", onRadioNext)
-	unbindKey("4", "down", onRadioPrevios)	
 end)
 
 addEventHandler("onClientVehicleStartExit", root, function(player, seat)
 	if player ~= localPlayer then return end
 	stopRadio()
-	unbindKey("5", "down", onRadioNext)
-	unbindKey("4", "down", onRadioPrevios)	
 end)
 
 addEventHandler("onClientElementDestroy", root, function()
