@@ -54,7 +54,7 @@ guiLabelSetHorizontalAlign(ShaderPanel.lbl, 'center')
 ShaderPanel.btn_water = guiCreateCheckBox(10, 35, 150, 20, " Реалистичная вода", false, false, ShaderPanel.tabGraphic)
 guiSetFont(ShaderPanel.btn_water, "default-bold-small")
 
-ShaderPanel.btn_sky = guiCreateCheckBox(10, 55, 150, 20, " Реалистичное небо", false, false, ShaderPanel.tabGraphic)
+ShaderPanel.btn_sky = guiCreateCheckBox(10, 55, 150, 20, " Реалистичное небо", true, false, ShaderPanel.tabGraphic)
 guiSetFont(ShaderPanel.btn_sky, "default-bold-small")
 
 ShaderPanel.btn_vegetation = guiCreateCheckBox(10, 75, 200, 20, " Улучшенная растительность", false, false, ShaderPanel.tabGraphic)
@@ -273,9 +273,9 @@ addEventHandler("onClientGUIClick", root, function()
 		end
 	elseif source == ShaderPanel.btn_sky then
 		if guiCheckBoxGetSelected(source) then
-			exports.operShaderDynamicSky.startDynamicSky()
+			exports.operShaderDynamicSky.startShaderResource()
 		else
-			exports.operShaderDynamicSky.stopDynamicSky()
+			exports.operShaderDynamicSky.stopShaderResource()
 		end
 	elseif source == ShaderPanel.btn_vegetation then
 		if guiCheckBoxGetSelected(source) then

@@ -102,6 +102,21 @@ local function drawSpeedometr()
 	end
 	----------------
 
+	-- Состояние двигателя
+	local veh_hp = math.floor((((getElementHealth(veh)-250)/10)*100)/75)
+	local check_color = tocolor(255, 255, 255, 255)
+
+	if veh_hp <= 80 and veh_hp > 30 then
+		check_color = tocolor(217, 170*(veh_hp/100), 41, 255)
+	elseif veh_hp <= 30 then
+		if engine_side then engine_alpha = engine_alpha + 5 else engine_alpha = engine_alpha - 5 end
+		if engine_alpha <= 0 then engine_side = true elseif engine_alpha >= 255 then engine_side = false end
+		check_color = tocolor(217, 170*(veh_hp/100), 41, engine_alpha)
+	end 
+
+	dxDrawImage(posX+230*px, posY+163*px, 30*px, 30*px, "assets/check.png", 0, 0, 0, check_color)
+	dxDrawText(veh_hp..' %', posX+145*px, posY+50*px, posX+sW, posY+sH, tocolor(255, 255, 255, 240), 1, SPEED_CRUISE_FONT, "center", "center")
+	
 	dxDrawText(getVehicleGear(veh, kmh), posX, posY+3, posX+sW, posY+sH, tocolor(255, 255, 255, 200), 1, GEAR_FONT, "center", "center")
 	dxDrawText(kmh, posX+60*px, posY+250*px, posX+sW, posY+250*px, tocolor(255, 255, 255, 240), 1, SPEED_FONT, "center", "center")
 	dxDrawText('км/ч', posX+60*px, posY+330*px, posX+sW, posY+250*px, tocolor(255, 255, 255, 150), 1, SPEED_UNIT_FONT, "center", "center")

@@ -1,46 +1,19 @@
 <meta>
-	<info name="Shader Dynamic Sky" description="Shader Dynamic Sky" author="Ren712" version="2.1.7" type="script" />
+	<info name="Shader Skybox Alternative" author="Ren712" version="0.54" type="script" />
 	<min_mta_version client="1.4.0" server="1.4.0" />
 	<script src="c_main.lua" type="client" />
-	<script src="c_helper_functions.lua" type="client" />
-
-	<file src="fx/shader_dynamicSky2tropos.fx" type="client" />
-	<file src="fx/shader_dynamicSky2stratos.fx" type="client" />
-	<file src="fx/shader_dynamicSky2bottom.fx" type="client" />
+	<script src="c_switch.lua" type="client" />
+	<file src="fx/skydome.fx" type="client" />
+	<file src="fx/transform.fx" type="client" />
 	<file src="fx/shader_clear.fx" type="client" />
-	<file src="tex/skybox.dds" type="client" />
-	<file src="tex/clouds.dds" type="client" />
-	<file src="tex/clouds_normal.jpg" type="client" />
-	<file src="tex/moon/0.png" type="client" />
-	<file src="tex/moon/1.png" type="client" />
-	<file src="tex/moon/10.png" type="client" />
-	<file src="tex/moon/11.png" type="client" />
-	<file src="tex/moon/12.png" type="client" />
-	<file src="tex/moon/13.png" type="client" />
-	<file src="tex/moon/14.png" type="client" />
-	<file src="tex/moon/15.png" type="client" />
-	<file src="tex/moon/16.png" type="client" />
-	<file src="tex/moon/17.png" type="client" />
-	<file src="tex/moon/18.png" type="client" />
-	<file src="tex/moon/19.png" type="client" />
-	<file src="tex/moon/2.png" type="client" />
-	<file src="tex/moon/20.png" type="client" />
-	<file src="tex/moon/3.png" type="client" />
-	<file src="tex/moon/4.png" type="client" />
-	<file src="tex/moon/5.png" type="client" />
-	<file src="tex/moon/6.png" type="client" />
-	<file src="tex/moon/7.png" type="client" />
-	<file src="tex/moon/8.png" type="client" />
-	<file src="tex/moon/9.png" type="client" />
-	<file src="dff/skybox_model.dff" type="client" />
-	<file src="tex/skybox_model.txd" type="client" />
-
-	<export function="getDynamicSunVector" type="client" />
-	<export function="getDynamicMoonVector" type="client" />
-	<export function="getMoonPhaseValue" type="client" />
-	<export function="isDynamicSkyEnabled" type="client" />
-
-	<export function="startDynamicSky" type="client" />
-	<export function="stopDynamicSky" type="client" />
+	<file src="images/skydome.jpg" type="client" />
+	<file src="images/skydome_evening.jpg" type="client" />
+	<file src="images/skydome_morning.jpg" type="client" />
+	<file src="models/skydome_object.dff" type="client" />
+	<file src="models/skydome_object.txd" type="client" />
+	<oop>true</oop>
+	
+	<export function="startShaderResource" type="client" />
+	<export function="stopShaderResource" type="client" />
 
 </meta>

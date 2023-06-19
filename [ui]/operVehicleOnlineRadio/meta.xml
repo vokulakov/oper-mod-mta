@@ -1,0 +1,42 @@
+<meta>
+	<oop>true</oop>
+	<script src="main.lua" type="client" cache="false" />
+
+	<file src="assets/fonts/Roboto-Bold.ttf" type="client"/>
+	<file src="assets/fonts/Roboto-Regular.ttf" type="client"/>
+	<file src="assets/sounds/radio_tune.mp3" type="client"/>
+
+	<file src="assets/drj.png" type="client"/>
+	<file src="assets/energy.png" type="client"/>
+	<file src="assets/ep.png" type="client"/>
+	<file src="assets/pr.png" type="client"/>
+	<file src="assets/rr.png" type="client"/>
+
+	<file src="assets/auto.png" type="client" />
+	<file src="assets/dfm.png" type="client" />
+	<file src="assets/marusyafm.png" type="client" />
+	<file src="assets/nase-radio.png" type="client" />
+	<file src="assets/radio-dacha.png" type="client" />
+	<file src="assets/radio-vanya.png" type="client" />
+	<file src="assets/retro_fm.png" type="client" />
+	<file src="assets/rusradio.png" type="client" />
+	<file src="assets/novoe-v2.png" type="client" />
+	<file src="assets/record-russian-mix.jpg" type="client" />
+	<file src="assets/humorfm.jpg" type="client" />
+	<file src="assets/relax-fm.png" type="client" />
+	<file src="assets/rekord-rock.jpg" type="client" />
+	<file src="assets/radiomv.jpg" type="client" />
+	<file src="assets/gop-fm.jpg" type="client" />
+	<file src="assets/rekord-superdiskoteka-90-x.jpg" type="client" />
+	<file src="assets/recordtrap.png" type="client" />
+	<file src="assets/record-chill-out.jpg" type="client" />
+	<file src="assets/rr_black.png" type="client" />
+	<file src="assets/record-bass-house.jpg" type="client" />
+	<file src="assets/rap-classics-record.jpg" type="client" />
+	<file src="assets/record-rap-hits.png" type="client" />
+	<file src="assets/na-haype.png" type="client" />
+	<file src="assets/Rodnyix-doroG.png" type="client" />
+	<file src="assets/detifm.png" type="client" />
+	<file src="assets/likefm.jpg" type="client" />
+
+</meta>

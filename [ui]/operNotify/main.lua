@@ -98,7 +98,7 @@ local sW, sH = guiGetScreenSize()
 Control = {}
 
 Control.isVisible = true
-
+Control.isCurrentPanel = 'player'
 
 local FONTS = {
 	['TITTLE'] 		= dxCreateFont("assets/Roboto-Bold.ttf", 8, false, "draft"),
@@ -114,6 +114,7 @@ local plControl = {
 
 	{'F11', 'Карта'},
 	{'F6', 'Настройки игры'},
+	{'F4', 'Скрыть интерфейс'},
 	{'F1', 'Главное меню'},
 }
 
@@ -168,6 +169,7 @@ addEventHandler('onClientResourceStart', resourceRoot, function()
 	for _, control in ipairs(plControl) do
 		Control.addControl(control[1], control[2])
 	end
+	Control.isCurrentPanel = 'player'
 end)
 
 function Control.addControl(but, act)
@@ -229,7 +231,10 @@ end
 
 addEventHandler("onClientVehicleEnter", root, function(thePlayer, seat)
 	if thePlayer == localPlayer and seat == 0 then
-		Control.onClientVehicle(true)
+		if Control.isCurrentPanel == 'player' then
+			Control.onClientVehicle(true)
+			Control.isCurrentPanel = 'vehicle'
+		end
 	end
 end)
 --[[
@@ -241,7 +246,10 @@ end)
 ]]
 addEventHandler("onClientVehicleExit", root, function(thePlayer, seat)
 	if thePlayer == localPlayer and seat == 0 then
-		Control.onClientVehicle(false)
+		if Control.isCurrentPanel == 'vehicle' then
+			Control.onClientVehicle(false)
+			Control.isCurrentPanel = 'player'
+		end
 	end
 end)
 
@@ -251,13 +259,28 @@ bindKey("F5", "down", Control.setVisible)
 addEventHandler("onClientElementDestroy", root, function()
 	if getElementType(source) == "vehicle" then
 		if localPlayer.vehicle == source and localPlayer.vehicle.controller == localPlayer then
-		   Control.onClientVehicle(false)
+			if Control.isCurrentPanel == 'vehicle' then
+		   		Control.onClientVehicle(false)
+				Control.isCurrentPanel = 'player'
+			end
+		end
+	end
+end)
+
+addEventHandler("onClientVehicleExplode", root, function()
+	if localPlayer.vehicle == source and localPlayer.vehicle.controller == localPlayer then
+		if Control.isCurrentPanel == 'vehicle' then
+			Control.onClientVehicle(false)
+			Control.isCurrentPanel = 'player'
 		end
 	end
 end)
 
 addEventHandler("onClientPlayerWasted", localPlayer, function()
 	if localPlayer.vehicle and localPlayer.vehicle.controller == localPlayer then
-		Control.onClientVehicle(false)
+		if Control.isCurrentPanel == 'vehicle' then
+			Control.onClientVehicle(false)
+			Control.isCurrentPanel = 'player'
+	 	end
 	end
 end)
