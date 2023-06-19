@@ -1,6 +1,6 @@
 MAP_NAME = "San-Andreas" -- карта
 GAME_TYPE = "OPER STYLE ORIGINAL" -- игровой режим
-MOD_INFO = "OPERSKIY × OTDEL 1.0.0" -- информация о моде
+MOD_INFO = "OPERSKIY × OTDEL 1.1.0" -- информация о моде
 SERVER_PASSWORD = "" -- пароль
 
 SHOW_MESSAGE = true -- показывать сообщение в чате перед выключением
