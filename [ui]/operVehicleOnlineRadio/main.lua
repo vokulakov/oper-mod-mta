@@ -318,6 +318,7 @@ local function onRadioNext()
 	vehicle:setData("vehicle:radio_station", tonumber(CURRENT_RADIO_IND))
 	onPlayerRadioSwitch()
 end
+bindKey("5", "down", onRadioNext)
 
 local function onRadioPrevios()
 	local vehicle = localPlayer.vehicle
@@ -330,6 +331,7 @@ local function onRadioPrevios()
 	vehicle:setData("vehicle:radio_station", tonumber(CURRENT_RADIO_IND))
     onPlayerRadioSwitch()
 end
+bindKey("4", "down", onRadioPrevios)
 
 addEventHandler("onClientElementDataChange", root, function(dataName, _, value)
 	local vehicle = source
@@ -341,8 +343,6 @@ end)
 
 addEventHandler('onClientPlayerVehicleEnter', root, function(veh, seat)
 	if source ~= localPlayer then return end
-	bindKey("4", "down", onRadioNext)
-	bindKey("5", "down", onRadioPrevios)
 	setRadioChannel(0)
 	CURRENT_RADIO_IND = veh:getData('vehicle:radio_station') or 1
 	onPlayerRadioSwitch()
@@ -351,15 +351,11 @@ end)
 addEventHandler('onClientVehicleExit', root, function(player, seat)
 	if player ~= localPlayer then return end
 	stopRadio()
-	unbindKey("4", "down", onRadioNext)
-	unbindKey("5", "down", onRadioPrevios)	
 end)
 
 addEventHandler("onClientVehicleStartExit", root, function(player, seat)
 	if player ~= localPlayer then return end
 	stopRadio()
-	unbindKey("4", "down", onRadioNext)
-	unbindKey("5", "down", onRadioPrevios)	
 end)
 
 addEventHandler("onClientElementDestroy", root, function()

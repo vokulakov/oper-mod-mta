@@ -15,7 +15,7 @@ addCommandHandler("Сообщение", function(thePlayer, cmd, ...)
 
 	message = WordsFilter.filter(message)
 	
-	if AntiFlood.isMuted() then
+	if AntiFlood.isMuted() or isPlayerMuted(thePlayer) then
 		AntiFlood.onMessage()
 		triggerClientEvent(thePlayer, 'operNotification.addNotification', thePlayer, 'Тихо - тихо, не флуди!', 2, true)
 		return
@@ -50,7 +50,7 @@ addCommandHandler("Сказать", function(thePlayer, cmd, ...)
 
 	message = WordsFilter.filter(message)
 	
-	if AntiFlood.isMuted() then
+	if AntiFlood.isMuted() or isPlayerMuted(thePlayer) then
 		AntiFlood.onMessage()
 		triggerClientEvent(thePlayer, 'operNotification.addNotification', thePlayer, 'Тихо - тихо, не флуди!', 2, true)
 		return
@@ -109,7 +109,7 @@ function onPlayerChatMe(player, message)
 
 	message = WordsFilter.filter(message)
 	
-	if AntiFlood.isMuted() then
+	if AntiFlood.isMuted() or isPlayerMuted(player) then
 		AntiFlood.onMessage()
 		triggerClientEvent(player, 'operNotification.addNotification', player, 'Тихо - тихо, не флуди!', 2, true)
 		return
@@ -149,7 +149,7 @@ function onPlayerChatDo(player, message)
 
 	message = WordsFilter.filter(message)
 	
-	if AntiFlood.isMuted() then
+	if AntiFlood.isMuted() or isPlayerMuted(player) then
 		AntiFlood.onMessage()
 		triggerClientEvent(player, 'operNotification.addNotification', player, 'Тихо - тихо, не флуди!', 2, true)
 		return
@@ -189,7 +189,7 @@ function onPlayerChatToDo(player, message)
 
 	message = WordsFilter.filter(message)
 	
-	if AntiFlood.isMuted() then
+	if AntiFlood.isMuted() or isPlayerMuted(player) then
 		AntiFlood.onMessage()
 		triggerClientEvent(player, 'operNotification.addNotification', player, 'Тихо - тихо, не флуди!', 2, true)
 		return
@@ -243,7 +243,7 @@ function onPlayerChatTry(player, message)
 
 	message = WordsFilter.filter(message)
 	
-	if AntiFlood.isMuted() then
+	if AntiFlood.isMuted() or isPlayerMuted(player) then
 		AntiFlood.onMessage()
 		triggerClientEvent(player, 'operNotification.addNotification', player, 'Тихо - тихо, не флуди!', 2, true)
 		return

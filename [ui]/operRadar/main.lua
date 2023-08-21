@@ -67,14 +67,14 @@ local function drawRadar()
     for player in pairs(players) do
     	if player ~= localPlayer and player.streamedIn then
 
-    		local blipz = Vector3(player.position)
-    		local dist = (poszP - blipz).length
-
+			local bx, by, bz = getElementPosition(player)
+    		local dist = getDistanceBetweenPoints2D(px, py, bx, by)
+			
     		if dist < 80 then 
-    			local resutl = blipz.z - poszP.z
+    			local resutl = bz - pz
     			local radius = dist/mapZoomScale
 
-            	local direction = math.atan2(blipz.x - px, blipz.y - py) + math.rad(camera_rotation.z)
+            	local direction = math.atan2(bx - px, by - py) + math.rad(camera_rotation.z)
 
           	  	local blipX, blipY = centerX + math.sin(direction) * radius, centerY - math.cos(direction) * radius
     			local blipX = math.max(0, math.min(blipX, mapWidth)) -- clamp position between 0 and mapWidth
