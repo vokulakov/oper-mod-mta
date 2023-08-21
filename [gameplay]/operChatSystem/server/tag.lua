@@ -1,7 +1,8 @@
 local Tags = {
-	['Everyone'] = '#6495ED[ #FF0000ОПЕР #6495ED]',
-	['Console'] = '#6495ED[ #FF0000Главный администратор #6495ED]',
-	['Admin']	= '#6495ED[ #FF0000Администратор #6495ED]'
+	['Everyone'] = '#FF0000ОПЕР',
+
+	['Console'] = '#FF0000Главный администратор',
+	['Admin']	= '#FF0000Администратор'
 }
 
 function getPlayerTag(player)
@@ -17,10 +18,15 @@ function getPlayerTag(player)
 
 	for group, tag in pairs(Tags) do
 		if isObjectInACLGroup("user." .. getAccountName(Account), aclGetGroup(group)) then
-			local r, g, b = getPlayerNametagColor(player)
-			return tag
+			local prefix = tag:gsub("#%x%x%x%x%x%x", "")
+			player:setData("player.prefix", { group = group, prefix = tostring(prefix)})
+			return '#6495ED[ '..tag..' #6495ED]'
 		end
 	end
 
 	return "[Игрок]"
 end
+
+addEventHandler("onPlayerLogin", root, function()
+	getPlayerTag(source)
+end)
