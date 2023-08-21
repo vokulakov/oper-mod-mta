@@ -153,7 +153,14 @@ local function setScoreBoardVisible()
     if type(PLAYER_UI) == 'boolean' then
         return
     end
-    if not PLAYER_UI['scoreboard'] then return end
+    
+	if not PLAYER_UI['scoreboard'] then
+		--TODO:: это костыль
+		SB_VISIBLE = false
+		showCursor(false)
+		removeEventHandler("onClientRender", root, drawScoreBoard)
+		return 
+	end
 
 	SB_VISIBLE = not SB_VISIBLE
 	showCursor(SB_VISIBLE)

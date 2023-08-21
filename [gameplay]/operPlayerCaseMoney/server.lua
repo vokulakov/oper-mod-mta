@@ -23,9 +23,10 @@ local function destroyPlayerCaseOfMoney(player)
 		return 
 	end
 
-	destroyElement(case)
 	removeElementData(player, 'operPlayerCaseMoney.playerCase')
 	removeElementData(case, 'operPlayerCaseMoney.isPlayer')
+	
+	destroyElement(case)
 end
 
 setTimer(
