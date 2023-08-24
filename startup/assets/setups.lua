@@ -1,5 +1,5 @@
 MAP_NAME = "San-Andreas" -- карта
-GAME_TYPE = "OPER STYLE ORIGINAL" -- игровой режим
+GAME_TYPE = "ВСЁ БЕСПЛАТНО" -- игровой режим
 MOD_INFO = "OPERSKIY × OTDEL 1.1.0" -- информация о моде
 SERVER_PASSWORD = "" -- пароль
 
