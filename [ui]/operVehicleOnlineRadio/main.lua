@@ -316,7 +316,7 @@ local function onRadioNext()
 	local nextIndex = ((CURRENT_RADIO_IND)%(#RADIO_STATIONS))+1
 	CURRENT_RADIO_IND = nextIndex
 	vehicle:setData("vehicle:radio_station", tonumber(CURRENT_RADIO_IND))
-	onPlayerRadioSwitch()
+	--onPlayerRadioSwitch()
 end
 bindKey("5", "down", onRadioNext)
 
@@ -329,13 +329,16 @@ local function onRadioPrevios()
 	local nextIndex = ((CURRENT_RADIO_IND-2)%(#RADIO_STATIONS))+1
     CURRENT_RADIO_IND = nextIndex
 	vehicle:setData("vehicle:radio_station", tonumber(CURRENT_RADIO_IND))
-    onPlayerRadioSwitch()
+    --onPlayerRadioSwitch()
 end
 bindKey("4", "down", onRadioPrevios)
 
 addEventHandler("onClientElementDataChange", root, function(dataName, _, value)
 	local vehicle = source
 	if isElement(vehicle) and getElementType(vehicle) == "vehicle" and dataName == "vehicle:radio_station" then
+	    if not isElement(vehicle) or vehicle ~= localPlayer.vehicle then
+			return
+		end
 		CURRENT_RADIO_IND = value
 		onPlayerRadioSwitch()
 	end
