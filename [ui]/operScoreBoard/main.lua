@@ -89,7 +89,9 @@ local function getPlayerStatus(player)
 		return "Авторизовывается"
 	end
 	
-	return "Играет"
+	local playerPrefix = player:getData("player.prefix")
+
+	return playerPrefix.prefix or "Игрок"
 end
 
 local function getPlayerPlaytime(player) 

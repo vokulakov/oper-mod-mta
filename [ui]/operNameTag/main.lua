@@ -52,24 +52,29 @@ addEventHandler("onClientRender", root, function()
 			local distance = getDistanceBetweenPoints3D(cx, cy, cz, px, py, pz)
 			if distance < NAMETAG_MAX_DISTANCE then
 
+				local yOffset = 16
+
+				-- Префикс (тэг)
+				local playerPrefix = player:getData("player.prefix")
+				if playerPrefix then
+					dxDrawNametagText(playerPrefix.prefix, x, y-yOffset, x, y-yOffset, tocolor(235, 207, 52, 255), 1)
+					yOffset = yOffset + 16
+				end
+
 				if player:getData("player.AFK") then -- AFK
 					local AFK_TIME = player:getData("player.AFK_TIMER")
-					dxDrawNametagText('AFK ['..tostring(AFK_TIME)..']', x, y-16, x, y-16, tocolor(200, 0, 0, 255), 1)
-					--dxDrawNametagText('AFK [00:00]', x, y-16, x, y-16, tocolor(200, 0, 0, 255), 1)
+					dxDrawNametagText('AFK ['..tostring(AFK_TIME)..']', x, y-yOffset, x, y-yOffset, tocolor(200, 0, 0, 255), 1)
 				elseif player:getData('player.isChatting') then
-					dxDrawNametagText('Строчит сообщение...', x, y-16, x, y-16, tocolor(33, 177, 255, 255), 1)
+					dxDrawNametagText('Строчит сообщение...', x, y-yOffset, x, y-yOffset, tocolor(33, 177, 255, 255), 1)
 				end
 
 				dxDrawNametagText(info.name, x, y, x, y, tocolor(255, 255, 255, 255), 1)
 
 				-- ОТРИСОВКА HP и БРОНИ
-
 				if player.armor > 0 then
 					NAMETAG_OFFSET = 1.25
-
 					dxDrawRectangle(x-50/2, y+10, 50, 6, tocolor(0, 0, 0, 150))
 					dxDrawRectangle(x-48/2, y+11, player.armor*48 / 100, 4, tocolor(200, 200, 200, 250))
-
 					dxDrawRectangle(x-50/2, y+18, 50, 6, tocolor(0, 0, 0, 150))
 					dxDrawRectangle(x-48/2, y+19, player.health*48 / 100, 4, tocolor(200, 0, 0, 250))
 				else
@@ -93,7 +98,7 @@ addEventHandler("onClientRender", root, function()
 							local duration = v.endTime - v.tick
 							local progress = elapsedTime / duration
 
-							local yPos = interpolateBetween(y, 0, 0, y-32*i, 0, 0, progress, progress > 1 and "Linear" or "OutElastic")
+							local yPos = interpolateBetween(y, 0, 0, y-20-yOffset*i, 0, 0, progress, progress > 1 and "Linear" or "OutElastic")
 
 							dxDrawNametagText(v.text, x, yPos, x, yPos, tocolor(255, 255, 255, v.alpha+50), 1)
 						else
@@ -101,6 +106,7 @@ addEventHandler("onClientRender", root, function()
 						end
 					end
 				end
+
 			end
 		end
 	end
