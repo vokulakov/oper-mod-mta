@@ -7,7 +7,7 @@
 *	Original File by MCvarial
 *
 **************************************]]
-
+--[[
 aScreenShotWindows = {}
 aScreenShotForm = nil
 
@@ -154,3 +154,4 @@ addEventHandler("aClientScreenShot",resourceRoot,
 		end
 	end
 )
+]]

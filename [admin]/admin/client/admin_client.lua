@@ -18,13 +18,18 @@ _settings = nil
 aWeathers = {}
 _weathers_max = 0
 
+-- ОТКРЫТИЕ АДМИНИСТРАТИВНОЙ ПАНЕЛИ
 function aClientAdminMenu ()
 	if ( aAdminForm ) and ( guiGetVisible ( aAdminForm ) == true ) then
 		for id, widget in pairs ( _widgets ) do
 			widget.close ( false )
 		end
+		triggerEvent('operShowUI.drawBlurShader', localPlayer, false) -- выключаем размытие
+		triggerEvent('operShowUI.setVisiblePlayerUI', localPlayer, true)
 		aAdminMenuClose ( false )
 	else
+		triggerEvent('operShowUI.drawBlurShader', localPlayer, true) -- включаем размытие
+		triggerEvent('operShowUI.setVisiblePlayerUI', localPlayer, false)
 		aAdminMenu ()
 	end
 end

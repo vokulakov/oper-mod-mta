@@ -517,7 +517,7 @@ addEventHandler ( "onPlayerLogin", root, function ( previous, account, auto )
 		notifyPlayerLoggedIn( source )
 	end
 end )
-
+--[[
 addCommandHandler ( "register", function ( player, command, arg1, arg2 )
 	local username = getPlayerName ( player )
 	local password = arg1
@@ -560,7 +560,7 @@ addCommandHandler ( "unregister", function ( player, command, arg1 )
 	outputChatBox ( "Unregistering account '"..username.."' "..result, player, 255, 100, 70 )
 	outputServerLog ( "ADMIN: "..getAdminNameForLog ( player ).." unregistering account '"..username.."' "..result.." (IP: "..getPlayerIP(player).."  Serial: "..getPlayerSerial(player)..")" )
 end )
-
+]]
 -- Returns "name" or "name(accountname)" if they differ
 function getAdminNameForLog(player)
 	local name = getPlayerName( player )

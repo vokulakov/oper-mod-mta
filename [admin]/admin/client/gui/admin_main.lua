@@ -30,22 +30,22 @@ end
 function aAdminMenu ()
 	if ( aAdminForm == nil ) then
 		local sx, sy = guiGetScreenSize()
-		aAdminForm			= guiCreateWindow ( sx / 2 - 310, sy / 2 - 260, 620, 520, "", false )
+		aAdminForm			= guiCreateWindow ( sx / 2 - 720/2, sy / 2 - 520/2, 720, 520, "", false )
 							guiWindowSetSizable ( aAdminForm, false )
 						  guiSetText ( aAdminForm, "Панель администратора")
 						  --guiCreateLabel ( 0.75, 0.05, 0.45, 0.04, "OPERSKIY OTDEL", true, aAdminForm )
 		aTabPanel			= guiCreateTabPanel ( 0.01, 0.05, 0.98, 0.95, true, aAdminForm )
 		aTab1 = {}
-		aTab1.Tab			= guiCreateTab ( "Игроки", aTabPanel, "players" )
-		aTab1.Messages		= guiCreateButton ( 0.71, 0.02, 0.27, 0.04, "0/0 unread messages", true, aTab1.Tab )
-		aTab1.ScreenShots		= guiCreateButton ( 0.71, 0.065, 0.27, 0.04, "screenshots", true, aTab1.Tab )
+		aTab1.Tab			= guiCreateTab ( "Главное меню", aTabPanel, "players" )
+		--aTab1.Messages		= guiCreateButton ( 0.71, 0.02, 0.27, 0.04, "0/0 unread messages", true, aTab1.Tab )
+		--aTab1.ScreenShots		= guiCreateButton ( 0.71, 0.065, 0.27, 0.04, "screenshots", true, aTab1.Tab )
 		aTab1.PlayerListSearch 	= guiCreateEdit ( 0.03, 0.05, 0.16, 0.04, "", true, aTab1.Tab )
 						  guiCreateStaticImage ( 0.19, 0.05, 0.035, 0.04, "client\\images\\search.png", true, aTab1.Tab )
 		aTab1.HideColorCodes= guiCreateCheckBox ( 0.037, 0.94, 0.20, 0.04, "Hide color codes", false, true, aTab1.Tab )
 		aTab1.HideSensitiveData= guiCreateCheckBox ( 0.25, 0.94, 0.23, 0.04, "Hide sensitive data", false, true, aTab1.Tab )
 
 		aTab1.PlayerList		= guiCreateGridList ( 0.03, 0.10, 0.20, 0.83, true, aTab1.Tab )
-						  guiGridListAddColumn( aTab1.PlayerList, "Player Name", 0.85 )
+						  guiGridListAddColumn( aTab1.PlayerList, "Игроки", 0.85 )
 						  guiGridListSetSortingEnabled ( aTab1.PlayerList, false )
 						  for id, player in ipairs ( getElementsByType ( "player" ) ) do guiGridListSetItemPlayerName ( aTab1.PlayerList, guiGridListAddRow ( aTab1.PlayerList ), 1, getPlayerName ( player ), false, false ) end
 		aTab1.Kick			= guiCreateButton ( 0.71, 0.125, 0.13, 0.04, "Kick", true, aTab1.Tab, "kick" )
@@ -99,28 +99,28 @@ y=y+B   aTab1.Groups		= guiCreateLabel ( 0.26, y, 0.435, 0.035, "Groups: N/A", t
 
 		B = 0.040
 y=y+A  				         guiCreateHeader ( 0.25, y, 0.20, 0.04, "Game:", true, aTab1.Tab )
-y=y+A   aTab1.Health		= guiCreateLabel ( 0.26, y, 0.20, 0.04, "Health: 0%", true, aTab1.Tab )
-		aTab1.Armour		= guiCreateLabel ( 0.45, y, 0.20, 0.04, "Armour: 0%", true, aTab1.Tab )
-y=y+B   aTab1.Skin			= guiCreateLabel ( 0.26, y, 0.20, 0.04, "Skin: N/A", true, aTab1.Tab )
+y=y+A   aTab1.Health		= guiCreateLabel ( 0.26, y, 0.20, 0.04, "Health: -", true, aTab1.Tab )
+		aTab1.Armour		= guiCreateLabel ( 0.45, y, 0.20, 0.04, "Armour: -", true, aTab1.Tab )
+y=y+B   aTab1.Skin			= guiCreateLabel ( 0.26, y, 0.20, 0.04, "Skin: -", true, aTab1.Tab )
 		--aTab1.Team			= guiCreateLabel ( 0.45, y, 0.20, 0.04, "Team: None", true, aTab1.Tab )
-y=y+B   aTab1.Weapon		= guiCreateLabel ( 0.26, y, 0.35, 0.04, "Weapon: N/A", true, aTab1.Tab )
+y=y+B   aTab1.Weapon		= guiCreateLabel ( 0.26, y, 0.35, 0.04, "Weapon: -", true, aTab1.Tab )
 y=y+B   aTab1.Ping			= guiCreateLabel ( 0.26, y, 0.20, 0.04, "Ping: 0", true, aTab1.Tab )
 		aTab1.Money			= guiCreateLabel ( 0.45, y, 0.20, 0.04, "Money: 0", true, aTab1.Tab )
-y=y+B   aTab1.Area			= guiCreateLabel ( 0.26, y, 0.44, 0.04, "Area: Unknown", true, aTab1.Tab )
+y=y+B   aTab1.Area			= guiCreateLabel ( 0.26, y, 0.44, 0.04, "Area: -", true, aTab1.Tab )
 y=y+B   aTab1.Position		= guiCreateLabel ( 0.26, y, 0.44, 0.04, "Position: 0, 0, 0", true, aTab1.Tab )
 y=y+B   aTab1.Dimension		= guiCreateLabel ( 0.26, y, 0.20, 0.04, "Dimension: 0", true, aTab1.Tab )
-		aTab1.Interior		= guiCreateLabel ( 0.45, y, 0.20, 0.04, "Interior: 0", true, aTab1.Tab )
+		--aTab1.Interior		= guiCreateLabel ( 0.45, y, 0.20, 0.04, "Interior: 0", true, aTab1.Tab )
 
 y=y+A  				         guiCreateHeader ( 0.25, y, 0.20, 0.04, "Vehicle:", true, aTab1.Tab )
-y=y+A  aTab1.Vehicle		= guiCreateLabel ( 0.26, y, 0.35, 0.04, "Vehicle: N/A", true, aTab1.Tab )
-y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Health: 0%", true, aTab1.Tab )
+y=y+A  aTab1.Vehicle		= guiCreateLabel ( 0.26, y, 0.35, 0.04, "Vehicle: -", true, aTab1.Tab )
+y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Health: -", true, aTab1.Tab )
 
 		aTab1.SetHealth		= guiCreateButton ( 0.71, 0.395, 0.13, 0.04, "Set Health", true, aTab1.Tab, "sethealth" )
 		aTab1.SetArmour		= guiCreateButton ( 0.85, 0.395, 0.13, 0.04, "Set Armour", true, aTab1.Tab, "setarmour" )
 		aTab1.SetSkin		= guiCreateButton ( 0.71, 0.440, 0.13, 0.04, "Set Skin", true, aTab1.Tab, "setskin" )
 		--aTab1.SetTeam		= guiCreateButton ( 0.85, 0.440, 0.13, 0.04, "Set Team", true, aTab1.Tab, "setteam" )
 		aTab1.SetDimension	= guiCreateButton ( 0.71, 0.755, 0.13, 0.04, "Set Dimens.", true, aTab1.Tab, "setdimension" )
-		aTab1.SetInterior		= guiCreateButton ( 0.85, 0.755, 0.13, 0.04, "Set Interior", true, aTab1.Tab, "setinterior" )
+		--aTab1.SetInterior		= guiCreateButton ( 0.85, 0.755, 0.13, 0.04, "Set Interior", true, aTab1.Tab, "setinterior" )
 		aTab1.GiveWeapon		= guiCreateList ( 0.71, 0.485, 0.27, 0.04, 0.48, "Give: "..getWeaponNameFromID ( aCurrentWeapon ), true, aTab1.Tab, "giveweapon" )
 
 		local weapons = {}
@@ -179,8 +179,73 @@ y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Heal
 			end
 		end)
 
+		aTab5 = {}
+		aTab5.Tab			= guiCreateTab ( "Чат админов", aTabPanel, "adminchat" )
+		aTab5.AdminChat		= guiCreateMemo ( 0.03, 0.05, 0.75, 0.85, "", true, aTab5.Tab )
+						  guiSetProperty ( aTab5.AdminChat, "ReadOnly", "true" )
+		aTab5.AdminPlayers	= guiCreateGridList ( 0.79, 0.05, 0.18, 0.80, true, aTab5.Tab )
+						  guiGridListAddColumn ( aTab5.AdminPlayers, "Admins", 0.90 )
+		aTab5.AdminChatSound	= guiCreateCheckBox ( 0.79, 0.86, 0.18, 0.04, "Play Sound", true, true, aTab5.Tab )
+		aTab5.AdminText		= guiCreateEdit ( 0.03, 0.92, 0.80, 0.06, "", true, aTab5.Tab )
+		aTab5.AdminSay		= guiCreateButton ( 0.85, 0.92, 0.08, 0.06, "Say", true, aTab5.Tab )
+		aTab5.AdminChatHelp	= guiCreateButton ( 0.94, 0.92, 0.03, 0.06, "?", true, aTab5.Tab )
+
+		-- --
+		
+		aTab4 = {}
+		aTab4.Tab			= guiCreateTab ( "Бан-лист", aTabPanel, "bans" )
+		aTab4.BansList		= guiCreateGridList ( 0.03, 0.12, 0.80, 0.8, true, aTab4.Tab )
+		aTab4.EditBox		= guiCreateEdit ( 0.03, 0.05, 0.54, 0.05, "", true, aTab4.Tab )
+		aTab4.ComboBox		= guiCreateComboBox ( 0.58, 0.05, 0.12, 0.05, "Select", true, aTab4.Tab )
+		aTab4.Button		= guiCreateButton ( 0.71, 0.05, 0.12, 0.05, "Search...", true, aTab4.Tab )
+		aTab4.ProgressBar		= guiCreateProgressBar ( 0.03, 0.88, 0.8, 0.05, true, aTab4.Tab )
+						guiSetVisible (aTab4.ProgressBar,false)
+						local ComboBoxItems = {"Serial","IP","Name","By","Reason"}
+							for i,ComboBoxIndividualItems in ipairs (ComboBoxItems) do
+								guiComboBoxAddItem (aTab4.ComboBox,ComboBoxIndividualItems)
+							end
+						guiComboBoxAdjustHeight (aTab4.ComboBox,#ComboBoxItems)
+						guiComboBoxSetSelected (aTab4.ComboBox,0)
+
+
+				function searchBans()
+				local searchText = guiGetText (aTab4.EditBox)
+					if searchText == "" then
+					triggerServerEvent ( "aSync", localPlayer, "bans" )
+					else
+					local itemBoxSelected = guiComboBoxGetSelected(aTab4.ComboBox)
+					local text = guiComboBoxGetItemText(aTab4.ComboBox, itemBoxSelected)
+					guiGridListClear (aTab4.BansList)
+					triggerServerEvent ( "aSync", localPlayer, "bansearch",{text,searchText})
+					end
+
+				end
+				addEventHandler("onClientGUIClick", aTab4.Button, searchBans,false)
+
+						  guiGridListAddColumn( aTab4.BansList, "Name", 0.22 )
+						  guiGridListAddColumn( aTab4.BansList, "IP", 0.22 )
+						  guiGridListAddColumn( aTab4.BansList, "Serial", 0.22 )
+						  guiGridListAddColumn( aTab4.BansList, "By", 0.22 )
+						  guiGridListAddColumn( aTab4.BansList, "Date", 0.17 )
+						  guiGridListAddColumn( aTab4.BansList, "Time", 0.13 )
+						  guiGridListAddColumn( aTab4.BansList, "Unban Date", 0.25 )
+						  guiGridListAddColumn( aTab4.BansList, "Reason", 0.8 )
+
+						  guiGridListSetSortingEnabled( aTab4.BansList, false )
+		aTab4.Details		= guiCreateButton ( 0.85, 0.10, 0.13, 0.04, "Details", true, aTab4.Tab )
+		aTab4.Unban			= guiCreateButton ( 0.85, 0.20, 0.13, 0.04, "Unban", true, aTab4.Tab, "unban" )
+		aTab4.UnbanIP		= guiCreateButton ( 0.85, 0.25, 0.13, 0.04, "Unban IP", true, aTab4.Tab, "unbanip" )
+		aTab4.UnbanSerial		= guiCreateButton ( 0.85, 0.30, 0.13, 0.04, "Unban Serial", true, aTab4.Tab, "unbanserial" )
+		aTab4.BanIP			= guiCreateButton ( 0.85, 0.40, 0.13, 0.04, "Ban IP", true, aTab4.Tab, "banip" )
+		aTab4.BanSerial		= guiCreateButton ( 0.85, 0.45, 0.13, 0.04, "Ban Serial", true, aTab4.Tab, "banserial" )
+		aTab4.BansRefresh		= guiCreateButton ( 0.85, 0.85, 0.13, 0.04, "Refresh", true, aTab4.Tab, "listbans" )
+		aTab4.BansTotal		= guiCreateLabel ( 0.20, 0.94, 0.31, 0.04, "Showing  0 / 0  bans", true, aTab4.Tab )
+		aTab4.BansMore		= guiCreateButton ( 0.50, 0.94, 0.13, 0.04, "Get more...", true, aTab4.Tab, "listbans" )
+
+		-- -- 
+
 		aTab2 = {}
-		aTab2.Tab			= guiCreateTab ( "Resources", aTabPanel, "resources" )
+		aTab2.Tab			= guiCreateTab ( "Ресурсы сервера", aTabPanel, "resources" )
 		aTab2.ManageACL		= guiCreateButton ( 0.75, 0.02, 0.23, 0.04, "Manage ACL", true, aTab2.Tab )
 		aTab2.ResourceListSearch = guiCreateEdit ( 0.03, 0.05, 0.31, 0.04, "", true, aTab2.Tab )
 						  guiCreateStaticImage ( 0.34, 0.05, 0.035, 0.04, "client\\images\\search.png", true, aTab2.Tab )
@@ -215,10 +280,10 @@ y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Heal
 
 		aLogLines = 1
 
-		createMapTab()
+		--createMapTab()
 
 		aTab3 = {}
-		aTab3.Tab			= guiCreateTab ( "Server", aTabPanel, "server" )
+		aTab3.Tab			= guiCreateTab ( "Настройки сервера", aTabPanel, "server" )
 		aTab3.Server		= guiCreateLabel ( 0.05, 0.05, 0.70, 0.05, "Server: Unknown", true, aTab3.Tab )
 		aTab3.Password		= guiCreateLabel ( 0.05, 0.10, 0.40, 0.05, "Password: None", true, aTab3.Tab )
 		aTab3.GameType		= guiCreateLabel ( 0.05, 0.15, 0.40, 0.05, "Game Type: None", true, aTab3.Tab )
@@ -270,69 +335,8 @@ y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Heal
 							guiCreateLabel ( 0.63, 0.65, 0.1, 0.04, "( 25-32767 )", true, aTab3.Tab )
 
 
-		aTab4 = {}
-		aTab4.Tab			= guiCreateTab ( "Bans", aTabPanel, "bans" )
-		aTab4.BansList		= guiCreateGridList ( 0.03, 0.12, 0.80, 0.8, true, aTab4.Tab )
-		aTab4.EditBox		= guiCreateEdit ( 0.03, 0.05, 0.54, 0.05, "", true, aTab4.Tab )
-		aTab4.ComboBox		= guiCreateComboBox ( 0.58, 0.05, 0.12, 0.05, "Select", true, aTab4.Tab )
-		aTab4.Button		= guiCreateButton ( 0.71, 0.05, 0.12, 0.05, "Search...", true, aTab4.Tab )
-		aTab4.ProgressBar		= guiCreateProgressBar ( 0.03, 0.88, 0.8, 0.05, true, aTab4.Tab )
-						guiSetVisible (aTab4.ProgressBar,false)
-						local ComboBoxItems = {"Serial","IP","Name","By","Reason"}
-							for i,ComboBoxIndividualItems in ipairs (ComboBoxItems) do
-								guiComboBoxAddItem (aTab4.ComboBox,ComboBoxIndividualItems)
-							end
-						guiComboBoxAdjustHeight (aTab4.ComboBox,#ComboBoxItems)
-						guiComboBoxSetSelected (aTab4.ComboBox,0)
-
-
-				function searchBans()
-				local searchText = guiGetText (aTab4.EditBox)
-					if searchText == "" then
-					triggerServerEvent ( "aSync", localPlayer, "bans" )
-					else
-					local itemBoxSelected = guiComboBoxGetSelected(aTab4.ComboBox)
-					local text = guiComboBoxGetItemText(aTab4.ComboBox, itemBoxSelected)
-					guiGridListClear (aTab4.BansList)
-					triggerServerEvent ( "aSync", localPlayer, "bansearch",{text,searchText})
-					end
-
-				end
-				addEventHandler("onClientGUIClick", aTab4.Button, searchBans,false)
-
-						  guiGridListAddColumn( aTab4.BansList, "Name", 0.22 )
-						  guiGridListAddColumn( aTab4.BansList, "IP", 0.22 )
-						  guiGridListAddColumn( aTab4.BansList, "Serial", 0.22 )
-						  guiGridListAddColumn( aTab4.BansList, "By", 0.22 )
-						  guiGridListAddColumn( aTab4.BansList, "Date", 0.17 )
-						  guiGridListAddColumn( aTab4.BansList, "Time", 0.13 )
-						  guiGridListAddColumn( aTab4.BansList, "Unban Date", 0.25 )
-						  guiGridListAddColumn( aTab4.BansList, "Reason", 0.8 )
-
-						  guiGridListSetSortingEnabled( aTab4.BansList, false )
-		aTab4.Details		= guiCreateButton ( 0.85, 0.10, 0.13, 0.04, "Details", true, aTab4.Tab )
-		aTab4.Unban			= guiCreateButton ( 0.85, 0.20, 0.13, 0.04, "Unban", true, aTab4.Tab, "unban" )
-		aTab4.UnbanIP		= guiCreateButton ( 0.85, 0.25, 0.13, 0.04, "Unban IP", true, aTab4.Tab, "unbanip" )
-		aTab4.UnbanSerial		= guiCreateButton ( 0.85, 0.30, 0.13, 0.04, "Unban Serial", true, aTab4.Tab, "unbanserial" )
-		aTab4.BanIP			= guiCreateButton ( 0.85, 0.40, 0.13, 0.04, "Ban IP", true, aTab4.Tab, "banip" )
-		aTab4.BanSerial		= guiCreateButton ( 0.85, 0.45, 0.13, 0.04, "Ban Serial", true, aTab4.Tab, "banserial" )
-		aTab4.BansRefresh		= guiCreateButton ( 0.85, 0.85, 0.13, 0.04, "Refresh", true, aTab4.Tab, "listbans" )
-		aTab4.BansTotal		= guiCreateLabel ( 0.20, 0.94, 0.31, 0.04, "Showing  0 / 0  bans", true, aTab4.Tab )
-		aTab4.BansMore		= guiCreateButton ( 0.50, 0.94, 0.13, 0.04, "Get more...", true, aTab4.Tab, "listbans" )
-
-		aTab5 = {}
-		aTab5.Tab			= guiCreateTab ( "Admin Chat", aTabPanel, "adminchat" )
-		aTab5.AdminChat		= guiCreateMemo ( 0.03, 0.05, 0.75, 0.85, "", true, aTab5.Tab )
-						  guiSetProperty ( aTab5.AdminChat, "ReadOnly", "true" )
-		aTab5.AdminPlayers	= guiCreateGridList ( 0.79, 0.05, 0.18, 0.80, true, aTab5.Tab )
-						  guiGridListAddColumn ( aTab5.AdminPlayers, "Admins", 0.90 )
-		aTab5.AdminChatSound	= guiCreateCheckBox ( 0.79, 0.86, 0.18, 0.04, "Play Sound", true, true, aTab5.Tab )
-		aTab5.AdminText		= guiCreateEdit ( 0.03, 0.92, 0.80, 0.06, "", true, aTab5.Tab )
-		aTab5.AdminSay		= guiCreateButton ( 0.85, 0.92, 0.08, 0.06, "Say", true, aTab5.Tab )
-		aTab5.AdminChatHelp	= guiCreateButton ( 0.94, 0.92, 0.03, 0.06, "?", true, aTab5.Tab )
-
 		aTab6 = {}
-		aTab6.Tab			= guiCreateTab ( "Options", aTabPanel )
+		aTab6.Tab			= guiCreateTab ( "Опции", aTabPanel )
 						  guiCreateHeader ( 0.03, 0.05, 0.10, 0.05, "Main:", true, aTab6.Tab )
 		aTab6.OutputPlayer	= guiCreateCheckBox ( 0.05, 0.10, 0.47, 0.04, "Output player information to console on select", false, true, aTab6.Tab )
 						  guiCreateLabel ( 0.08, 0.15, 0.40, 0.04, "This might be useful to copy player data", true, aTab6.Tab )
@@ -507,7 +511,7 @@ function aAdminRefresh ()
 			guiSetText ( aTab1.Ping, "Ping: "..getPlayerPing ( player ) )
 			guiSetText ( aTab1.Money, "Money: "..( aPlayers[player]["money"] or 0 ) )
 			if ( getElementDimension ( player ) ) then guiSetText ( aTab1.Dimension, "Dimension: "..getElementDimension ( player ) ) end
-			if ( getElementInterior ( player ) ) then guiSetText ( aTab1.Interior, "Interior: "..getElementInterior ( player ) ) end
+			--if ( getElementInterior ( player ) ) then guiSetText ( aTab1.Interior, "Interior: "..getElementInterior ( player ) ) end
 			guiSetText ( aTab1.JetPack, iif ( isPedWearingJetpack ( player ), "Remove JetPack", "Give JetPack" ) )
 			if ( getPedWeapon ( player ) ) then guiSetText ( aTab1.Weapon, "Weapon: "..getWeaponNameFromID ( getPedWeapon ( player ) ).." (ID: "..getPedWeapon ( player )..")" ) end
 			
@@ -637,13 +641,14 @@ function aClientSync ( type, table, data )
 				guiGridListSetItemText ( aTab4.BansList, row, 7, unban, false, false )
 			end
 		end
+		--[[
 	elseif ( type == "messages" ) then
 		local prev = tonumber ( string.sub ( guiGetText ( aTab1.Messages ), 1, 1 ) )
 		if ( prev < table["unread"] ) then
 			playSoundFrontEnd ( 18 )
 		end
 		guiSetText ( aTab1.Messages, table["unread"].."/"..table["total"].." unread messages" )
-
+		]]
 
 	elseif ( type == "bansearch" ) then
 				g_GotLatestBansList = true
@@ -733,6 +738,7 @@ function aClientGUITabSwitched( selectedTab )
 					triggerServerEvent ( "aSync", localPlayer, "resources" )
 				end
 			end
+		--[[
 		elseif selectedTab == aTabMap.Tab then
 			-- Handle initial update of map list
 			if guiGridListGetRowCount( aTabMap.MapList ) == 0 then
@@ -740,6 +746,7 @@ function aClientGUITabSwitched( selectedTab )
 					triggerServerEvent ( "getMaps_s", localPlayer, localPlayer, true )
 				end
 			end
+		]]
 		elseif selectedTab == aTab4.Tab then
 			if not g_GotLatestBansList then
 				-- Request full bans list if bans tab is selected and current list is out of date
@@ -987,8 +994,8 @@ function aClientClick ( button )
 		if ( getElementParent ( source ) == aTab1.Tab ) then
 			if ( source == aTab1.Messages ) then
 				aViewMessages()
-			elseif ( source == aTab1.ScreenShots ) then
-				aPlayerScreenShot()
+			--elseif ( source == aTab1.ScreenShots ) then
+				--aPlayerScreenShot()
 			--elseif ( source == aTab1.PlayerListSearch ) then
 
 			elseif ( source == aTab1.HideColorCodes ) then
@@ -1256,32 +1263,32 @@ function aAdminReloadInfos()
 			--guiSetText ( aTab1.Version, "Version: " .. ( aPlayers[player]["version"] or "" ) )
 		end
 	else
-		guiSetText ( aTab1.Name, "Name: N/A" )
-		guiSetText ( aTab1.IP, "IP: N/A" )
-		guiSetText ( aTab1.Serial, "Serial: N/A" )
+		guiSetText ( aTab1.Name, "Name: -" )
+		guiSetText ( aTab1.IP, "IP: -" )
+		guiSetText ( aTab1.Serial, "Serial: -" )
 		--guiSetText ( aTab1.Username, "Community Username: N/A" )
 --		guiSetText ( aTab1.Version, "Version: N/A" )
---		guiSetText ( aTab1.Accountname, "Account Name: N/A" )
-		guiSetText ( aTab1.Groups, "Groups: N/A" )
+		guiSetText ( aTab1.Accountname, "Account Name: -" )
+		guiSetText ( aTab1.Groups, "Groups: -" )
 --		guiSetText ( aTab1.ACDetected, "AC Detected: N/A" )
 --		guiSetText ( aTab1.ACD3D, "D3D9.DLL: N/A" )
 --		guiSetText ( aTab1.ACModInfo, "Img Mods: N/A" )
 		guiSetText ( aTab1.Mute, "Mute" )
 		guiSetText ( aTab1.Freeze, "Freeze" )
-		guiSetText ( aTab1.Health, "Health: 0%" )
-		guiSetText ( aTab1.Armour, "Armour: 0%" )
-		guiSetText ( aTab1.Skin, "Skin: N/A" )
+		guiSetText ( aTab1.Health, "Health: -" )
+		guiSetText ( aTab1.Armour, "Armour: -" )
+		guiSetText ( aTab1.Skin, "Skin: -" )
 --		guiSetText ( aTab1.Team, "Team: None" )
-		guiSetText ( aTab1.Ping, "Ping: 0" )
-		guiSetText ( aTab1.Money, "Money: 0" )
-		guiSetText ( aTab1.Dimension, "Dimension: 0" )
-		guiSetText ( aTab1.Interior, "Interior: 0" )
+		guiSetText ( aTab1.Ping, "Ping: -" )
+		guiSetText ( aTab1.Money, "Money: -" )
+		guiSetText ( aTab1.Dimension, "Dimension: -" )
+		--guiSetText ( aTab1.Interior, "Interior: -" )
 		guiSetText ( aTab1.JetPack, "Give JetPack" )
-		guiSetText ( aTab1.Weapon, "Weapon: N/A" )
+		guiSetText ( aTab1.Weapon, "Weapon: -" )
 		guiSetText ( aTab1.Area, "Area: Unknown" )
-		guiSetText ( aTab1.Position, "Position: 0, 0, 0" )
-		guiSetText ( aTab1.Vehicle, "Vehicle: N/A" )
-		guiSetText ( aTab1.VehicleHealth, "Vehicle Health: 0%" )
+		guiSetText ( aTab1.Position, "Position: -" )
+		guiSetText ( aTab1.Vehicle, "Vehicle: -" )
+		guiSetText ( aTab1.VehicleHealth, "Vehicle Health: -" )
 		guiStaticImageLoadImage ( aTab1.Flag, "client\\images\\empty.png" )
 		guiSetText ( aTab1.CountryCode, "" )
 	end

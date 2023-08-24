@@ -80,7 +80,7 @@ wizard[3] = function()
 		g_wizardCR,g_inWizard = nil,nil
 	end
 
-
+--[[
 addCommandHandler ( "adminwizard",
 	function(source)
 		if source ~= g_console then return end
@@ -93,3 +93,4 @@ addCommandHandler ( "adminwizard",
 		g_wizardCR()
 	end
 )
+]]

@@ -7,7 +7,7 @@
 *	Original File by eXo|Flobu
 *
 **************************************]]
-
+--[[
 aGamemodeMapTable = {}
 
 function createMapTab()
@@ -181,3 +181,4 @@ addEventHandler("deleteRevertMap_c", localPlayer,
 		end
 	end
 )
+]]

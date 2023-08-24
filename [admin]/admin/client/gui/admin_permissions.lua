@@ -7,6 +7,7 @@
 *	Original File by lil_Toady
 *
 **************************************]]
+
 aPermissions = {
     Form = nil,
     SelectedPlayer = nil,

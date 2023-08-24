@@ -7,7 +7,7 @@
 *	Original File by lil_Toady
 *
 **************************************]]
-
+--[[
 aReportForm = nil
 local reportCategories
 local aSelectPlayer = nil
@@ -171,3 +171,4 @@ function aClientReportClick ( button )
 		end
 	end
 end
+]]
