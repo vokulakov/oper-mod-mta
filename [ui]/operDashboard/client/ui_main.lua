@@ -184,8 +184,11 @@ addEventHandler("onClientGUIClick", root, function()
 		exports.operPlayerVoice:setWndVisible(not isVisible)
 		--triggerEvent("", localPlayer)
 		--Dashboard.activeWindow = Dashboard.showWalkingStyleWindow()
+	
+	elseif source == Dashboard.plWindow['btn_help'] then -- окно помощи
+		Dashboard.activeWindowShow(Help.Window.wnd)
+		Help.Window.setVisible()
 	end
-
 
 end)
 
