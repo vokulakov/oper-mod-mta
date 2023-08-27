@@ -34,36 +34,43 @@ Dashboard.plWindow['btn_walkstyle']:setData('operSounds.UI', 'ui_select')
 Dashboard.plWindow['btn_tp'] = guiCreateButton(posX, posY+95, 205, 25, "Телепортироваться к игроку", false, Dashboard.wnd)
 guiSetFont(Dashboard.plWindow['btn_tp'], "default-bold-small")
 --guiSetEnabled(Dashboard.plWindow['btn_tp'], false)
+Dashboard.plWindow['btn_tp']:setData('operSounds.UI', 'ui_select')
 --
 Dashboard.plWindow['btn_map'] = guiCreateButton(posX, posY+125, 60, 25, "Карта", false, Dashboard.wnd)
 guiSetFont(Dashboard.plWindow['btn_map'], "default-bold-small")
 --guiSetEnabled(Dashboard.plWindow['btn_map'], false)
+Dashboard.plWindow['btn_map']:setData('operSounds.UI', 'ui_select')
 --
 Dashboard.plWindow['btn_location'] = guiCreateButton(posX+65, posY+125, 140, 25, "Значимые места", false, Dashboard.wnd)
 guiSetFont(Dashboard.plWindow['btn_location'], "default-bold-small")
 guiSetEnabled(Dashboard.plWindow['btn_location'], false)
+Dashboard.plWindow['btn_location']:setData('operSounds.UI', 'ui_select')
 --
 Dashboard.plWindow['btn_anim'] = guiCreateButton(posX, posY+155, 110, 25, "Анимации", false, Dashboard.wnd)
 guiSetFont(Dashboard.plWindow['btn_anim'], "default-bold-small")
 --guiSetEnabled(Dashboard.plWindow['btn_anim'], false)
+Dashboard.plWindow['btn_anim']:setData('operSounds.UI', 'ui_select')
 --
 Dashboard.plWindow['btn_photo'] = guiCreateButton(posX+115, posY+155, 90, 25, "Фото режим", false, Dashboard.wnd)
 guiSetFont(Dashboard.plWindow['btn_photo'], "default-bold-small")
 guiSetProperty(Dashboard.plWindow['btn_photo'], "NormalTextColour", "FF21b1ff")
 --guiSetEnabled(Dashboard.plWindow['btn_photo'], false)
+Dashboard.plWindow['btn_photo']:setData('operSounds.UI', 'ui_select')
 --
 Dashboard.plWindow['btn_sound'] = guiCreateButton(posX, posY+185, 205, 25, "Звуковые фрагменты", false, Dashboard.wnd)
 guiSetFont(Dashboard.plWindow['btn_sound'], "default-bold-small")
+Dashboard.plWindow['btn_sound']:setData('operSounds.UI', 'ui_select')
 --
 Dashboard.plWindow['btn_dead'] = guiCreateButton(posX, posY+405, 205, 25, "Респавн", false, Dashboard.wnd)
 guiSetFont(Dashboard.plWindow['btn_dead'], "default-bold-small")
 guiSetProperty(Dashboard.plWindow['btn_dead'], "NormalTextColour", "fff01a21")
-
+Dashboard.plWindow['btn_dead']:setData('operSounds.UI', 'ui_select')
 --
 Dashboard.plWindow['btn_help'] = guiCreateButton(posX, posY+435, 205, 25, "Нужна помощь?", false, Dashboard.wnd)
 guiSetFont(Dashboard.plWindow['btn_help'], "default-bold-small")
 guiSetProperty(Dashboard.plWindow['btn_help'], "NormalTextColour", "FFFF7800")
-guiSetEnabled(Dashboard.plWindow['btn_help'], false)
+Dashboard.plWindow['btn_help']:setData('operSounds.UI', 'ui_select')
+--guiSetEnabled(Dashboard.plWindow['btn_help'], false)
 -- ОПЦИИ --
 
 --

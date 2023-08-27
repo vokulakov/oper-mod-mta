@@ -13,6 +13,7 @@ local FUEL_FONT = dxCreateFont("assets/AEROMATICS_ITALIC.ttf", 15)
 local FUEL_TEXT_FONT = dxCreateFont("assets/AEROMATICS_ITALIC.ttf", 8)
 
 local alpha = 255
+local engine_alpha = 255
 local side = true
 local pulsing = true
 
