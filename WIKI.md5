@@ -1,0 +1,1 @@
+localPlayer:getData('player.isVehicle') -- свой транспорт

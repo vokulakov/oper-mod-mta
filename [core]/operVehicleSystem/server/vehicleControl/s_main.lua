@@ -1,5 +1,5 @@
 local function playerBindKey(plr)
-	--bindKey(plr, "k", "down", doToggleLocked) -- закрытие дверей
+	bindKey(plr, "k", "down", doToggleLocked) -- закрытие дверей
 	bindKey(plr, "1", "down", doToggleLights) -- фары
 	bindKey(plr, "2", "down", doToggleEngine) -- двигатель
 	bindKey(plr, "3", "down", doToggleLightsFlash) -- мигание фарами
@@ -18,7 +18,12 @@ end)
 
 function doToggleLocked(player)
 	local veh = getPedOccupiedVehicle(player)
-	if not veh or getPedOccupiedVehicleSeat(player) ~= 0 then return end
+	if not veh or getPedOccupiedVehicleSeat(player) ~= 0 then
+		veh = player:getData('player.isVehicle')
+		if not isElement(veh) then 
+			return
+		end
+	end
 
 	if isVehicleLocked(veh) then
         setVehicleLocked(veh, false) 
@@ -28,6 +33,23 @@ function doToggleLocked(player)
 
     triggerClientEvent(player, 'operVehicleSystem.doToggleLocked', player)
 end
+
+addEventHandler("onVehicleStartExit", root, function(player, seat)
+	if isVehicleLocked(source) then 
+
+		triggerClientEvent(
+			player, 
+			'operNotification.addNotification', 
+			player, 
+			"Откройте двери!\nНажмите клавишу 'K'", 
+			2, 
+			true
+		)
+
+		cancelEvent() 
+		return
+	end -- если двери заблокированы, то игрок не сможет выйти!
+end)
 
 function doToggleEngine(player)
 	local veh = getPedOccupiedVehicle(player)
