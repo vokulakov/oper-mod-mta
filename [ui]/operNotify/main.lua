@@ -89,10 +89,6 @@ addEventHandler("operNotification.addNotification", root, addNotification)
 --addNotification('Вы успешно создали транспорт!', 1, true)
 --addNotification('Тестовое уведомление!\nДобро пожаловать на Queen MTA.\nПриятной игры!', 1, true)
 
-
-
-
-
 local sW, sH = guiGetScreenSize()
 
 Control = {}
@@ -113,6 +109,7 @@ local plControl = {
 	{'T', 'Сообщение в чат'},
 
 	{'F11', 'Карта'},
+	{'F9', 'Помощь'},
 	{'F6', 'Настройки игры'},
 	{'F4', 'Скрыть интерфейс'},
 	{'F1', 'Главное меню'},
@@ -121,7 +118,6 @@ local plControl = {
 local offset = 30
 local width, height 
 local posX, posY 
-
 
 local function drawHelpControl()
 	if not Control.isVisible then
@@ -160,9 +156,8 @@ local function drawHelpControl()
 		prev = prev + offset
 	end
 
-	dxDrawText("Скрыть/показать окно помощи 'F5'", posX+5, posY-20, width, 20, tocolor(255, 255, 255, 100), 1, FONTS['HELP'])
+	dxDrawText("Скрыть/показать подсказки управления 'F5'", posX+5, posY-20, width, 20, tocolor(255, 255, 255, 100), 1, FONTS['HELP'])
 end
-
 addEventHandler("onClientRender", root, drawHelpControl)
 
 addEventHandler('onClientResourceStart', resourceRoot, function()
@@ -193,18 +188,13 @@ end
 
 -- VEHICLES --
 local vehControl = {
-	{'[, ]', 'Поворотники'},
-	{'C', 'Круиз-контроль'},
-	{'H', 'Гудок'},
-	{'U', 'Вид от первого лица'},
-	{'G', 'Стробоскопы'},
 	{'1', 'Фары'},
 	{'2', 'Двигатель'},
-	{'3', 'Моргание фарами'},
 	{'B', 'Чип-тюнинг'},
 	{'0', 'Музыка'},
 	{'F3', 'Тюнинг транспортного средства'},
 	{'F2', 'Меню управления транспортом'},
+	{'F9', 'Помощь по управлению'},
 }
 
 function Control.onClientVehicle(state)
