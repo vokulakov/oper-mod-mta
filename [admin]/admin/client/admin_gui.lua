@@ -14,7 +14,7 @@ local lists = {}
 function guiCreateHeader ( x, y, w, h, text, relative, parent )
 	local header = guiCreateLabel ( x, y, w, h, text, relative, parent )
 	if ( header ) then
-		guiLabelSetColor ( header, 255, 0, 0 )
+		guiLabelSetColor ( header, 33, 177, 255 )
 		guiSetFont ( header, "default-bold-small" )
 		return header
 	end
