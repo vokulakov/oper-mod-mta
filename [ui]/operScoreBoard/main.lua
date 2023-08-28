@@ -90,8 +90,11 @@ local function getPlayerStatus(player)
 	end
 	
 	local playerPrefix = player:getData("player.prefix")
+	if playerPrefix and playerPrefix.prefix then
+		return playerPrefix.prefix
+	end 
 
-	return playerPrefix.prefix or "Игрок"
+	return "Игрок"
 end
 
 local function getPlayerPlaytime(player) 
