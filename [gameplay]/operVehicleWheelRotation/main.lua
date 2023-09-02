@@ -1,6 +1,6 @@
 local vehicles = { }
 
-addEventHandler('onClientRender', root, function()
+addEventHandler("onClientPedsProcessed", root, function()
 	for vehicle, wheelsData in pairs(vehicles) do
 		if not vehicle then return end
 		local r_wrx, r_wry, r_wrz = getVehicleComponentRotation(vehicle, 'wheel_rf_dummy')
@@ -9,7 +9,7 @@ addEventHandler('onClientRender', root, function()
 			setVehicleComponentRotation(vehicle, 'wheel_lf_dummy', wheelsData[4], wheelsData[5], wheelsData[6])
 		end
 	end
-end)
+ end)
 
 addEventHandler("onClientVehicleStartExit", root, function(player, seat)
 	if seat ~= 0 then return end
