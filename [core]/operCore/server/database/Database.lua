@@ -64,3 +64,7 @@ function Database.createTable(table)
 
 	return result
 end
+
+-- Exports
+getConnection = Database.getConnection
+createTable = Database.createTable

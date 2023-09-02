@@ -17,4 +17,9 @@
 
 
 	<script type="server" src="server/main.lua" />
+
+	<!-- Exports -->
+	<export type="server" function="getConnection" />
+	<export type="server" function="createTable" />
+
 </meta>
