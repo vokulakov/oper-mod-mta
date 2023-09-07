@@ -106,6 +106,10 @@ local function getPlayerPlaytime(player)
 	return math.floor(playtime/60)..' часов'
 end
 
+local function hexencode(str)
+   return (str:gsub(".", function(char) return string.format("%02x", char:byte()) end))
+end
+
 local function startScoreBoard()
 	triggerEvent('operShowUI.drawBlurShader', localPlayer, true) -- включаем размытие
 	addEventHandler("onClientRender", root, drawScoreBoard)
@@ -119,7 +123,7 @@ local function startScoreBoard()
 		end
 		table.insert(playersList, {
 			isLocalPlayer = isLocalPlayer,
-			status = getPlayerStatus(player),
+			status = getPlayerStatus(player):gsub("#%x%x%x%x%x%x", ""),
 			name = player:getName():gsub("#%x%x%x%x%x%x", ""),
 			playtime = getPlayerPlaytime(player),
 			player = player 
