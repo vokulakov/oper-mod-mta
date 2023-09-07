@@ -24,6 +24,7 @@ startupResources = { -- загружаемые ресурсы
 	"operBoneAttach",
 	"operVehicleSystem",
 	"operVehicleHandling",
+	"operTradeMC",
 
 	-- [GAMEPLAY] --
 	"defaultstats",
