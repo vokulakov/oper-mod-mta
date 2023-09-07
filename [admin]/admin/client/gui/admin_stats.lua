@@ -64,7 +64,7 @@ function aPlayerStats ( player )
 end
 
 function aPlayerStatsClose ( destroy )
-	if ( ( destroy ) or ( guiCheckBoxGetSelected ( aPerformanceStats ) ) ) then
+	if ( ( destroy ) --[[or ( guiCheckBoxGetSelected ( aPerformanceStats ) )]] ) then
 		if ( aStatsForm ) then
 			removeEventHandler ( "onClientGUIClick", aStatsForm, aClientStatsClick )
 			removeEventHandler ( "onClientGUIChanged", aStatsForm, aClientStatsChanged )

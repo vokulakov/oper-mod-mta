@@ -18,11 +18,11 @@ aSkinSelect = nil
 function aPlayerSkin ( player )
 	if ( aSkinForm == nil ) then
 		local x, y = guiGetScreenSize()
-		aSkinForm		= guiCreateWindow ( x / 2 - 140, y / 2 - 125, 280, 250, "Player Skin Select", false )
-		aSkinLabel		= guiCreateLabel ( 0.03, 0.09, 0.94, 0.07, "Select a skin from the list or enter the id", true, aSkinForm )
+		aSkinForm		= guiCreateWindow ( x / 2 - 140, y / 2 - 125, 280, 250, "Установить скин", false )
+		aSkinLabel		= guiCreateLabel ( 0.03, 0.09, 0.94, 0.07, "Выберите скин из списка или введите id", true, aSkinForm )
 					  guiLabelSetHorizontalAlign ( aSkinLabel, "center" )
 					  guiLabelSetColor ( aSkinLabel, 255, 0, 0 )
-		aSkinGroups		= guiCreateCheckBox ( 0.03, 0.90, 0.70, 0.09, "Sort by groups", false, true, aSkinForm )
+		aSkinGroups		= guiCreateCheckBox ( 0.03, 0.90, 0.70, 0.09, "Сортировать по группам", false, true, aSkinForm )
 					   if ( aGetSetting ( "skinsGroup" ) ) then guiCheckBoxSetSelected ( aSkinGroups, true ) end
 		aSkinList		= guiCreateGridList ( 0.03, 0.18, 0.70, 0.71, true, aSkinForm )
 					  guiGridListAddColumn( aSkinList, "ID", 0.20 )
@@ -32,8 +32,8 @@ function aPlayerSkin ( player )
 
 		aSkinID			= guiCreateEdit ( 0.75, 0.18, 0.27, 0.09, "0", true, aSkinForm )
 					  guiEditSetMaxLength ( aSkinID, 3 )
-		aSkinAccept		= guiCreateButton ( 0.75, 0.28, 0.27, 0.09, "Select", true, aSkinForm, "setskin" )
-		aSkinCancel		= guiCreateButton ( 0.75, 0.88, 0.27, 0.09, "Cancel", true, aSkinForm )
+		aSkinAccept		= guiCreateButton ( 0.75, 0.28, 0.27, 0.09, "Установить", true, aSkinForm, "setskin" )
+		aSkinCancel		= guiCreateButton ( 0.75, 0.88, 0.27, 0.09, "Закрыть", true, aSkinForm )
 		addEventHandler ( "onClientGUIClick", aSkinForm, aClientSkinClick )
 		addEventHandler ( "onClientGUIDoubleClick", aSkinForm, aClientSkinDoubleClick )
 		--Register With Admin Form
@@ -45,7 +45,7 @@ function aPlayerSkin ( player )
 end
 
 function aPlayerSkinClose ( destroy )
-	if ( ( destroy ) or ( guiCheckBoxGetSelected ( aPerformanceSkin ) ) ) then
+	if ( ( destroy ) --[[or ( guiCheckBoxGetSelected ( aPerformanceSkin ) )]] ) then
 		if ( aSkinForm ) then
 			removeEventHandler ( "onClientGUIClick", aSkinForm, aClientSkinClick )
 			removeEventHandler ( "onClientGUIDoubleClick", aSkinForm, aClientSkinDoubleClick )
