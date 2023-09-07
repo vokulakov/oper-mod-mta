@@ -39,12 +39,12 @@ function aAdminMenu ()
 		aTab1.Tab			= guiCreateTab ( "Главное меню", aTabPanel, "players" )
 		--aTab1.Messages		= guiCreateButton ( 0.71, 0.02, 0.27, 0.04, "0/0 unread messages", true, aTab1.Tab )
 		--aTab1.ScreenShots		= guiCreateButton ( 0.71, 0.065, 0.27, 0.04, "screenshots", true, aTab1.Tab )
-		aTab1.PlayerListSearch 	= guiCreateEdit ( 0.01, 0.03, 0.28, 0.05, "Поиск игрока..", true, aTab1.Tab )
+		aTab1.PlayerListSearch 	= guiCreateEdit ( 0.01, 0.03, 0.28, 0.05, "Поиск игрока...", true, aTab1.Tab )
 		guiSetAlpha(aTab1.PlayerListSearch, 0.6)
 						  --guiCreateStaticImage ( 0.19, 0.05, 0.035, 0.04, "client\\images\\search.png", true, aTab1.Tab )
 		aTab1.HideColorCodes= guiCreateCheckBox ( 0.01, 0.94, 0.30, 0.04, "Скрыть цвет-коды ников", false, true, aTab1.Tab )
 		guiSetFont(aTab1.HideColorCodes, "default-bold-small")
-		aTab1.HideColorCodes:setData('operSounds.UI', 'ui_select')
+		aTab1.HideColorCodes:setData('operSounds.UI', 'ui_change')
 		--aTab1.HideSensitiveData= guiCreateCheckBox ( 0.25, 0.94, 0.23, 0.04, "Hide sensitive data", false, true, aTab1.Tab )
 
 		aTab1.PlayerList		= guiCreateGridList ( 0.01, 0.10, 0.28, 0.83, true, aTab1.Tab )
@@ -57,34 +57,38 @@ function aAdminMenu ()
 		end
 		--------------------
 
-		aTab1.Kick			= guiCreateButton(0.75, 0.03, 0.24, 0.06, "Выгнать с сервера", true, aTab1.Tab, "kick")
+		aTab1.Kick			= guiCreateButton(0.75, 0.03, 0.13, 0.055, "КИК", true, aTab1.Tab, "kick")
 		guiSetFont(aTab1.Kick, "default-bold-small")
 		guiSetProperty(aTab1.Kick, "NormalTextColour", "ff21b1ff")
 		aTab1.Kick:setData('operSounds.UI', 'ui_select')
 
-		aTab1.Ban			= guiCreateButton(0.75, 0.1, 0.24, 0.06, "Выдать БАН", true, aTab1.Tab, "ban")
+		aTab1.Ban			= guiCreateButton(0.89, 0.03, 0.1, 0.055, "БАН", true, aTab1.Tab, "ban")
 		guiSetFont(aTab1.Ban, "default-bold-small")
 		guiSetProperty(aTab1.Ban, "NormalTextColour", "fff01a21")
 		aTab1.Ban:setData('operSounds.UI', 'ui_select')
 
-		aTab1.Mute			= guiCreateButton(0.75, 0.170, 0.12, 0.055, "Заткнуть", true, aTab1.Tab, "mute")
+		aTab1.Mute			= guiCreateButton(0.75, 0.095, 0.1, 0.05, "Мут", true, aTab1.Tab, "mute")
 		guiSetFont(aTab1.Ban, "default-bold-small")
 		--guiSetProperty(aTab1.Ban, "NormalTextColour", "fff01a21")
 		aTab1.Ban:setData('operSounds.UI', 'ui_select')
 
-		aTab1.Freeze		= guiCreateButton(0.85, 0.170, 0.12, 0.055, "Заморозить", true, aTab1.Tab, "freeze")
+		aTab1.Freeze		= guiCreateButton(0.86, 0.095, 0.13, 0.05, "Заморозить", true, aTab1.Tab, "freeze")
 		guiSetFont(aTab1.Freeze, "default-bold-small")
 		--guiSetProperty(aTab1.Freeze, "NormalTextColour", "fff01a21")
 		aTab1.Freeze:setData('operSounds.UI', 'ui_select')
 
-		aTab1.Spectate		= guiCreateButton(0.75, 0.25, 0.13, 0.055, "Наблюдать", true, aTab1.Tab, "spectate")
+		aTab1.Spectate		= guiCreateButton(0.75, 0.155, 0.13, 0.05, "Следить", true, aTab1.Tab, "spectate")
 		guiSetFont(aTab1.Spectate, "default-bold-small")
 		--guiSetProperty(aTab1.Spectate, "NormalTextColour", "fff01a21")
 		aTab1.Spectate:setData('operSounds.UI', 'ui_select')
 
-		aTab1.Slap		= guiCreateList(0.85, 0.25, 0.13, 0.055, 0.40, "Пнуть "..aCurrentSlap..'  _', true, aTab1.Tab, "slap")
+		aTab1.Shout			= guiCreateButton (0.89, 0.155, 0.1, 0.05, "Сказать", true, aTab1.Tab, "shout" )
+		guiSetFont(aTab1.Shout, "default-bold-small")
+		aTab1.Shout:setData('operSounds.UI', 'ui_select')
+
+		aTab1.Slap		= guiCreateList(0.75, 0.215, 0.24, 0.05, 0.40, "Пнуть ("..aCurrentSlap.." HP)", true, aTab1.Tab, "slap")
 		guiSetFont(aTab1.Slap, "default-bold-small")
-		--guiSetProperty(aTab1.Slap, "NormalTextColour", "fff01a21")
+		guiSetProperty(aTab1.Slap, "NormalTextColour", "fff01a21")
 		aTab1.Slap:setData('operSounds.UI', 'ui_select')
 
 		local slaps = {}
@@ -98,18 +102,15 @@ function aAdminMenu ()
 			local slap = tonumber(selectedData)
 			if slap then
 				aCurrentSlap = slap
-				guiSetText(aTab1.Slap, "Slap! "..slap..'  _')
+				guiSetText(aTab1.Slap, "Пнуть ("..slap.." HP)") 
 				if (aSpectator.Slap) then
-					guiSetText(aSpectator.Slap, "Slap! "..slap.."hp")
+					guiSetText(aSpectator.Slap, "Пнуть ("..slap.." HP)")
 				end
 			end
 		end)
 
 		--aTab1.Nick			= guiCreateButton ( 0.71, 0.260, 0.13, 0.04, "Set Nick", true, aTab1.Tab )
-		aTab1.Shout			= guiCreateButton ( 0.72, 0.35, 0.26, 0.05, "Сказать (текст на экран)", true, aTab1.Tab, "shout" )
-		guiSetFont(aTab1.Shout, "default-bold-small")
-		--guiSetProperty(aTab1.Shout, "NormalTextColour", "fff01a21")
-		aTab1.Shout:setData('operSounds.UI', 'ui_select')
+
 		--aTab1.ManagePerms   = guiCreateButton ( 0.71, 0.305, 0.27, 0.04, "Manage permissions", true, aTab1.Tab, "setgroup" )
 
 		local y = 0.03		-- Start y coord
@@ -118,6 +119,7 @@ function aAdminMenu ()
 
 						     guiCreateHeader ( 0.3, y, 0.30, 0.04, "Информация об аккаунте:", true, aTab1.Tab )
 y=y+A   aTab1.IP			= guiCreateLabel ( 0.31, y, 0.30, 0.035, "IP-адрес: -", true, aTab1.Tab )
+y=y+B   aTab1.Ping			= guiCreateLabel ( 0.31, y, 0.20, 0.04, "Ping: 0", true, aTab1.Tab )
 		aTab1.CountryCode	= guiCreateLabel ( 0.45, y, 0.04, 0.035, "", true, aTab1.Tab )
 		aTab1.Flag	  = guiCreateStaticImage ( 0.40, y, 0.025806, 0.021154, "client\\images\\empty.png", true, aTab1.Tab )
 y=y+A   aTab1.Serial		= guiCreateLabel ( 0.31, y, 0.435, 0.035, "Серийный: -", true, aTab1.Tab )
@@ -130,33 +132,56 @@ y=y+B   aTab1.Groups		= guiCreateLabel ( 0.31, y, 0.435, 0.035, "Группа: -
 --y=y+B   aTab1.ACModInfo		= guiCreateLabel ( 0.26, y, 0.20, 0.035, "Img Mods: N/A", true, aTab1.Tab )
 --		aTab1.ACModDetails = guiCreateButton ( 0.46, y, 0.13, 0.04, "Details", true, aTab1.Tab )
 
-
+		
 		B = 0.040
+		y=y+A
 y=y+A  				         guiCreateHeader ( 0.3, y, 0.20, 0.04, "Информация об игроке:", true, aTab1.Tab )
 y=y+A   aTab1.Name			= guiCreateLabel ( 0.31, y, 0.435, 0.035, "Никнейм: -", true, aTab1.Tab )
-y=y+A   aTab1.Health		= guiCreateLabel ( 0.26, y, 0.20, 0.04, "Health: -", true, aTab1.Tab )
-		aTab1.Armour		= guiCreateLabel ( 0.45, y, 0.20, 0.04, "Armour: -", true, aTab1.Tab )
-y=y+B   aTab1.Skin			= guiCreateLabel ( 0.26, y, 0.20, 0.04, "Skin: -", true, aTab1.Tab )
+y=y+A   aTab1.Health		= guiCreateLabel ( 0.31, y, 0.20, 0.04, "Здоровье: -", true, aTab1.Tab )
+y=y+A		aTab1.Armour		= guiCreateLabel ( 0.31, y, 0.20, 0.04, "Броня: -", true, aTab1.Tab )
+y=y+B   aTab1.Skin			= guiCreateLabel ( 0.31, y, 0.20, 0.04, "Скин: -", true, aTab1.Tab )
 		--aTab1.Team			= guiCreateLabel ( 0.45, y, 0.20, 0.04, "Team: None", true, aTab1.Tab )
-y=y+B   aTab1.Weapon		= guiCreateLabel ( 0.26, y, 0.35, 0.04, "Weapon: -", true, aTab1.Tab )
-y=y+B   aTab1.Ping			= guiCreateLabel ( 0.26, y, 0.20, 0.04, "Ping: 0", true, aTab1.Tab )
-		aTab1.Money			= guiCreateLabel ( 0.45, y, 0.20, 0.04, "Money: 0", true, aTab1.Tab )
-y=y+B   aTab1.Area			= guiCreateLabel ( 0.26, y, 0.44, 0.04, "Area: -", true, aTab1.Tab )
-y=y+B   aTab1.Position		= guiCreateLabel ( 0.26, y, 0.44, 0.04, "Position: 0, 0, 0", true, aTab1.Tab )
-y=y+B   aTab1.Dimension		= guiCreateLabel ( 0.26, y, 0.20, 0.04, "Dimension: 0", true, aTab1.Tab )
+y=y+B   aTab1.Weapon		= guiCreateLabel ( 0.31, y, 0.35, 0.04, "Оружие: -", true, aTab1.Tab )
+
+y=y+A		aTab1.Money			= guiCreateLabel ( 0.31, y, 0.20, 0.04, "Деньги: 0", true, aTab1.Tab )
+y=y+A
+y=y+B   aTab1.Area			= guiCreateLabel ( 0.31, y, 0.44, 0.04, "Локация: -", true, aTab1.Tab )
+y=y+B   aTab1.Position		= guiCreateLabel ( 0.31, y, 0.44, 0.04, "Местоположение: 0, 0, 0", true, aTab1.Tab )
+y=y+B   aTab1.Dimension		= guiCreateLabel ( 0.31, y, 0.20, 0.04, "Измерение: 0", true, aTab1.Tab )
 		--aTab1.Interior		= guiCreateLabel ( 0.45, y, 0.20, 0.04, "Interior: 0", true, aTab1.Tab )
 
+		y=y+A
 y=y+A  				         guiCreateHeader ( 0.3, y, 0.30, 0.04, "Информация о транспорте:", true, aTab1.Tab )
-y=y+A  aTab1.Vehicle		= guiCreateLabel ( 0.26, y, 0.35, 0.04, "Vehicle: -", true, aTab1.Tab )
-y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Health: -", true, aTab1.Tab )
+y=y+A  aTab1.Vehicle		= guiCreateLabel ( 0.31, y, 0.35, 0.04, "Модель: -", true, aTab1.Tab )
+y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.31, y, 0.25, 0.04, "Состояние: -", true, aTab1.Tab )
 
-		aTab1.SetHealth		= guiCreateButton ( 0.71, 0.395, 0.13, 0.04, "Выдать здоровье", true, aTab1.Tab, "sethealth" )
-		aTab1.SetArmour		= guiCreateButton ( 0.85, 0.395, 0.13, 0.04, "Выдать броню", true, aTab1.Tab, "setarmour" )
-		aTab1.SetSkin		= guiCreateButton ( 0.71, 0.440, 0.13, 0.04, "Установить скин", true, aTab1.Tab, "setskin" )
+		aTab1.SetHealth		= guiCreateButton ( 0.75, 0.32, 0.13, 0.05, "Здоровье", true, aTab1.Tab, "sethealth" )
+		guiSetFont(aTab1.SetHealth, "default-bold-small")
+		guiSetProperty(aTab1.SetHealth, "NormalTextColour", "ff21b1ff")
+		aTab1.SetHealth:setData('operSounds.UI', 'ui_select')
+
+		aTab1.SetArmour		= guiCreateButton ( 0.89, 0.32, 0.1, 0.05, "Броня", true, aTab1.Tab, "setarmour" )
+		guiSetFont(aTab1.SetArmour, "default-bold-small")
+		aTab1.SetArmour:setData('operSounds.UI', 'ui_select')
+
+		aTab1.SetSkin		= guiCreateButton ( 0.75, 0.38, 0.1, 0.05, "Скин", true, aTab1.Tab, "setskin" )
+		guiSetFont(aTab1.SetSkin, "default-bold-small")
+		aTab1.SetSkin:setData('operSounds.UI', 'ui_select')
 		--aTab1.SetTeam		= guiCreateButton ( 0.85, 0.440, 0.13, 0.04, "Set Team", true, aTab1.Tab, "setteam" )
-		aTab1.SetDimension	= guiCreateButton ( 0.71, 0.755, 0.13, 0.04, "Set Dimens.", true, aTab1.Tab, "setdimension" )
+
+		aTab1.SetStats		= guiCreateButton ( 0.86, 0.38, 0.13, 0.05, "Статистика", true, aTab1.Tab, "setstat" )
+		guiSetFont(aTab1.SetStats, "default-bold-small")
+		aTab1.SetStats:setData('operSounds.UI', 'ui_select')
+
+		aTab1.JetPack		= guiCreateButton ( 0.75, 0.44, 0.24, 0.05, "Выдать джетпак", true, aTab1.Tab, "jetpack" )
+		guiSetFont(aTab1.JetPack, "default-bold-small")
+		aTab1.JetPack:setData('operSounds.UI', 'ui_select')
+
 		--aTab1.SetInterior		= guiCreateButton ( 0.85, 0.755, 0.13, 0.04, "Set Interior", true, aTab1.Tab, "setinterior" )
-		aTab1.GiveWeapon		= guiCreateList ( 0.71, 0.485, 0.27, 0.04, 0.48, "Give: "..getWeaponNameFromID ( aCurrentWeapon ), true, aTab1.Tab, "giveweapon" )
+		aTab1.GiveWeapon		= guiCreateList ( 0.75, 0.5, 0.24, 0.05, 0.48, "Выдать: "..getWeaponNameFromID ( aCurrentWeapon ), true, aTab1.Tab, "giveweapon" )
+		guiSetFont(aTab1.GiveWeapon, "default-bold-small")
+		guiSetProperty(aTab1.GiveWeapon, "NormalTextColour", "fff01a21")
+		aTab1.GiveWeapon:setData('operSounds.UI', 'ui_select')
 
 		local weapons = {}
 		for i = 1, 46 do
@@ -182,18 +207,45 @@ y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Heal
 		end)
 
 		
-		aTab1.SetMoney		= guiCreateButton ( 0.71, 0.530, 0.13, 0.04, "Set Money", true, aTab1.Tab, "setmoney" )
-		aTab1.SetStats		= guiCreateButton ( 0.85, 0.530, 0.13, 0.04, "Set Stats", true, aTab1.Tab, "setstat" )
-		aTab1.JetPack		= guiCreateButton ( 0.71, 0.575, 0.27, 0.04, "Выдать джетпак", true, aTab1.Tab, "jetpack" )
-		aTab1.Warp			= guiCreateButton ( 0.71, 0.620, 0.27, 0.04, "ТП к игроку", true, aTab1.Tab, "warp" )
-		aTab1.WarpTo		= guiCreateButton ( 0.71, 0.665, 0.27, 0.04, "ТП игрока к..", true, aTab1.Tab, "warp" )
-		aTab1.VehicleFix		= guiCreateButton ( 0.71, 0.84, 0.13, 0.04, "Fix", true, aTab1.Tab, "repair" )
-		aTab1.VehicleDestroy	= guiCreateButton ( 0.71, 0.89, 0.13, 0.04, "Destroy", true, aTab1.Tab, "destroyvehicle" )
-		aTab1.VehicleBlow		= guiCreateButton ( 0.85, 0.84, 0.13, 0.04, "Blow", true, aTab1.Tab, "blowvehicle" )
-		aTab1.VehicleCustomize 	= guiCreateButton ( 0.85, 0.89, 0.13, 0.04, "Customize", true, aTab1.Tab, "customize" )
+		--aTab1.SetMoney		= guiCreateButton ( 0.71, 0.530, 0.13, 0.04, "Set Money", true, aTab1.Tab, "setmoney" )
+
+		aTab1.Warp			= guiCreateButton ( 0.75, 0.65, 0.24, 0.05, "ТП к...", true, aTab1.Tab, "warp" )
+		guiSetFont(aTab1.Warp, "default-bold-small")
+		aTab1.Warp:setData('operSounds.UI', 'ui_select')
+
+		aTab1.WarpTo		= guiCreateButton ( 0.75, 0.71, 0.24, 0.05, "ТП игрока к...", true, aTab1.Tab, "warp" )
+		guiSetFont(aTab1.WarpTo, "default-bold-small")
+		aTab1.WarpTo:setData('operSounds.UI', 'ui_select')
+
+		aTab1.SetDimension	= guiCreateButton ( 0.75, 0.77, 0.24, 0.05, "Установить измерение", true, aTab1.Tab, "setdimension" )
+		guiSetFont(aTab1.SetDimension, "default-bold-small")
+		aTab1.SetDimension:setData('operSounds.UI', 'ui_select')
+
+		aTab1.VehicleFix		= guiCreateButton ( 0.75, 0.87, 0.13, 0.05, "Починить", true, aTab1.Tab, "repair" )
+		guiSetFont(aTab1.VehicleFix, "default-bold-small")
+		aTab1.VehicleFix:setData('operSounds.UI', 'ui_select')
+		guiSetProperty(aTab1.VehicleFix, "NormalTextColour", "ff21b1ff")
+
+		aTab1.VehicleBlow		= guiCreateButton ( 0.89, 0.87, 0.101, 0.05, "Взорвать", true, aTab1.Tab, "blowvehicle" )
+		guiSetFont(aTab1.VehicleBlow, "default-bold-small")
+		guiSetProperty(aTab1.VehicleBlow, "NormalTextColour", "fff01a21")
+		aTab1.VehicleBlow:setData('operSounds.UI', 'ui_select')
+
+		aTab1.VehicleDestroy	= guiCreateButton ( 0.75, 0.93, 0.1, 0.05, "Убрать", true, aTab1.Tab, "destroyvehicle" )
+		guiSetFont(aTab1.VehicleDestroy, "default-bold-small")
+		guiSetProperty(aTab1.VehicleDestroy, "NormalTextColour", "fff01a21")
+		aTab1.VehicleDestroy:setData('operSounds.UI', 'ui_select')
+
+		aTab1.VehicleCustomize 	= guiCreateButton ( 0.86, 0.93, 0.131, 0.05, "Тюнинг", true, aTab1.Tab, "customize" )
+		aTab1.VehicleCustomize:setData('operSounds.UI', 'ui_select')
+		guiSetFont(aTab1.VehicleCustomize, "default-bold-small")
+
 		--aTab1.AnonAdmin		  = guiCreateCheckBox (0.745, 0.942, 0.20, 0.04, "Anonymous Admin", isAnonAdmin(), true, aTab1.Tab )
-		aTab1.GiveVehicle = guiCreateList(0.71, 0.710, 0.27, 0.04, 0.275, "Выдать: "..getVehicleNameFromModel(aCurrentVehicle), true, aTab1.Tab, 'givevehicle')
-		
+		aTab1.GiveVehicle = guiCreateList(0.75, 0.56, 0.24, 0.05, 0.43, "Выдать: "..getVehicleNameFromModel(aCurrentVehicle), true, aTab1.Tab, 'givevehicle')
+		guiSetFont(aTab1.GiveVehicle, "default-bold-small")
+		guiSetProperty(aTab1.GiveVehicle, "NormalTextColour", "ff21b1ff")
+		aTab1.GiveVehicle:setData('operSounds.UI', 'ui_select')
+
 		local vehicles = {}
 		for i = 400, 611 do
 			local vehName = getVehicleNameFromModel(i)
@@ -210,20 +262,30 @@ y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Heal
 			local modelID = tonumber(selectedData)
 			if modelID then
 				aCurrentVehicle = modelID
-				guiSetText ( aTab1.GiveVehicle, "Give: "..selectedText )
+				guiSetText ( aTab1.GiveVehicle, "Выдать: "..selectedText )
 			end
 		end)
 
 		aTab5 = {}
-		aTab5.Tab			= guiCreateTab ( "Чат админов", aTabPanel, "adminchat" )
-		aTab5.AdminChat		= guiCreateMemo ( 0.03, 0.05, 0.75, 0.85, "", true, aTab5.Tab )
+		aTab5.Tab			= guiCreateTab("Чат админов", aTabPanel, "adminchat")
+		aTab5.AdminChat		= guiCreateMemo(0.01, 0.01, 0.75, 0.9, "", true, aTab5.Tab )
 						  guiSetProperty ( aTab5.AdminChat, "ReadOnly", "true" )
-		aTab5.AdminPlayers	= guiCreateGridList ( 0.79, 0.05, 0.18, 0.80, true, aTab5.Tab )
-						  guiGridListAddColumn ( aTab5.AdminPlayers, "Admins", 0.90 )
-		aTab5.AdminChatSound	= guiCreateCheckBox ( 0.79, 0.86, 0.18, 0.04, "Play Sound", true, true, aTab5.Tab )
-		aTab5.AdminText		= guiCreateEdit ( 0.03, 0.92, 0.80, 0.06, "", true, aTab5.Tab )
-		aTab5.AdminSay		= guiCreateButton ( 0.85, 0.92, 0.08, 0.06, "Say", true, aTab5.Tab )
-		aTab5.AdminChatHelp	= guiCreateButton ( 0.94, 0.92, 0.03, 0.06, "?", true, aTab5.Tab )
+		aTab5.AdminPlayers	= guiCreateGridList ( 0.765, 0.01, 0.225, 0.80, true, aTab5.Tab )
+						  guiGridListAddColumn ( aTab5.AdminPlayers, "Администраторы", 0.85 )
+
+		aTab5.AdminChatSound	= guiCreateCheckBox ( 0.765, 0.82, 0.25, 0.04, "Звуковое уведомление", true, true, aTab5.Tab )
+		aTab5.AdminChatSound:setData('operSounds.UI', 'ui_change')
+		guiSetFont(aTab5.AdminChatSound, "default-bold-small")
+
+		aTab5.AdminText		= guiCreateEdit ( 0.01, 0.92, 0.75, 0.06, "Написать сообщение...", true, aTab5.Tab )
+		guiSetAlpha(aTab5.AdminText, 0.8)
+
+		aTab5.AdminSay		= guiCreateButton(0.765, 0.92, 0.225, 0.06, "Отправить", true, aTab5.Tab )
+		guiSetFont(aTab5.AdminSay, "default-bold-small")
+		guiSetProperty(aTab5.AdminSay, "NormalTextColour", "ff21b1ff")
+		aTab5.AdminSay:setData('operSounds.UI', 'ui_select')
+		guiSetEnabled(aTab5.AdminSay, false)
+		--aTab5.AdminChatHelp	= guiCreateButton ( 0.94, 0.92, 0.03, 0.06, "?", true, aTab5.Tab )
 
 		-- --
 		
@@ -281,27 +343,29 @@ y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Heal
 
 		aTab2 = {}
 		aTab2.Tab			= guiCreateTab ( "Ресурсы сервера", aTabPanel, "resources" )
-		aTab2.ManageACL		= guiCreateButton ( 0.75, 0.02, 0.23, 0.04, "Manage ACL", true, aTab2.Tab )
+		aTab2.ManageACL		= guiCreateButton ( 0.75, 0.02, 0.2, 0.04, "Manage ACL", true, aTab2.Tab )
 		aTab2.ResourceListSearch = guiCreateEdit ( 0.03, 0.05, 0.31, 0.04, "", true, aTab2.Tab )
-						  guiCreateStaticImage ( 0.34, 0.05, 0.035, 0.04, "client\\images\\search.png", true, aTab2.Tab )
+						  --guiCreateStaticImage ( 0.34, 0.05, 0.035, 0.04, "client\\images\\search.png", true, aTab2.Tab )
 		aTab2.ResourceList	= guiCreateGridList ( 0.03, 0.10, 0.35, 0.80, true, aTab2.Tab )
-						  guiGridListAddColumn( aTab2.ResourceList, "Resource", 0.55 )
+						  guiGridListAddColumn( aTab2.ResourceList, "Название", 0.55 )
 						  guiGridListAddColumn( aTab2.ResourceList, "", 0.05 )
-						  guiGridListAddColumn( aTab2.ResourceList, "State", 0.35 )
-						  guiGridListAddColumn( aTab2.ResourceList, "Full Name", 0.6 )
-						  guiGridListAddColumn( aTab2.ResourceList, "Author", 0.4 )
-						  guiGridListAddColumn( aTab2.ResourceList, "Version", 0.2 )
-		aTab2.ResourceInclMaps	= guiCreateCheckBox ( 0.03, 0.91, 0.15, 0.04, "Include Maps", false, true, aTab2.Tab )
-		aTab2.ResourceRefresh	= guiCreateButton ( 0.20, 0.915, 0.18, 0.04, "Refresh list", true, aTab2.Tab, "listresources" )
-		aTab2.ResourceSettings	= guiCreateButton ( 0.40, 0.05, 0.20, 0.04, "Settings", true, aTab2.Tab )
-		aTab2.ResourceStart	= guiCreateButton ( 0.40, 0.10, 0.20, 0.04, "Start", true, aTab2.Tab, "start" )
-		aTab2.ResourceRestart	= guiCreateButton ( 0.40, 0.15, 0.20, 0.04, "Restart", true, aTab2.Tab, "restart" )
-		aTab2.ResourceStop	= guiCreateButton ( 0.40, 0.20, 0.20, 0.04, "Stop", true, aTab2.Tab, "stop" )
-		aTab2.ResourceDelete	= guiCreateButton ( 0.40, 0.25, 0.20, 0.04, "Delete", true, aTab2.Tab, "delete" )
-		aTab2.ResourcesStopAll	= guiCreateButton ( 0.63, 0.2, 0.20, 0.04, "Stop All Resources", true, aTab2.Tab, "stopall" )
-		aTab2.ResourceFailture	= guiCreateButton ( 0.63, 0.10, 0.25, 0.04, "Get Load Failture", true, aTab2.Tab )
-						 guiSetVisible ( aTab2.ResourceFailture, false )
+						  guiGridListAddColumn( aTab2.ResourceList, "Статус", 0.35 )
+						  --guiGridListAddColumn( aTab2.ResourceList, "Full Name", 0.6 )
+						  --guiGridListAddColumn( aTab2.ResourceList, "Author", 0.4 )
+						  --guiGridListAddColumn( aTab2.ResourceList, "Version", 0.2 )
+		--aTab2.ResourceInclMaps	= guiCreateCheckBox ( 0.03, 0.91, 0.15, 0.04, "Include Maps", false, true, aTab2.Tab )
+		aTab2.ResourceRefresh	= guiCreateButton ( 0.01, 0.915, 0.25, 0.05, "Обновить список ресурсов", true, aTab2.Tab, "listresources" )
+		--aTab2.ResourceSettings	= guiCreateButton ( 0.40, 0.05, 0.20, 0.04, "Settings", true, aTab2.Tab )
+		aTab2.ResourceStart	= guiCreateButton ( 0.40, 0.10, 0.20, 0.04, "Запустить", true, aTab2.Tab, "start" )
+		aTab2.ResourceRestart	= guiCreateButton ( 0.40, 0.15, 0.20, 0.04, "Перезапустить", true, aTab2.Tab, "restart" )
+		aTab2.ResourceStop	= guiCreateButton ( 0.40, 0.20, 0.20, 0.04, "Остановить", true, aTab2.Tab, "stop" )
+		guiSetProperty(aTab2.ResourceStop, "NormalTextColour", "fff01a21")
+		--aTab2.ResourceDelete	= guiCreateButton ( 0.40, 0.25, 0.20, 0.04, "Delete", true, aTab2.Tab, "delete" )
+		--aTab2.ResourcesStopAll	= guiCreateButton ( 0.63, 0.2, 0.20, 0.04, "Stop All Resources", true, aTab2.Tab, "stopall" )
+		--aTab2.ResourceFailture	= guiCreateButton ( 0.63, 0.10, 0.25, 0.04, "Get Load Failture", true, aTab2.Tab )
+						 --guiSetVisible ( aTab2.ResourceFailture, false )
 		--aModules			= guiCreateTabPanel ( 0.40, 0.25, 0.57, 0.38, true, aTab2.Tab ) --What's that for?
+		--[[
 							guiCreateHeader(0.40, 0.3, 0.3, 0.04, "Resource Informations:", true, aTab2.Tab)
 		aTab2.ResourceName			= guiCreateLabel ( 0.41, 0.35, 0.6, 0.03, "Full Name: ", true, aTab2.Tab )
 		aTab2.ResourceAuthor		= guiCreateLabel ( 0.41, 0.4, 0.6, 0.03, "Author: ", true, aTab2.Tab )
@@ -314,7 +378,7 @@ y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Heal
 		aTab2.LogLine5		= guiCreateLabel ( 0.41, 0.93, 0.50, 0.03, "", true, aTab2.Tab )
 
 		aLogLines = 1
-
+		]]
 		--createMapTab()
 
 		aTab3 = {}
@@ -369,7 +433,7 @@ y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Heal
 		aTab3.FPSSet		= guiCreateButton ( 0.50, 0.65, 0.10, 0.04, "Set", true, aTab3.Tab, "setfpslimit" )
 							guiCreateLabel ( 0.63, 0.65, 0.1, 0.04, "( 25-32767 )", true, aTab3.Tab )
 
-
+		--[[
 		aTab6 = {}
 		aTab6.Tab			= guiCreateTab ( "Опции", aTabPanel )
 						  guiCreateHeader ( 0.03, 0.05, 0.10, 0.05, "Main:", true, aTab6.Tab )
@@ -413,8 +477,8 @@ y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Heal
 		if ( aGetSetting ( "adminChatSound" ) ) then guiCheckBoxSetSelected ( aTab5.AdminChatSound, true ) end
 		--if ( tonumber ( aGetSetting ( "adminChatLines" ) ) ) then guiSetText ( aTab6.AdminChatLines, aGetSetting ( "adminChatLines" ) ) end
 		if ( ( tonumber ( aGetSetting ( "refreshDelay" ) ) ) and ( tonumber ( aGetSetting ( "refreshDelay" ) ) >= 50 ) ) then guiSetText ( aTab6.RefreshDelay, aGetSetting ( "refreshDelay" ) ) end
-
-		addEventHandler ( "aClientLog", root, aClientLog )
+		]]
+		--addEventHandler ( "aClientLog", root, aClientLog )
 		addEventHandler ( "aClientAdminChat", root, aClientAdminChat )
 		addEventHandler ( "aClientSync", root, aClientSync )
 		addEventHandler ( "aClientResourceStart", root, aClientResourceStart )
@@ -422,7 +486,7 @@ y=y+B  aTab1.VehicleHealth	= guiCreateLabel ( 0.26, y, 0.25, 0.04, "Vehicle Heal
 		addEventHandler ( "aClientPlayerJoin", root, aClientPlayerJoin )
 		addEventHandler ( "onClientPlayerQuit", root, aClientPlayerQuit )
 		addEventHandler ( "onClientGUIClick", aAdminForm, aClientClick )
-		addEventHandler ( "onClientGUIScroll", aAdminForm, aClientScroll )
+		--addEventHandler ( "onClientGUIScroll", aAdminForm, aClientScroll )
 		addEventHandler ( "onClientGUIDoubleClick", aAdminForm, aClientDoubleClick )
 		addEventHandler ( "onClientGUIAccepted", aAdminForm, aClientGUIAccepted )
 		addEventHandler ( "onClientGUIChanged", aAdminForm, aClientGUIChanged )
@@ -473,7 +537,7 @@ function aAdminMenuClose ( destroy )
 		aPlayers = {}
 		aWeathers = {}
 		aBans = {}
-		removeEventHandler ( "aClientLog", root, aClientLog )
+		--removeEventHandler ( "aClientLog", root, aClientLog )
 		removeEventHandler ( "aClientAdminChat", root, aClientAdminChat )
 		removeEventHandler ( "aClientSync", root, aClientSync )
 		removeEventHandler ( "aClientResourceStart", root, aClientResourceStart )
@@ -500,18 +564,18 @@ function aAdminMenuClose ( destroy )
 end
 
 function aMainSaveSettings ()
-	aSetSetting ( "outputPlayer", guiCheckBoxGetSelected ( aTab6.OutputPlayer ) )
-	aSetSetting ( "adminChatOutput", guiCheckBoxGetSelected ( aTab6.AdminChatOutput ) )
+	--aSetSetting ( "outputPlayer", guiCheckBoxGetSelected ( aTab6.OutputPlayer ) )
+	--aSetSetting ( "adminChatOutput", guiCheckBoxGetSelected ( aTab6.AdminChatOutput ) )
 	aSetSetting ( "adminChatSound", guiCheckBoxGetSelected ( aTab5.AdminChatSound ) )
 	--aSetSetting ( "adminChatLines", guiGetText ( aTab6.AdminChatLines ) )
-	aSetSetting ( "refreshDelay", guiGetText ( aTab6.RefreshDelay ) )
+	--aSetSetting ( "refreshDelay", guiGetText ( aTab6.RefreshDelay ) )
 	aSetSetting ( "currentWeapon", aCurrentWeapon )
 	aSetSetting ( "currentAmmo", aCurrentAmmo )
 	aSetSetting ( "currentVehicle", aCurrentVehicle )
 	aSetSetting ( "currentSlap", aCurrentSlap )
-	if ( guiRadioButtonGetSelected ( aTab6.PerformanceRAM ) ) then aSetSetting ( "performance", "RAM" )
-	elseif ( guiRadioButtonGetSelected ( aTab6.PerformanceCPU ) ) then aSetSetting ( "performance", "CPU" )
-	else aSetSetting ( "performance", "Auto" ) end
+	--if ( guiRadioButtonGetSelected ( aTab6.PerformanceRAM ) ) then aSetSetting ( "performance", "RAM" )
+	--elseif ( guiRadioButtonGetSelected ( aTab6.PerformanceCPU ) ) then aSetSetting ( "performance", "CPU" )
+	--else aSetSetting ( "performance", "Auto" ) end
 end
 
 function aAdminRefresh ()
@@ -528,47 +592,48 @@ function aAdminRefresh ()
 				end
 			end
 
+			guiSetText(aTab1.Warp, "ТП к ".. playerName)
 			guiSetText ( aTab1.Name, "Никнейм: ".. playerName)
-			guiSetText ( aTab1.Mute, iif ( aPlayers[player]["mute"], "Разоткнуть", "Заткнуть" ) )
+			guiSetText ( aTab1.Mute, iif ( aPlayers[player]["mute"], "Размут", "Мут" ) )
 			guiSetText ( aTab1.Freeze, iif ( aPlayers[player]["freeze"], "Разморозить", "Заморозить" ) )
 			--guiSetText ( aTab1.Version, "Version: "..( aPlayers[player]["version"] or "" ) )
-			guiSetText ( aTab1.Accountname, "Логин аккаунта: "..getSensitiveText( aPlayers[player]["accountname"] or "" ) )
+			guiSetText ( aTab1.Accountname, "Логин: "..getSensitiveText( aPlayers[player]["accountname"] or "" ) )
 			guiSetText ( aTab1.Groups, "Группа: "..( aPlayers[player]["groups"] or "None" ) )
 			--guiSetText ( aTab1.ACDetected, "AC Detected: "..( aPlayers[player]["acdetected"] or "" ) )
 			--guiSetText ( aTab1.ACD3D, "D3D9.DLL: "..( aPlayers[player]["d3d9dll"] or "" ) )
 			--guiSetText ( aTab1.ACModInfo, "Img Mods: "..( aPlayers[player]["imgmodsnum"] or "" ) )
-			if ( isPedDead ( player ) ) then guiSetText ( aTab1.Health, "Health: Dead" )
-			else guiSetText ( aTab1.Health, "Health: "..math.ceil ( getElementHealth ( player ) ).."%" ) end
-			guiSetText ( aTab1.Armour, "Armour: "..math.ceil ( getPedArmor ( player ) ).."%" )
-			guiSetText ( aTab1.Skin, "Skin: "..iif ( getElementModel ( player ), getElementModel ( player ), "N/A" ) )
+			if ( isPedDead ( player ) ) then guiSetText ( aTab1.Health, "Здоровье: 0%" )
+			else guiSetText ( aTab1.Health, "Здоровье: "..math.ceil ( getElementHealth ( player ) ).."%" ) end
+			guiSetText ( aTab1.Armour, "Броня: "..math.ceil ( getPedArmor ( player ) ).."%" )
+			guiSetText ( aTab1.Skin, "Скин: "..iif ( getElementModel ( player ), getElementModel ( player ), "N/A" ) )
 			--if ( getPlayerTeam ( player ) ) then guiSetText ( aTab1.Team, "Team: "..getTeamName ( getPlayerTeam ( player ) ) )
 			--else guiSetText ( aTab1.Team, "Team: None" ) end
-			guiSetText ( aTab1.Ping, "Ping: "..getPlayerPing ( player ) )
-			guiSetText ( aTab1.Money, "Money: "..( aPlayers[player]["money"] or 0 ) )
-			if ( getElementDimension ( player ) ) then guiSetText ( aTab1.Dimension, "Dimension: "..getElementDimension ( player ) ) end
+			guiSetText ( aTab1.Ping, "Пинг: "..getPlayerPing ( player ) )
+			guiSetText ( aTab1.Money, "Деньги: "..( aPlayers[player]["money"] or 0 ) )
+			if ( getElementDimension ( player ) ) then guiSetText ( aTab1.Dimension, "Измерение: "..getElementDimension ( player ) ) end
 			--if ( getElementInterior ( player ) ) then guiSetText ( aTab1.Interior, "Interior: "..getElementInterior ( player ) ) end
 			guiSetText ( aTab1.JetPack, iif ( isPedWearingJetpack ( player ), "Забрать джетпак", "Выдать джетпак" ) )
-			if ( getPedWeapon ( player ) ) then guiSetText ( aTab1.Weapon, "Weapon: "..getWeaponNameFromID ( getPedWeapon ( player ) ).." (ID: "..getPedWeapon ( player )..")" ) end
+			if ( getPedWeapon ( player ) ) then guiSetText ( aTab1.Weapon, "Оружие: "..getWeaponNameFromID ( getPedWeapon ( player ) ).." (ID: "..getPedWeapon ( player )..")" ) end
 			
 			local x, y, z = getElementPosition ( player )
 			local zoneName = getZoneName ( x, y, z, false )
 			local cityName = getZoneName ( x, y, z, true )
 			
-			guiSetText ( aTab1.Area, "Area: "..getSensitiveText( iif ( zoneName == cityName, zoneName, zoneName.." ("..cityName..")" ) ) )
+			guiSetText ( aTab1.Area, "Локация: "..getSensitiveText( iif ( zoneName == cityName, zoneName, zoneName.." ("..cityName..")" ) ) )
 
 			x = getSensitiveText('%.3f'):format(x)
 			y = getSensitiveText('%.3f'):format(y)
 			z = getSensitiveText('%.3f'):format(z)
 
-			guiSetText(aTab1.Position, ( "Position: %s, %s, %s" ):format(x, y, z))
+			guiSetText(aTab1.Position, ( "Местоположение: %s, %s, %s" ):format(x, y, z))
 
 			local vehicle = getPedOccupiedVehicle ( player )
 			if ( vehicle ) then
-				guiSetText ( aTab1.Vehicle, "Vehicle: "..getVehicleName ( vehicle ).." (ID: "..getElementModel ( vehicle )..")" )
-				guiSetText ( aTab1.VehicleHealth, "Vehicle Health: "..math.ceil ( getElementHealth ( vehicle ) ).."%" )
+				guiSetText ( aTab1.Vehicle, "Модель: "..getVehicleName ( vehicle ).." (ID: "..getElementModel ( vehicle )..")" )
+				guiSetText ( aTab1.VehicleHealth, "Состояние: "..math.ceil ( getElementHealth ( vehicle ) ).."%" )
 			else
-				guiSetText ( aTab1.Vehicle, "Vehicle: Foot" )
-				guiSetText ( aTab1.VehicleHealth, "Vehicle Health: 0%" )
+				guiSetText ( aTab1.Vehicle, "Модель: -" )
+				guiSetText ( aTab1.VehicleHealth, "Состояние: -" )
 			end
 			return player
 		end
@@ -583,10 +648,10 @@ function aClientSync ( type, table, data )
 	elseif ( type == "players" ) then
 		aPlayers = table
 	elseif ( type == "resources" ) then
-		local bInclMaps = guiCheckBoxGetSelected ( aTab2.ResourceInclMaps )
+		--local bInclMaps = guiCheckBoxGetSelected ( aTab2.ResourceInclMaps )
 		aResources = table
 		for id, resource in ipairs(table) do
-			if bInclMaps or resource["type"] ~= "map" then
+			if --[[bInclMaps or ]]resource["type"] ~= "map" then
 				local row = guiGridListAddRow ( aTab2.ResourceList )
 				guiGridListSetItemText ( aTab2.ResourceList, row, 1, resource["name"], false, false )
 				guiGridListSetItemText ( aTab2.ResourceList, row, 2, resource["numsettings"] > 0 and tostring(resource["numsettings"]) or "", false, false )
@@ -903,7 +968,7 @@ function aClientPlayerChangeNick ( oldNick, newNick )
 	end
 end
 ]]
-
+--[[
 function aClientLog ( text )
 	if text == "deleted" then
 		guiGridListClear ( aTab2.ResourceList )
@@ -925,7 +990,7 @@ function aClientLog ( text )
 
 	aLogLines = aLogLines + 1
 end
-
+]]
 function aClientAdminChat ( message )
 	local chat = guiGetText ( aTab5.AdminChat )
 	guiSetText ( aTab5.AdminChat, (chat ~= "\n" and chat or "")..getPlayerName ( source )..": "..message )
@@ -958,14 +1023,10 @@ function aClientGUIChanged ()
 	if ( source == aTab1.PlayerListSearch ) then
 		guiGridListClear ( aTab1.PlayerList )
 		local text = guiGetText ( source )
-		if ( text == "" or text == "Поиск игрока.." ) then
+		if ( text == "" or text == "Поиск игрока..." ) then
 			for id, player in ipairs ( getElementsByType ( "player" ) ) do
 				guiGridListSetItemPlayerName ( aTab1.PlayerList, guiGridListAddRow ( aTab1.PlayerList ), 1, getPlayerName ( player ), false, false )
 			end
-		elseif ( text == "Поиск игрока.." ) then
-			guiSetText(source, "")
-		elseif ( text == "" ) then
-			guiSetText(source, "Поиск игрока..")
 		else
 			for id, player in ipairs ( getElementsByType ( "player" ) ) do
 				if ( string.find ( string.upper ( getPlayerName ( player ) ), string.upper ( text ), 1, true ) ) then
@@ -1006,13 +1067,13 @@ function aClientGUIChanged ()
 		end
 	end
 end
-
+--[[
 function aClientScroll ( element )
 	if ( source == aTab6.MouseSense ) then
 		guiSetText ( aTab6.MouseSenseCur, "Cursor sensivity: ("..string.sub ( guiScrollBarGetScrollPosition ( source ) / 50, 0, 4 )..")" )
 	end
 end
-
+]]
 function aClientDoubleClick ( button )
 	if ( source == aTab2.ResourceList ) then
 		if ( guiGridListGetSelectedItem ( aTab2.ResourceList ) ~= -1 ) then
@@ -1032,9 +1093,20 @@ end
 function aClientClick ( button )
 
 	local text = guiGetText(aTab1.PlayerListSearch)
-	if ( text == "" ) then
-		guiSetText(aTab1.PlayerListSearch, "Поиск игрока..")
+	if (text == "" and source ~= aTab1.PlayerListSearch) then
+		guiSetText(aTab1.PlayerListSearch, "Поиск игрока...")
 		guiSetAlpha(aTab1.PlayerListSearch, 0.6)
+		guiFocus(aAdminForm)
+		guiEditSetReadOnly(aTab1.PlayerListSearch, true)
+	end
+
+	local message_admin = guiGetText(aTab5.AdminText)
+	if ( message_admin == "" and source ~= aTab5.AdminText ) then
+		guiSetText(aTab5.AdminText, "Написать сообщение...")
+		guiSetAlpha(aTab5.AdminText, 0.8)
+		guiSetEnabled(aTab5.AdminSay, false)
+		guiFocus(aAdminForm)
+		guiEditSetReadOnly(aTab5.AdminText, true)
 	end
 
 	if ( button == "left" ) then
@@ -1046,9 +1118,10 @@ function aClientClick ( button )
 				--aPlayerScreenShot()
 			--elseif ( source == aTab1.PlayerListSearch ) then
 			elseif ( source == aTab1.PlayerListSearch ) then 
-				if ( text == "Поиск игрока.." ) then
+				if ( text == "Поиск игрока..." ) then
 					guiSetText(source, "")
-					guiSetAlpha(aTab1.PlayerListSearch, 1)
+					guiSetAlpha(source, 1)
+					guiEditSetReadOnly(source, false)
 				end
 			elseif ( source == aTab1.HideColorCodes ) then
 				setHideColorCodes ( guiCheckBoxGetSelected ( aTab1.HideColorCodes ) )
@@ -1076,7 +1149,7 @@ function aClientClick ( button )
 					elseif ( source == aTab1.SetSkin ) then aPlayerSkin ( player )
 					elseif ( source == aTab1.SetInterior ) then aPlayerInterior ( player )
 					elseif ( source == aTab1.JetPack ) then triggerServerEvent ( "aPlayer", localPlayer, player, "jetpack" )
-					elseif ( source == aTab1.SetMoney ) then aInputBox ( "Set Money", "Enter the money value", "0", "setMoney", player )
+					--elseif ( source == aTab1.SetMoney ) then aInputBox ( "Set Money", "Enter the money value", "0", "setMoney", player )
 					elseif ( source == aTab1.SetStats ) then aPlayerStats ( player )
 					elseif ( source == aTab1.SetDimension ) then aInputBox ( "Dimension ID Required", "Enter Dimension ID between 0 and 65535", "0", "setDimension", player)
 					elseif ( source == aTab1.GiveVehicle ) then triggerServerEvent ( "aPlayer", localPlayer, player, "givevehicle", aCurrentVehicle )
@@ -1111,10 +1184,11 @@ function aClientClick ( button )
 					if ( source == aTab2.ResourceStart ) then triggerServerEvent ( "aResource", localPlayer, guiGridListGetItemText ( aTab2.ResourceList, guiGridListGetSelectedItem( aTab2.ResourceList ), 1 ), "start" )
 					elseif ( source == aTab2.ResourceRestart ) then triggerServerEvent ( "aResource", localPlayer, guiGridListGetItemText ( aTab2.ResourceList, guiGridListGetSelectedItem( aTab2.ResourceList ), 1 ), "restart" )
 					elseif ( source == aTab2.ResourceStop ) then triggerServerEvent ( "aResource", localPlayer, guiGridListGetItemText ( aTab2.ResourceList, guiGridListGetSelectedItem( aTab2.ResourceList ), 1 ), "stop" )
-					elseif ( source == aTab2.ResourceDelete ) then aMessageBox ( "warning", "Are you sure you want to stop and delete resource '" .. guiGridListGetItemText ( aTab2.ResourceList, guiGridListGetSelectedItem( aTab2.ResourceList ), 1 ) .. "' ?", "stopDelete", guiGridListGetItemText ( aTab2.ResourceList, guiGridListGetSelectedItem( aTab2.ResourceList ), 1 ) )
+					--elseif ( source == aTab2.ResourceDelete ) then aMessageBox ( "warning", "Are you sure you want to stop and delete resource '" .. guiGridListGetItemText ( aTab2.ResourceList, guiGridListGetSelectedItem( aTab2.ResourceList ), 1 ) .. "' ?", "stopDelete", guiGridListGetItemText ( aTab2.ResourceList, guiGridListGetSelectedItem( aTab2.ResourceList ), 1 ) )
 					elseif ( source == aTab2.ResourceSettings ) then aManageSettings ( guiGridListGetItemText ( aTab2.ResourceList, guiGridListGetSelectedItem( aTab2.ResourceList ) ) )
 					end
 				end
+				--[[
 			elseif ( source == aTab2.ResourcesStopAll ) then aMessageBox ( "warning", "Are you sure you want to stop all resources? This will also stop 'admin' resource.", "stopAll" )
 			elseif ( source == aTab2.ResourceList ) then
 				guiSetVisible ( aTab2.ResourceFailture, false )
@@ -1126,6 +1200,7 @@ function aClientClick ( button )
 						guiSetVisible ( aTab2.ResourceFailture, true )
 					end
 				end
+				]]
 			elseif ( source == aTab2.ManageACL ) then
 				aManageACL()
 			elseif ( source == aTab2.ResourceRefresh or source == aTab2.ResourceInclMaps ) then
@@ -1205,15 +1280,26 @@ function aClientClick ( button )
 		elseif ( getElementParent ( source ) == aTab5.Tab ) then
 			if ( source == aTab5.AdminSay ) then
 				local message = guiGetText ( aTab5.AdminText )
-				if ( ( message ) and ( message ~= "" ) ) then
+				if ( ( message ) and ( message ~= "" ) and (message ~= "Написать сообщение...") ) then
 					if ( gettok ( message, 1, 32 ) == "/clear" ) then guiSetText ( aTab5.AdminChat, "" )
 					else triggerServerEvent ( "aAdminChat", localPlayer, message ) end
-					guiSetText ( aTab5.AdminText, "" )
-				end
-			--elseif ( source == aTab5.AdminText ) then
 
+					guiSetText(aTab5.AdminText, "Написать сообщение..." )
+					guiSetAlpha(source, 0.8)
+					guiSetEnabled(aTab5.AdminSay, false)
+					guiEditSetReadOnly(aTab5.AdminText, true)
+				end
+
+			elseif ( source == aTab5.AdminText ) then 
+				if ( message_admin == "Написать сообщение..." ) then
+					guiSetText(source, "")
+					guiSetAlpha(source, 1)
+					guiSetEnabled(aTab5.AdminSay, true)
+					guiEditSetReadOnly(source, false)
+				end
 			end
 		-- TAB 6, OPTIONS
+		--[[
 		elseif ( getElementParent ( source ) == aTab6.Tab ) then
 			if ( source == aTab6.PerformanceCPU ) then
 				for id, element in ipairs ( getElementChildren ( aPerformanceForm ) ) do
@@ -1245,6 +1331,7 @@ function aClientClick ( button )
 				elseif ( passwordNew ~= passwordConf ) then aMessageBox ( "error", "Confirmed password doesn't match" )
 				else triggerServerEvent ( "aAdmin", localPlayer, "password", guiGetText ( aTab6.PasswordOld ), passwordNew, passwordConf ) end
 			end
+			]]
 		end
 	elseif ( button == "right" ) then
 		if ( source == aTab1.GiveWeapon ) then aInputBox ( "Weapon Ammo", "Ammo value from 1 to 9999", "100", "setCurrentAmmo" )
@@ -1262,9 +1349,9 @@ function aClientRender ()
 			guiSetText ( aTab3.GravityCurrent, "Gravitation: "..string.sub ( getGravity(), 0, 6 ) )
 			guiSetText ( aTab3.SpeedCurrent, "Game Speed: "..getGameSpeed() )
 			guiSetText ( aTab3.WeatherCurrent, "Weather: "..getWeather().." ("..getWeatherNameFromID ( getWeather() )..")" )
-			local refreshTime = tonumber ( guiGetText ( aTab6.RefreshDelay ) )
-			if ( ( refreshTime ) and ( refreshTime >= 20 ) ) then aLastCheck = getTickCount() + refreshTime
-			else aLastCheck = getTickCount() + 50 end
+			--local refreshTime = tonumber ( guiGetText ( aTab6.RefreshDelay ) )
+			--if ( ( refreshTime ) and ( refreshTime >= 20 ) ) then aLastCheck = getTickCount() + refreshTime
+			--else aLastCheck = getTickCount() + 50 end
 		end
 		if ( getTickCount() >= aLastSync ) then
 			triggerServerEvent ( "aSync", localPlayer, "admins" )
@@ -1319,6 +1406,8 @@ function aAdminReloadInfos()
 			--guiSetText ( aTab1.Version, "Version: " .. ( aPlayers[player]["version"] or "" ) )
 		end
 	else
+		guiSetText(aTab1.Warp, "ТП к...")
+
 		guiSetText ( aTab1.Name, "Никнейм: -" )
 		guiSetText ( aTab1.IP, "IP-адрес: -" )
 		guiSetText ( aTab1.Serial, "Серийник: -" )
@@ -1329,22 +1418,22 @@ function aAdminReloadInfos()
 --		guiSetText ( aTab1.ACDetected, "AC Detected: N/A" )
 --		guiSetText ( aTab1.ACD3D, "D3D9.DLL: N/A" )
 --		guiSetText ( aTab1.ACModInfo, "Img Mods: N/A" )
-		guiSetText ( aTab1.Mute, "Заткнуть" )
+		guiSetText ( aTab1.Mute, "Мут" )
 		guiSetText ( aTab1.Freeze, "Заморозить" )
 		guiSetText ( aTab1.Health, "Здоровье: -" )
 		guiSetText ( aTab1.Armour, "Броня: -" )
 		guiSetText ( aTab1.Skin, "Скин: -" )
 --		guiSetText ( aTab1.Team, "Team: None" )
-		guiSetText ( aTab1.Ping, "Ping: -" )
-		guiSetText ( aTab1.Money, "Money: -" )
-		guiSetText ( aTab1.Dimension, "Dimension: -" )
+		guiSetText ( aTab1.Ping, "Пинг: -" )
+		guiSetText ( aTab1.Money, "Деньги: -" )
+		guiSetText ( aTab1.Dimension, "Измерение: -" )
 		--guiSetText ( aTab1.Interior, "Interior: -" )
 		guiSetText ( aTab1.JetPack, "Выдать джетпак" )
-		guiSetText ( aTab1.Weapon, "Weapon: -" )
-		guiSetText ( aTab1.Area, "Area: Unknown" )
-		guiSetText ( aTab1.Position, "Position: -" )
-		guiSetText ( aTab1.Vehicle, "Vehicle: -" )
-		guiSetText ( aTab1.VehicleHealth, "Vehicle Health: -" )
+		guiSetText ( aTab1.Weapon, "Оружие: -" )
+		guiSetText ( aTab1.Area, "Локация: -" )
+		guiSetText ( aTab1.Position, "Местоположение: -" )
+		guiSetText ( aTab1.Vehicle, "Модель: -" )
+		guiSetText ( aTab1.VehicleHealth, "Состояние: -" )
 		guiStaticImageLoadImage ( aTab1.Flag, "client\\images\\empty.png" )
 		guiSetText ( aTab1.CountryCode, "" )
 	end
