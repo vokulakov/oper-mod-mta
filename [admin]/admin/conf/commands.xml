@@ -4,6 +4,7 @@
     call - internal admin call, better not touch those unless you know what you're doing
     args - argument types for conversion, better not touch that too
   -->
+  <!--
   <player>
     <command handler="kick" call="kick" args="P,s" />
     <command handler="ban" call="ban" args="P,s,i" />
@@ -60,4 +61,5 @@
     <command handler="unbanip" call="unbanip" args="s" />
     <command handler="unbanserial" call="unbanserial" args="s" />
   </bans>
+  -->
 </commands>
