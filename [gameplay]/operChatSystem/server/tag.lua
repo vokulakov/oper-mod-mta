@@ -1,5 +1,5 @@
 local Tags = {
-	['Console'] 		= '#00ff00Гениральный директор',
+	['Console'] 		= '#00ff00Генеральный директор',
 	['Admin']			= '#FF0000Главный администратор',
 	['Administrator']	= '#FF0000Администратор',
 	['Premium']			= '#ffff00PREMIUM',
