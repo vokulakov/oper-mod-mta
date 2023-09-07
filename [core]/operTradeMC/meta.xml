@@ -1,0 +1,6 @@
+<meta>
+    <oop>true</oop>
+    <script type="server" src="server/main.lua" />
+
+    <export function="addAccountPremium" type="server" http="true" />
+</meta>
