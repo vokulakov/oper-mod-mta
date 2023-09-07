@@ -7,7 +7,7 @@
 *	Original File by lil_Toady
 *
 **************************************]]
-
+--[[
 aTeamForm = nil
 aTeamSelect = nil
 
@@ -155,3 +155,4 @@ function aTeamsRefresh ()
 		end
 	end
 end
+]]
