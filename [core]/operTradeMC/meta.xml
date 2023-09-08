@@ -2,7 +2,7 @@
     <oop>true</oop>
     <script type="server" src="server/main.lua" />
 
-    <export function="addAccountPremium" type="server" http="true" />
-	<export function="removeAccountPremium" type="server" http="true" />
+    <export function="addAccountPrivilege" type="server" http="true" />
+	<export function="removeAccountPrivilege" type="server" http="true" />
 	
 </meta>
