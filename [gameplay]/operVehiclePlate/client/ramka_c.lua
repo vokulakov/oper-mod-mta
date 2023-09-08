@@ -14,10 +14,15 @@ Ramka.textures = {
 
 function Ramka.getTexture()
 	local renderTarget = dxCreateRenderTarget(1024, 256, true)
+	
+	if not isElement(renderTarget) then
+		return false
+	end
+	
 	dxSetRenderTarget(renderTarget)
 		dxDrawImage(0, -4, 1024, 256, Ramka.textures.ram_0)
 	dxSetRenderTarget()
-
+	
 	local texture = dxCreateTexture(dxGetTexturePixels(renderTarget))
 	destroyElement(renderTarget)
 
@@ -29,16 +34,20 @@ function Ramka.setVehicleRamka(vehicle)
 	if not isElement(vehicle) then
 		return
 	end
+	
+	local texture = Ramka.getTexture()
+	if not isElement(texture) then
+		return false
+	end
 
 	if not Ramka.shaders[vehicle] then
 		Ramka.shaders[vehicle] = dxCreateShader("assets/texreplace.fx")
 	end
-
-
+	
 	engineApplyShaderToWorldTexture(Ramka.shaders[vehicle], "ram", vehicle)
 
 
-	dxSetShaderValue(Ramka.shaders[vehicle], "gTexture", Ramka.getTexture())
+	dxSetShaderValue(Ramka.shaders[vehicle], "gTexture", texture)
 end
 
 function Ramka.destroyVehicleRamka(vehicle)
