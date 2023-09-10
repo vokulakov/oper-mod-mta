@@ -1,9 +1,10 @@
 <meta>
 	<oop>true</oop>
 	
-	<script src="client/PointsDrawing.lua" type="client" />
-	<script src="client/dpDriftPoints.lua" type="client" />
+	<script src="client/PointsDrawing.lua" type="client" cache="false" />
+	<script src="client/dpDriftPoints.lua" type="client" cache="false" />
 
+    <script src="server/Money.lua" type="server" />
 
     <export type="client" function="finishCurrentDrift"/> 
     <export type="client" function="giveBonusPoints"/> 
