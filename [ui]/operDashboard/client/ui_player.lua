@@ -61,37 +61,52 @@ Dashboard.plWindow['btn_sound'] = guiCreateButton(posX, posY+185, 205, 25, "Зв
 guiSetFont(Dashboard.plWindow['btn_sound'], "default-bold-small")
 Dashboard.plWindow['btn_sound']:setData('operSounds.UI', 'ui_select')
 --
-Dashboard.plWindow['btn_dead'] = guiCreateButton(posX, posY+405, 205, 25, "Респавн", false, Dashboard.wnd)
+
+Dashboard.plWindow['btn_donate'] = guiCreateButton(posX, posY+365, 205, 35, "", false, Dashboard.wnd)
+guiSetFont(Dashboard.plWindow['btn_donate'], "default-bold-small")
+guiSetProperty(Dashboard.plWindow['btn_donate'], "NormalTextColour", "ffffd600")
+
+Dashboard.plWindow['btn_donate']:setData('operSounds.UI', 'ui_select')
+
+local icon_crown = guiCreateStaticImage(0, 0, 205, 35, "assets/btn_donate.png", false, Dashboard.plWindow['btn_donate'])
+guiSetEnabled(icon_crown, false)
+--
+Dashboard.plWindow['btn_help'] = guiCreateButton(posX, posY+405, 205, 25, "Нужна помощь?", false, Dashboard.wnd)
+guiSetFont(Dashboard.plWindow['btn_help'], "default-bold-small")
+--guiSetProperty(Dashboard.plWindow['btn_help'], "NormalTextColour", "FFFF7800")
+Dashboard.plWindow['btn_help']:setData('operSounds.UI', 'ui_select')
+--
+--Dashboard.plWindow['btn_login'] = guiCreateButton(posX, posY+405, 205, 25, "Копировать логин", false, Dashboard.wnd)
+--guiSetFont(Dashboard.plWindow['btn_login'], "default-bold-small")
+--Dashboard.plWindow['btn_login']:setData('operSounds.UI', 'ui_select')
+--
+Dashboard.plWindow['btn_dead'] = guiCreateButton(posX, posY+435, 205, 25, "Респавн", false, Dashboard.wnd)
 guiSetFont(Dashboard.plWindow['btn_dead'], "default-bold-small")
 guiSetProperty(Dashboard.plWindow['btn_dead'], "NormalTextColour", "fff01a21")
 Dashboard.plWindow['btn_dead']:setData('operSounds.UI', 'ui_select')
---
-Dashboard.plWindow['btn_help'] = guiCreateButton(posX, posY+435, 205, 25, "Нужна помощь?", false, Dashboard.wnd)
-guiSetFont(Dashboard.plWindow['btn_help'], "default-bold-small")
-guiSetProperty(Dashboard.plWindow['btn_help'], "NormalTextColour", "FFFF7800")
-Dashboard.plWindow['btn_help']:setData('operSounds.UI', 'ui_select')
+
 --guiSetEnabled(Dashboard.plWindow['btn_help'], false)
 -- ОПЦИИ --
 
 --
-Dashboard.plWindow['btn_jetpack'] = guiCreateCheckBox(posX, posY+265, 100, 20, " Джетпак", false, false, Dashboard.wnd)
+Dashboard.plWindow['btn_jetpack'] = guiCreateCheckBox(posX, posY+225, 100, 20, " Джетпак", false, false, Dashboard.wnd)
 Dashboard.plWindow['btn_jetpack']:setData('operSounds.UI', 'ui_change')
 --
-Dashboard.plWindow['btn_nobike'] = guiCreateCheckBox(posX, posY+285, 175, 20, " Не падать с двухколесных", false, false, Dashboard.wnd)
+Dashboard.plWindow['btn_nobike'] = guiCreateCheckBox(posX, posY+245, 175, 20, " Не падать с двухколесных", false, false, Dashboard.wnd)
 Dashboard.plWindow['btn_nobike']:setData('operSounds.UI', 'ui_change')
 --
-Dashboard.plWindow['btn_notp'] = guiCreateCheckBox(posX, posY+305, 120, 20, " Анти-телепорт", false, false, Dashboard.wnd)
+Dashboard.plWindow['btn_notp'] = guiCreateCheckBox(posX, posY+265, 120, 20, " Анти-телепорт", false, false, Dashboard.wnd)
 --guiSetEnabled(Dashboard.plWindow['btn_notp'], false)
 Dashboard.plWindow['btn_notp']:setData('operSounds.UI', 'ui_change')
 --
-Dashboard.plWindow['btn_nohp'] = guiCreateCheckBox(posX, posY+325, 120, 20, " Бессмертие", false, false, Dashboard.wnd)
+Dashboard.plWindow['btn_nohp'] = guiCreateCheckBox(posX, posY+285, 120, 20, " Бессмертие", false, false, Dashboard.wnd)
 --guiSetEnabled(Dashboard.plWindow['btn_nohp'], false)
 Dashboard.plWindow['btn_nohp']:setData('operSounds.UI', 'ui_change')
 --
-Dashboard.plWindow['btn_noheadmoving'] = guiCreateCheckBox(posX, posY+345, 155, 20, " Вращение головы", true, false, Dashboard.wnd)
+Dashboard.plWindow['btn_noheadmoving'] = guiCreateCheckBox(posX, posY+305, 155, 20, " Вращение головы", true, false, Dashboard.wnd)
 Dashboard.plWindow['btn_noheadmoving']:setData('operSounds.UI', 'ui_change')
 --
-Dashboard.plWindow['btn_nomoneycash'] = guiCreateCheckBox(posX, posY+365, 120, 20, " Дипломат", false, false, Dashboard.wnd)
+Dashboard.plWindow['btn_nomoneycash'] = guiCreateCheckBox(posX, posY+325, 120, 20, " Дипломат", false, false, Dashboard.wnd)
 Dashboard.plWindow['btn_nomoneycash']:setData('operSounds.UI', 'ui_change')
 
 

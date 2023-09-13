@@ -45,13 +45,15 @@ local vehicleControl = {
 	{ key = "CTRL / MOUSE1", option = 'закись азота', description = '' },
 }
 
-Help.Window.wnd = guiCreateWindow(sWidth/2-1024/2, sHeight/2-568/2, 1024, 568, "Помощь", false)
+Help.Window.wnd = guiCreateWindow(sWidth/2-1024/2, sHeight/2-568/2, 1024, 568, "Информация [F9]", false)
 guiWindowSetSizable(Help.Window.wnd, false)
 guiSetVisible(Help.Window.wnd, false)
 guiWindowSetMovable(Help.Window.wnd, false)
 
 Help.Window.tabPanel = guiCreateTabPanel(0, 25, 1004, 500, false, Help.Window.wnd)
---Help.Window.tab1 = guiCreateTab("Основная информация", Help.Window.tabPanel)
+
+--Help.Window.tab1 = guiCreateTab("О проекте", Help.Window.tabPanel)
+
 --Help.Window.tab2 = guiCreateTab("Что здесь делать?", Help.Window.tabPanel)
 
 Help.Window.tab3 = guiCreateTab("Управление", Help.Window.tabPanel)
@@ -209,6 +211,84 @@ for i, command in ipairs(cmdRolePlay) do
 	end
 end
 
+-- ДОНАТ
+local RB_LIGHT_FONT = guiCreateFont("assets/Roboto-Light.ttf", 13)
+local RB_BOLD_FONT = guiCreateFont("assets/Roboto-Bold.ttf", 10)
+
+Help.Window.tab5 = guiCreateTab("Донат", Help.Window.tabPanel)
+
+Help.Window['img_donate'] = guiCreateStaticImage(2, 2, 1000, 470, "assets/img_donate.png", false, Help.Window.tab5)
+guiSetEnabled(Help.Window['img_donate'], false)
+
+Help.Window['btn_copy_www'] = guiCreateButton(240, 287, 180, 25, "Копировать адрес сайта", false, Help.Window.tab5)
+guiSetFont(Help.Window['btn_copy_www'], RB_BOLD_FONT)
+guiSetProperty(Help.Window['btn_copy_www'], "HoverTextColour", "FF21b1ff")
+Help.Window['btn_copy_www']:setData('operSounds.UI', 'ui_select')
+
+addEventHandler("onClientGUIClick", Help.Window['btn_copy_www'], function()
+	if not Help.Window.tab5.visible then 
+		return
+	end
+	setClipboard('https://opermta.ru/')
+	Help.Window['btn_copy_www']:setText("Скопировано")
+	guiSetEnabled(Help.Window['btn_copy_www'], false)
+	setTimer(
+		function()
+			Help.Window['btn_copy_www']:setText("Копировать адрес сайта")
+			guiSetEnabled(Help.Window['btn_copy_www'], true)
+		end, 1000, 1)
+end, false)
+
+Help.Window['btn_copy_vk'] = guiCreateButton(240, 330, 180, 25, "Копировать адрес VK", false, Help.Window.tab5)
+guiSetFont(Help.Window['btn_copy_vk'], RB_BOLD_FONT)
+guiSetProperty(Help.Window['btn_copy_vk'], "HoverTextColour", "FF21b1ff")
+Help.Window['btn_copy_vk']:setData('operSounds.UI', 'ui_select')
+
+addEventHandler("onClientGUIClick", Help.Window['btn_copy_vk'], function()
+	if not Help.Window.tab5.visible then 
+		return
+	end
+	setClipboard('https://vk.com/otdelmta')
+	Help.Window['btn_copy_vk']:setText("Скопировано")
+	guiSetEnabled(Help.Window['btn_copy_vk'], false)
+	setTimer(
+		function()
+			Help.Window['btn_copy_vk']:setText("Копировать адрес VK")
+			guiSetEnabled(Help.Window['btn_copy_vk'], true)
+		end, 1000, 1)
+end, false)
+
+-- Выводить логин
+local lbl = guiCreateLabel(60, 373, 200, 50, "Аккаунт: ", false, Help.Window.tab5)
+guiSetFont(lbl, RB_BOLD_FONT)
+
+Help.Window['lbl_login'] = guiCreateLabel(118, 373, 200, 50, "", false, Help.Window.tab5)
+guiSetFont(Help.Window['lbl_login'], RB_BOLD_FONT)
+guiLabelSetColor(Help.Window['lbl_login'], 255, 214, 0)
+
+Help.Window['btn_copy_login'] = guiCreateButton(240, 373, 180, 25, "Копировать логин", false, Help.Window.tab5)
+guiSetFont(Help.Window['btn_copy_login'], RB_BOLD_FONT)
+guiSetProperty(Help.Window['btn_copy_login'], "HoverTextColour", "FF21b1ff")
+Help.Window['btn_copy_login']:setData('operSounds.UI', 'ui_select')
+
+addEventHandler("onClientGUIClick", Help.Window['btn_copy_login'], function()
+	if not Help.Window.tab5.visible then 
+		return
+	end
+	local accountData = localPlayer:getData("player.accountData")
+    if not accountData or not accountData.username then
+        return ""
+    end
+	setClipboard(tostring(accountData.username))
+	Help.Window['btn_copy_login']:setText("Скопировано")
+	guiSetEnabled(Help.Window['btn_copy_login'], false)
+	setTimer(
+		function()
+			Help.Window['btn_copy_login']:setText("Копировать логин")
+			guiSetEnabled(Help.Window['btn_copy_login'], true)
+		end, 1000, 1)
+end, false)
+
 Help.Window.btn_exit = guiCreateButton(0, 530, 1024, 30, "Закрыть", false, Help.Window.wnd)
 guiSetFont(Help.Window.btn_exit, "default-bold-small")
 guiSetProperty(Help.Window.btn_exit, "NormalTextColour", "FF21b1ff")
@@ -222,6 +302,34 @@ guiLabelSetVerticalAlign(Help.Window.tab1_info, "center")
 ]]
 -------------------
 
+-- Получение логина аккаунта локального игрока (маскировка)
+function Help.Window.getPlayerAccountLogin()
+	local accountData = localPlayer:getData("player.accountData")
+    if not accountData or not accountData.username then
+        return ""
+    end
+	local username = accountData.username
+	local username_len = username:len()
+
+	username = username:sub(0, username_len/2)..''..("*"):rep(username_len/2 + math.random(2,4))
+
+	return username
+end
+
+function Help.Window.openDonateTab()
+	if not Help.Window.isVisible then
+		return
+	end
+	guiSetSelectedTab(Help.Window.tabPanel, Help.Window.tab5)
+end
+
+function Help.Window.openHelpTab()
+	if not Help.Window.isVisible then
+		return
+	end
+	guiSetSelectedTab(Help.Window.tabPanel, Help.Window.tab3)
+end 
+
 function Help.Window.setVisible(state)
 	if state == nil then
 		Help.Window.isVisible = not guiGetVisible(Help.Window.wnd)
@@ -234,6 +342,8 @@ function Help.Window.setVisible(state)
 	guiSetVisible(Help.Window.wnd, Help.Window.isVisible)
 
 	showCursor(Help.Window.isVisible)
+
+	Help.Window['lbl_login']:setText(Help.Window.getPlayerAccountLogin())
 
 	triggerEvent('operShowUI.setVisiblePlayerUI', localPlayer, not Help.Window.isVisible)
 	triggerEvent('operShowUI.setVisiblePlayerComponentUI', localPlayer, 'dashboard', true) -- ну отключать dashboard
