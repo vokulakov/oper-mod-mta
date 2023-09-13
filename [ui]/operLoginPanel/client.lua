@@ -245,7 +245,7 @@ end)
 local function welcomeMessage()
 	for i = 1, 20 do outputChatBox("") end
     outputChatBox("#ffffff*** Приветствуем на проекте #ffd600OPERSKIY × OTDEL", 255, 255, 255, true)
-    outputChatBox("#ffffff*** Наш сайт: #ffd600opermta.ru", root, 255, 255, 255, true)
+    outputChatBox("#ffffff*** Наш сайт: #ffd600opermta.ru", 255, 255, 255, true)
     outputChatBox("#ffffff*** Официальная страница: #ffd600vk.com/otdelmta", 255, 255, 255, true)
     outputChatBox("#ffffff*** Администрация проекта желает вам приятной игры #ffd600;)", 255, 255, 255, true)
     outputChatBox(" ", 255, 255, 255, true)
