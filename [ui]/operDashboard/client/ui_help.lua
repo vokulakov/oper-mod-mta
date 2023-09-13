@@ -309,10 +309,12 @@ function Help.Window.getPlayerAccountLogin()
         return ""
     end
 	local username = accountData.username
+	local username_len = username:len()
+
+	username = username:sub(0, username_len/2)..''..("*"):rep(username_len/2 + math.random(2,4))
 
 	return username
 end
-Help.Window['lbl_login']:setText(Help.Window.getPlayerAccountLogin())
 
 function Help.Window.openDonateTab()
 	if not Help.Window.isVisible then
@@ -340,6 +342,8 @@ function Help.Window.setVisible(state)
 	guiSetVisible(Help.Window.wnd, Help.Window.isVisible)
 
 	showCursor(Help.Window.isVisible)
+
+	Help.Window['lbl_login']:setText(Help.Window.getPlayerAccountLogin())
 
 	triggerEvent('operShowUI.setVisiblePlayerUI', localPlayer, not Help.Window.isVisible)
 	triggerEvent('operShowUI.setVisiblePlayerComponentUI', localPlayer, 'dashboard', true) -- ну отключать dashboard
