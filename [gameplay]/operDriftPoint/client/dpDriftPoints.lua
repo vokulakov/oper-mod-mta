@@ -109,7 +109,7 @@ function finishCurrentDrift(restrictTime)
 	-- Reset multipliers
 	if driftPoints > 0 then
 		--outputChatBox("Finished drift: " .. tostring(driftTimer/1000) .. "s")
-		triggerEvent("dpDriftPoints.earnedPoints", resourceRoot, driftPoints, pointsMultiplier, driftTimer)
+		triggerServerEvent("dpDriftPoints.earnedPoints", resourceRoot, driftPoints)
 	end
 	if driftPoints > 0 then
 		directionDriftTimer = 0
