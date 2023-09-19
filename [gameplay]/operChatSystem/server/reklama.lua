@@ -40,8 +40,10 @@ end, 20 * 60 * 1000, 0)
 
 -- Рандомные сообщения с подсказками
 function outputRandomInfo()
+	outputChatBox(" ", root, 255, 255, 255, true)
 	outputChatBox("#00b9ff[Информация] #ffffffОфициальная страница: #ffd600vk.com/otdelmta", root, 255, 255, 255, true)
 	outputChatBox("#00b9ff[Информация] #ffffff"..INFORMATIONS[math.random(1,#INFORMATIONS)], root, 255, 255, 255, true)
+	outputChatBox(" ", root, 255, 255, 255, true)
 	setTimer(outputRandomInfo, math.random(5,10) * 60 * 1000, 1)
 end
 setTimer(outputRandomInfo, math.random(5,10) * 60 * 1000, 1)
