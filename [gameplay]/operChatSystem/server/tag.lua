@@ -1,6 +1,9 @@
 local Tags = {
-	['Console'] = '#FF0000Главный администратор',
-	['Admin']	= '#FF0000Администратор'
+	['Console'] 		= '#00ff00Генеральный директор',
+	['Admin']			= '#FF0000Главный администратор',
+	['Administrator']	= '#FF0000Администратор',
+	['Premium']			= '#ffff00PREMIUM',
+	['VIP']				= '#ffff00VIP',
 }
 
 function getPlayerTag(player)
@@ -16,8 +19,7 @@ function getPlayerTag(player)
 
 	for group, tag in pairs(Tags) do
 		if isObjectInACLGroup("user." .. getAccountName(Account), aclGetGroup(group)) then
-			local prefix = tag:gsub("#%x%x%x%x%x%x", "")
-			player:setData("player.prefix", { group = group, prefix = tostring(prefix)})
+			player:setData("player.prefix", { group = group, prefix = tag})
 			return '#6495ED[ '..tag..' #6495ED]'
 		end
 	end

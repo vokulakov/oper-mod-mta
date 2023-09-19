@@ -7,9 +7,15 @@
 	<include resource="operCameraViews" />
 	<include resource="operTuningGarage" />
 
+ 	<file src="assets/Roboto-Light.ttf"/>
+	<file src="assets/Roboto-Bold.ttf"/>
+
 	<file src="assets/map.png" />
 	<file src="assets/localplayerblip.png" />
 	<file src="assets/playerblip.png" />
+	
+	<file src="assets/btn_donate.png" />
+	<file src="assets/img_donate.png" />
 
 	<!-- SHARED -->
 	<script type="shared" cache="false" src="shared/fightStyleShared.lua" />

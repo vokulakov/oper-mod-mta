@@ -1,6 +1,6 @@
 MAP_NAME = "San-Andreas" -- карта
 GAME_TYPE = "ВСЁ БЕСПЛАТНО" -- игровой режим
-MOD_INFO = "OPERSKIY × OTDEL 1.1.3" -- информация о моде
+MOD_INFO = "OPERSKIY × OTDEL 1.1.5" -- информация о моде
 SERVER_PASSWORD = "" -- пароль
 
 SHOW_MESSAGE = true -- показывать сообщение в чате перед выключением
@@ -24,6 +24,7 @@ startupResources = { -- загружаемые ресурсы
 	"operBoneAttach",
 	"operVehicleSystem",
 	"operVehicleHandling",
+	"operTradeMC",
 
 	-- [GAMEPLAY] --
 	"defaultstats",

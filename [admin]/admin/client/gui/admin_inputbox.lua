@@ -108,7 +108,7 @@ addEventHandler("onClientGUIClick", guiRoot,
 )
 
 function aInputBoxClose ( destroy )
-	if ( ( destroy ) or ( guiCheckBoxGetSelected ( aPerformanceInput ) ) ) then
+	if ( ( destroy ) --[[or ( guiCheckBoxGetSelected ( aPerformanceInput ) )]] ) then
 		if ( aInputForm ) then
 			removeEventHandler ( "onClientGUIClick", aInputForm, aInputBoxClick )
 			aInputAction = nil
@@ -310,7 +310,7 @@ function aBanInputBox ( player )
 end
 
 function aBanInputBoxClose ( destroy )
-	if ( ( destroy ) or ( guiCheckBoxGetSelected ( aPerformanceInput ) ) ) then
+	if ( ( destroy ) --[[or ( guiCheckBoxGetSelected ( aPerformanceInput ) )]] ) then
 		if ( aBanInputForm ) then
 			removeEventHandler ( "onClientGUIClick", aBanInputForm, aBanInputBoxClick )
 			removeEventHandler ( "onClientGUIAccepted", aBanInputValue, aBanInputBoxAccepted )
@@ -472,7 +472,7 @@ function aMuteInputBox ( player )
 end
 
 function aMuteInputBoxClose ( destroy )
-	if ( ( destroy ) or ( guiCheckBoxGetSelected ( aPerformanceInput ) ) ) then
+	if ( ( destroy ) --[[or ( guiCheckBoxGetSelected ( aPerformanceInput ) )]] ) then
 		if ( aMuteInputForm ) then
 			removeEventHandler ( "onClientGUIClick", aMuteInputForm, aMuteInputBoxClick )
 			removeEventHandler ( "onClientGUIAccepted", aMuteInputValue, aMuteInputBoxFinish )

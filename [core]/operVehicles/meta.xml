@@ -1,0 +1,20 @@
+<meta>
+    <oop>true</oop>
+
+    <!-- SHARED -->
+    <script type="shared" src="shared/Config.lua" cache="false" />
+    <script type="shared" src="shared/Utils.lua" cache="false" />
+
+    <!-- CLIENT -->
+    <script type="client" src="client/Garage.lua" cache="false" />
+    <script type="client" src="client/VehicleShop.lua" cache="false" />
+    <script type="client" src="client/main.lua" cache="false" />
+    <script type="client" src="client/VehicleMileage.lua" cache="false" />
+
+    <!-- SERVER -->
+    <script type="server" src="server/Database.lua" />
+    <script type="server" src="server/Garage.lua" />
+    <script type="server" src="server/VehicleShop.lua" />
+    <script type="server" src="server/main.lua" />
+
+</meta>

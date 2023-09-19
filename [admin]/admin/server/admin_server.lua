@@ -577,6 +577,15 @@ function aAdminMenu ( player, command )
 	if ( hasObjectPermissionTo ( player, "general.adminpanel" ) ) then
 		triggerClientEvent ( player, "aClientAdminMenu", root )
 		aPlayers[player]["chat"] = true
+	else
+		triggerClientEvent(
+			player, 
+			'operNotification.addNotification', 
+			player, 
+			"Ошибка доступа! Данное меню\nдоступно спонсорам проекта.\nПодробная информация в меню F9", 
+			2, 
+			true
+		)
 	end
 end
 addCommandHandler ( "admin", aAdminMenu )

@@ -4,7 +4,7 @@ Dashboard = { }
 Dashboard.isVisible = false
 Dashboard.activeWindow = nil
 
-Dashboard.wnd = guiCreateWindow(15, sHeight/2-500/2-65, 230, 500, "Главное меню", false)
+Dashboard.wnd = guiCreateWindow(15, sHeight/2-500/2-65, 230, 500, "Главное меню [F1]", false)
 guiWindowSetSizable(Dashboard.wnd, false)
 guiSetVisible(Dashboard.wnd, false)
 guiWindowSetMovable(Dashboard.wnd, false)
@@ -188,6 +188,11 @@ addEventHandler("onClientGUIClick", root, function()
 	elseif source == Dashboard.plWindow['btn_help'] then -- окно помощи
 		Dashboard.activeWindowShow(Help.Window.wnd)
 		Help.Window.setVisible()
+		Help.Window.openHelpTab()
+	elseif source == Dashboard.plWindow['btn_donate'] then
+		Dashboard.activeWindowShow(Help.Window.wnd)
+		Help.Window.setVisible()
+		Help.Window.openDonateTab()
 	end
 
 end)
